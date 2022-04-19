@@ -18,21 +18,36 @@ import Link from "next/link";
 
 const Navbar = () => {
  return (
-  <AppBar sx={{ bgcolor: "#21252D" , height: "85px" }} position="static">
+  <AppBar sx={{ bgcolor: "#21252D" }} position="static">
    <Container maxWidth="xl">
-    <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+    <Toolbar
+     sx={{
+      display: "flex",
+      justifyContent: "space-between",
+      height: "85px",
+     }}
+    >
      <Typography
       variant="h6"
       component="div"
       sx={{ display: "flex", alignItems: "center" }}
      >
-      <Image
-       src="/assets/images/site-logo.png"
-       height="50px"
-       width="200px"
-       alt="logo"
-       objectFit={"contain"}
-      />
+      <Link href="/" passHref>
+       <a
+        style={{
+         paddingTop: "8px",
+         cursor: "pointer",
+        }}
+       >
+        <Image
+         src="/assets/images/site-logo.png"
+         height="50px"
+         width="200px"
+         alt="logo"
+         objectFit={"contain"}
+        />
+       </a>
+      </Link>
       <Paper
        component="form"
        sx={{
@@ -61,16 +76,21 @@ const Navbar = () => {
      </Typography>
      <Box>
       <Link href="/">
-       <a style={{ margin: "0px 4px 0px 4px" }}> CATEGORIES </a>
+       <a style={{ margin: "0px 1em 0px 1em", fontWeight: "200" }}>
+        CATEGORIES
+       </a>
       </Link>
       <Link href="/">
-       <a style={{ margin: "0px 4px 0px 4px" }}> FREE QUIZ </a>
+       <a style={{ margin: "0px 1em 0px 1em", fontWeight: "200" }}>FREE QUIZ</a>
       </Link>
       <Link href="/">
-       <a style={{ margin: "0px 4px 0px 4px" }}> SUPPORT </a>
+       <a style={{ margin: "0px 1em 0px 1em", fontWeight: "200" }}> SUPPORT </a>
       </Link>
+
+      <Box component="span" sx={{ ml: "1em" }}>
+       <CommonButton textValue="Login" />
+      </Box>
      </Box>
-     <CommonButton textValue="Login" />
     </Toolbar>
    </Container>
   </AppBar>

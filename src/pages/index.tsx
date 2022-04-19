@@ -1,14 +1,8 @@
-import { Typography } from '@mui/material'
-import Banner from 'components/home/Banner'
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Banner from "components/Home/Banner";
+import type { NextPage } from "next";
 
 const Home: NextPage = () => {
-  return (
-      <Banner/>
-      )
-}
+ return <Banner />;
+};
 
-export default Home
+export default Home;
