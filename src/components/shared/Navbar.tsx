@@ -18,7 +18,7 @@ import Link from "next/link";
 
 const Navbar = () => {
  return (
-  <AppBar sx={{ bgcolor: "#21252D" }} position="static">
+  <AppBar sx={{ bgcolor: "#21252D" , height: "85px" }} position="static">
    <Container maxWidth="xl">
     <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
      <Typography
