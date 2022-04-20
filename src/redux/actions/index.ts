@@ -7,12 +7,13 @@ interface GetQuizRequestAction {
 }
 
 interface GetQuizSuccessAction {
-    type: ActionType.GET_QUIZ_SUCCESS,
+    type: ActionType.GET_QUIZ_SUCCESS;
     payload: Quiz[]
 }
 interface GetQuizFailAction{
-    type: ActionType.GET_QUIZ_FAIL,
+    type: ActionType.GET_QUIZ_FAIL;
     payload:string
 }
 
-export type Action = GetQuizSuccessAction | GetQuizFailAction | GetQuizRequestAction
+
+export type Action = GetQuizRequestAction | GetQuizSuccessAction | GetQuizFailAction

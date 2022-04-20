@@ -1,17 +1,22 @@
 import Quiz from "models/quizModels";
-import { Action } from "../actions";
-
 interface QuizState {
     loading: boolean;
-    error:string|null;
-    data:Quiz[]|null
+    data:Quiz[]|null;
+    finalAnswer:{}[] |null
 }
 const initialState ={
     loading:false,
     error:null,
-    data:null
+    data:null,
+    finalAnswer:null
 }
 
-export const quizReducer=(state:QuizState =initialState,action: Action)=>{
-
+export const quizReducer=(state:QuizState =initialState,action:any):QuizState=>{
+        switch(action.type){
+            case "Quiz":
+                
+                
+            default :
+                return state    
+        }
 }
