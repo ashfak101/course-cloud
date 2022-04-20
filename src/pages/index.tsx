@@ -1,4 +1,4 @@
-import Banner from "components/Home/Banner";
+import Banner from "components/home/Banner";
 import type { NextPage } from "next";
 
 const Home: NextPage = () => {
