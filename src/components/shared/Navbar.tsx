@@ -105,7 +105,7 @@ const Navbar = () => {
          my: { xs: 1 },
         }}
        >
-        <CommonButton textValue="Login" />
+        <CommonButton fontSize=".9rem" textValue="Login" />
        </Box>
       </Box>
       <Button
