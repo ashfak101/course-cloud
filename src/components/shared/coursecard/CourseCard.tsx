@@ -12,13 +12,16 @@ const CourseCard = () => {
   <Card sx={{ maxWidth: 345, bgcolor: "#21252D", color: "#fff" }}>
    <CardMedia
     component="img"
-    height="140"
-    image="/static/images/cards/contemplative-reptile.jpg"
+    height="212"
+    image="/assets/images/cardimg.png"
     alt="green iguana"
    />
    <CardContent>
-    <Typography gutterBottom variant="h5" component="div">
-     Lizard
+    <Typography gutterBottom component="div" sx={{ color: "#818181" }}>
+     Marketing
+    </Typography>
+    <Typography gutterBottom component="div" variant="h6">
+     The Complete Digital Marketing Guide Courses
     </Typography>
     <Typography variant="body2">
      Lizards are a widespread group of squamate reptiles, with over 6,000
