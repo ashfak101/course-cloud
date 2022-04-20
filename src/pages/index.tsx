@@ -8,16 +8,15 @@ import type { NextPage } from "next";
 
 const Home: NextPage = () => {
  return (
-
-     <>
-     <Banner/>
-     <BecomeInstructor/>
-     <EasyAccess/>
-     <Subscription/>
-     <Faq/>
-     </>
- )
-
+  <>
+   <Banner />
+   <BecomeInstructor />
+   <ExploreCourses />
+   <EasyAccess />
+   <Subscription />
+   <Faq />
+  </>
+ );
 };
 
 export default Home;
