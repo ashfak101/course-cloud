@@ -31,17 +31,17 @@ const BecomeInstructor = () => {
       <Grid container spacing={2} sx={{display: "flex", alignItems: "center" }}>
         <Grid item xs={12} xl={2} md={2}>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0' }}>
-              <Image src='/assets/images/personone.png' width='258' height='330'/>
+              <Image src='/assets/images/personone.png' width='258' height='330' alt="img"/>
           </Item>
         </Grid>
         <Grid item xs={12} xl={2} md={2}>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0'}}>
-          <Image src='/assets/images/persontwo.png' width='258' height='330'/>
+          <Image src='/assets/images/persontwo.png' width='258' height='330' alt="img"/>
           </Item>
         </Grid>
         <Grid item xs={12} xl={2} md={2}>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0'}}>
-          <Image src='/assets/images/personthree.png' width='258' height='330'/>
+          <Image src='/assets/images/personthree.png' width='258' height='330' alt="img"/>
           </Item>
         </Grid>
         <Grid item xs={12} xl={6} md={6}>
@@ -67,32 +67,32 @@ const BecomeInstructor = () => {
       <Grid container spacing={2}>
         <Grid item xs={12} xl={2} md={2}>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0'}}>
-          <Image src='/assets/images/personfour.png' width='258' height='330'/>
+          <Image src='/assets/images/personfour.png' width='258' height='330' alt="img"/>
           </Item>
         </Grid>
         <Grid item xs={12} xl={2} md={2}>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0'}}>
-          <Image src='/assets/images/personfive.png' width='258' height='330'/>
+          <Image src='/assets/images/personfive.png' width='258' height='330' alt="img"/>
           </Item>
         </Grid>
         <Grid item xs={12} xl={2} md={2}>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0'}}>
-          <Image src='/assets/images/personsix.png' width='258' height='330'/>
+          <Image src='/assets/images/personsix.png' width='258' height='330' alt="img"/>
           </Item>
         </Grid>
         <Grid item xs={12} xl={2} md={2}>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0'}}>
-          <Image src='/assets/images/personseven.png' width='258' height='330'/>
+          <Image src='/assets/images/personseven.png' width='258' height='330' alt="img"/>
           </Item>
         </Grid>
         <Grid item xs={12} xl={2} md={2}>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0'}}>
-          <Image src='/assets/images/personeight.png' width='258' height='330'/>
+          <Image src='/assets/images/personeight.png' width='258' height='330' alt="img"/>
           </Item>
         </Grid>
         <Grid item xs={12} xl={2} md={2}>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0'}}>
-          <Image src='/assets/images/personnine.png' width='258' height='330'/>
+          <Image src='/assets/images/personnine.png' width='258' height='330' alt="img"/>
           </Item>
         </Grid>
       </Grid>

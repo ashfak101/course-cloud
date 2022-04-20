@@ -43,12 +43,12 @@ const EasyAccess = () => {
       <Grid container spacing={2}>
         <Grid item xs={12} xl={4} md={4} sx={{ marginTop:'5px' }}>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0', textAlign:'left'}}>
-              <Image src='/assets/images/googleplay.png' width='217' height='70'/>
+              <Image src='/assets/images/googleplay.png' width='217' height='70' alt="img"/>
           </Item>
         </Grid>
         <Grid item xs={12} xl={4} md={4}>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0', textAlign:'left'}}>
-          <Image src='/assets/images/appstore.png' width='217' height='70'/>
+          <Image src='/assets/images/appstore.png' width='217' height='70' alt="img"/>
           </Item>
         </Grid>
       </Grid>
@@ -56,7 +56,7 @@ const EasyAccess = () => {
         </Grid>
         <Grid item xs={12} xl={6} md={6}>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0'}}>
-              <Image src='/assets/images/phone.png' width='469' height='519'/>
+              <Image src='/assets/images/phone.png' width='469' height='519' alt="img"/>
           </Item>
         </Grid>
       </Grid>
