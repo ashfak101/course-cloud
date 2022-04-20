@@ -18,7 +18,7 @@ const Banner = () => {
    <Container maxWidth="xl" sx={{ mt: 5 }}>
     <Grid container spacing={5} sx={{ display: "flex", alignItems: "center" }}>
      <Grid item xs={12} xl={6} md={6}>
-      <Item sx={{ backgroundColor: "transparent", py: 0 }}>
+      <Item sx={{ backgroundColor: "transparent", py: 0, boxShadow:'0' }}>
        <Typography
         sx={{
          textAlign: "left",
@@ -26,12 +26,13 @@ const Banner = () => {
          fontWeight: "200",
          color: "white",
          fontFamily: "Oswald, sans-serif",
+         marginBottom:'25px'
         }}
        >
         A Learning Curve
        </Typography>
       </Item>
-      <Item sx={{ backgroundColor: "transparent", py: 0 }}>
+      <Item sx={{ backgroundColor: "transparent", py: 0, boxShadow:'0' }}>
        <Typography
         sx={{
          textAlign: "left",
@@ -39,30 +40,31 @@ const Banner = () => {
          fontWeight: "500",
          color: "white",
          fontFamily: "Oswald, sans-serif",
+         marginBottom:'36px'
         }}
        >
         IS ESSENTIAL TO GROWTH
        </Typography>
       </Item>
-      <Item sx={{ backgroundColor: "transparent" }}>
-       <Typography sx={{ textAlign: "left", color: "white" }}>
+      <Item sx={{ backgroundColor: "transparent", boxShadow:'0' }}>
+       <Typography sx={{ textAlign: "left", color: "white", marginBottom:'36px' }}>
         All of CourseCloud.Free for 3 days.
        </Typography>
       </Item>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1, marginBottom:'108px' }}>
        <Grid container spacing={2}>
-        <Grid item xs={8} xl={6} md={6}>
-         <Item sx={{ backgroundColor: "transparent" }}>
-          <Button sx={{ width: "230px", height: "70px" }}>Get Started</Button>
+        <Grid item xs={12} xl={4} md={12}>
+         <Item sx={{ backgroundColor: "#D19F28", textAlign: "center" }}>
+          <Button sx={{color:'black', height:'60px', fontFamily:'Lato', fontStyle:'normal', fontWeight:'500', fontSize:'18px', lineHeight:'71.5%'}}>Get Started</Button>
          </Item>
         </Grid>
-        <Grid item xs={4} xl={6} md={6}>
-         <Item sx={{ backgroundColor: "transparent" }}>
+        <Grid item xs={12} xl={6} md={12}>
+         <Item sx={{ backgroundColor: "transparent", boxShadow:'0' }}>
           <Typography sx={{ textAlign: "left", color: "white" }}>
            $15/month (billed annually)
           </Typography>
          </Item>
-         <Item sx={{ backgroundColor: "transparent" }}>
+         <Item sx={{ backgroundColor: "transparent", boxShadow:'0' }}>
           <Typography sx={{ textAlign: "left", color: "white" }}>
            Offer terms apply
           </Typography>
@@ -73,7 +75,7 @@ const Banner = () => {
       <Box sx={{ flexGrow: 1 }}>
        <Grid container spacing={2}>
         <Grid item xs={12} xl={12}>
-         <Item sx={{ backgroundColor: "transparent" }}>
+         <Item sx={{ backgroundColor: "transparent", textAlign: "left", boxShadow:'0' }}>
           <Image
            src="/assets/images/awardlogos.png"
            width="540"
