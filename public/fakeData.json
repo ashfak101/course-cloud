@@ -1,0 +1,175 @@
+{
+    "mainCourses":[
+        {
+        "id":"1",
+        "title": "Course One",
+        "courseType": "Marketing",
+        "courseDetails": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorem repellendus modi tempore magnam fuga harum ut, non officia quis!",
+        "courseCover": "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+        "videoURL":"https://youtu.be/g17Hudc100w",
+        "mainPrice": "599",
+        "discountPercent": "0.2",
+        "instructorDetails": {
+            "name": "Jhon Smith",
+            "avatar": "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+            }
+        },
+        {
+        "id":"2",
+        "title": "Course Two",
+        "courseType": "Sports",
+        "courseDetails": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorem repellendus modi tempore magnam fuga harum ut, non officia quis!",
+        "courseCover": "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+        "videoURL":"https://youtu.be/g17Hudc100w",
+        "mainPrice": "599",
+        "discountPercent": "0.2",
+        "instructorDetails": {
+            "name": "Jhon Smith",
+            "avatar": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+            }
+        },
+        {
+        "id":"3",
+        "title": "Course Three",
+        "courseType": "Film & TV",
+        "courseDetails": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorem repellendus modi tempore magnam fuga harum ut, non officia quis!",
+        "videoURL":"https://youtu.be/g17Hudc100w",
+        "courseCover": "https://images.unsplash.com/photo-1420310414923-bf3651a89816?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        "mainPrice": "599",
+        "discountPercent": "0.2",
+        "instructorDetails": {
+            "name": "Jhon Smith",
+            "avatar": "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+            }
+        },
+        {
+        "id":"4",
+        "title": "Course Four",
+        "courseType": "Music",
+        "courseDetails": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorem repellendus modi tempore magnam fuga harum ut, non officia quis!",
+        "videoURL":"https://youtu.be/g17Hudc100w",
+        "courseCover": "https://images.unsplash.com/photo-1420310414923-bf3651a89816?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        "mainPrice": "599",
+        "discountPercent": "0.2",
+        "instructorDetailsDetails": {
+            "name": "Jhon Smith",
+            "avatar": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+            }
+        }
+    ],
+    "coursesOnDeals": [
+        {
+            "id":"1",
+            "title": "DisCount Course One",
+            "courseType": "Sports",
+            "courseDetails": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorem repellendus modi tempore magnam fuga harum ut, non officia quis!",
+            "courseCover": "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+            "videoURL":"https://youtu.be/g17Hudc100w",
+            "mainPrice": "599",
+            "discountPercent": "0.2",
+            "instructorDetails": {
+                "name": "Jhon Smith",
+                "avatar": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                }
+            },
+            {
+                "id":"2",
+                "title": "DisCount Course Two",
+                "courseType": "Sports",
+                "courseDetails": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorem repellendus modi tempore magnam fuga harum ut, non officia quis!",
+                "courseCover": "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+                "videoURL":"https://youtu.be/g17Hudc100w",
+                "mainPrice": "599",
+                "discountPercent": "0.2",
+                "instructorDetails": {
+                    "name": "Jhon Smith",
+                    "avatar": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                    }
+                },
+                {
+                    "id":"3",
+                    "title": "DisCount Course Three",
+                    "courseType": "Sports",
+                    "courseDetails": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorem repellendus modi tempore magnam fuga harum ut, non officia quis!",
+                    "courseCover": "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+                    "videoURL":"https://youtu.be/g17Hudc100w",
+                    "mainPrice": "599",
+                    "discountPercent": "0.2",
+                    "instructorDetails": {
+                        "name": "Jhon Smith",
+                        "avatar": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                        }
+            }
+    ],
+
+    "featuredInstructor": [
+        {
+            "id":"57",
+            "name": "Connor Fransis",
+            "department": "Teaches Writing",
+            "avatar": "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+            "numberOfClasses": "50",
+            "numberOfLessons": "14"
+        },
+        {
+            "id":"68",
+            "name": "Elizabeth",
+            "department": "Accounting",
+            "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+            "numberOfClasses": "60",
+            "numberOfLessons": "18"
+        },
+        {
+            "id":"54",
+            "name": "Jhon Doe",
+            "department": "Engineering",
+            "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+            "numberOfClasses": "55",
+            "numberOfLessons": "17"
+        },
+        {
+            "id":"59",
+            "name": "Xavier Fransis",
+            "department": "Teaches Writing",
+            "avatar": "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+            "numberOfClasses": "50",
+            "numberOfLessons": "14"
+        },
+        {
+            "id":"58",
+            "name": "Tony Stark",
+            "department": "Accounting",
+            "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+            "numberOfClasses": "60",
+            "numberOfLessons": "18"
+        },
+        {
+            "id":"50",
+            "name": "Sam Billings",
+            "department": "Engineering",
+            "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+            "numberOfClasses": "55",
+            "numberOfLessons": "17"
+        }
+    ],
+    "studentReview": [
+        {
+            "id": "1",
+            "name": "Carin, Content Writer, UK",
+            "avatar": "https://images.unsplash.com/photo-1565034946487-077786996e27?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=801",
+            "review": " Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde consectetur nihil aut eius quidem tempore exercitationem, excepturi consequuntur in nemo veniam, maiores odit omnis? Totam laboriosam iure accusamus repudiandae perspiciatis."
+        },
+        {
+            "id": "2",
+            "name": "Juli, Content Writer, UK",
+            "avatar": "https://images.unsplash.com/photo-1618355776464-8666794d2520?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+            "review": " Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde consectetur nihil aut eius quidem tempore exercitationem, excepturi consequuntur in nemo veniam, maiores odit omnis? Totam laboriosam iure accusamus repudiandae perspiciatis."
+        },
+        {
+            "id": "3",
+            "name": "Luci, Content Writer, UK",
+            "avatar": "https://images.unsplash.com/photo-1565034946487-077786996e27?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=801",
+            "review": " Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde consectetur nihil aut eius quidem tempore exercitationem, excepturi consequuntur in nemo veniam, maiores odit omnis? Totam laboriosam iure accusamus repudiandae perspiciatis."
+        },
+    ]
+}
