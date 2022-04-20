@@ -4,7 +4,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Image from "next/image";
 const Styles = {
-    becomeBackground: {
+    easyAccessBackground: {
         backgroundImage: `url('/assets/images/easyaccess.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -24,7 +24,7 @@ const Item = styled(Paper)(({ theme }) => ({
 const EasyAccess = () => {
     return(
         <>
-        <Box sx={{ ...Styles.becomeBackground}}>
+        <Box sx={{ ...Styles.easyAccessBackground}}>
             <Container maxWidth="xl">
             <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2} sx={{display: "flex", alignItems: "center" }}>
