@@ -1,5 +1,4 @@
 import CourseCard from "components/shared/coursecard/CourseCard";
-
 const ExploreCourses = () => {
  return (
   <div>
@@ -7,5 +6,6 @@ const ExploreCourses = () => {
   </div>
  );
 };
-
 export default ExploreCourses;
+
+
