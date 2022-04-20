@@ -1,8 +1,18 @@
-import { Box, Typography } from "@mui/material"
-import QuizHome from "components/quiz/QuizHome";
 import Head from "next/head";
+import { Box } from "@mui/material"
+import QuizHome from "components/quiz/QuizHome";
 
-const Quiz =()=>{
+import Quiz from "models/quizModels";
+
+
+ type QuizProps={
+     quizs:Quiz[]
+ }
+
+const Quiz =(props:QuizProps)=>{
+    console.log(props.quizs)
+
+    
     return<> 
             <Head>
                 <title>Course Cloud || Quiz</title>
@@ -14,3 +24,16 @@ const Quiz =()=>{
 }
 
 export default Quiz;
+
+
+export async function  getStaticProps() {
+    const res = await fetch('https://tawsifhye.github.io/data/quizes.json')
+
+    const quizs= await res.json()
+
+    return{
+        props:{
+            quizs
+        }
+    }
+}
