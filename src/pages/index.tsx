@@ -1,15 +1,16 @@
-
 import Banner from "components/home/Banner";
 import BecomeInstructor from "components/home/BecomeInstructor";
+import ExploreCourses from "components/Home/ExploreCourses";
 import type { NextPage } from "next";
 
 const Home: NextPage = () => {
  return (
-     <>
-     <Banner/>
-     <BecomeInstructor/>
-     </>
- )
+  <>
+   <Banner />
+   <BecomeInstructor />
+   <ExploreCourses />
+  </>
+ );
 };
 
 export default Home;
