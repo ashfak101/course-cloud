@@ -1,9 +1,13 @@
-import { Box, Typography } from "@mui/material"
-import QuizHome from "components/quiz/QuizHome";
 import Head from "next/head";
+import { Box } from "@mui/material"
+import QuizHome from "components/quiz/QuizHome";
 
-const Quiz =({quizs})=>{
-    console.log(quizs)
+ type QuizProps={
+     quizs:[object]
+ }
+
+const Quiz =(props:QuizProps)=>{
+    console.log(props.quizs)
     
     return<> 
             <Head>
