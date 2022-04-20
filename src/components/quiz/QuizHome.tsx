@@ -1,6 +1,8 @@
 import { Box,Typography } from "@mui/material"
 
 
+
+
 const QuizHome = () => {
   return (
     <Box>

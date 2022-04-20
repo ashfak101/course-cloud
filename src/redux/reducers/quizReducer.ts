@@ -1,21 +1,22 @@
-import Quiz from "models/quizModels";
+
 interface QuizState {
     loading: boolean;
-    data:Quiz[]|null;
     finalAnswer:{}[] |null
 }
 const initialState ={
-    loading:false,
-    error:null,
-    data:null,
+    loading:true,
     finalAnswer:null
 }
 
 export const quizReducer=(state:QuizState =initialState,action:any):QuizState=>{
         switch(action.type){
-            case "Quiz":
-                
-                
+         
+            case  "SUMBIT_QUIZ":
+                return{
+                    ...state,
+                    loading:false,
+                    finalAnswer:action.payload
+                }     
             default :
                 return state    
         }

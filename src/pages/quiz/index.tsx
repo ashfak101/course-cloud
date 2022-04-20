@@ -2,12 +2,16 @@ import Head from "next/head";
 import { Box } from "@mui/material"
 import QuizHome from "components/quiz/QuizHome";
 
+import Quiz from "models/quizModels";
+
+
  type QuizProps={
-     quizs:[object]
+     quizs:Quiz[]
  }
 
 const Quiz =(props:QuizProps)=>{
     console.log(props.quizs)
+
     
     return<> 
             <Head>
