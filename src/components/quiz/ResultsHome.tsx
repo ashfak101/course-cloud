@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux"
 import { State } from "redux/reducers";
 import Answer from "./Answer";
+import QuizResultHeader from "./QuizResultHeader";
 
 type AnswerArray={
     questionId:string;
@@ -13,6 +14,7 @@ type AnswerArray={
     level:string
 
 }
+
 const ResultsHome = () => {
     
     const answer= useSelector((state:State)=>state.allAnswer.finalAnswer)
@@ -20,7 +22,7 @@ const ResultsHome = () => {
     let beginner:number = 0;
     let intermediate:number = 0;
     let advanced:number = 0;
-    let correctAnswerArray=[];
+    let correctAnswerArray:string[]=[];
     console.log(Array(answer));
     
     answer?.forEach((element)=>{
@@ -31,9 +33,12 @@ const ResultsHome = () => {
                 }
             })
     })
+    console.log(correctAnswerArray);
+    
     
   return (
     <Container>
+        <QuizResultHeader answer={answer} correctAnswerArray={correctAnswerArray}/>
         <Answer answer={answer}></Answer>
     </Container>
   )
