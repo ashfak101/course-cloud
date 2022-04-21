@@ -36,6 +36,7 @@ const ExploreCourses = ({ courses }: Props) => {
      onChange={handleTabsChange}
      textColor="inherit"
      aria-label="secondary tabs example"
+     variant="scrollable"
      sx={{
       my: 3,
       "& .MuiTabs-indicator": {
