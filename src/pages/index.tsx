@@ -5,6 +5,7 @@ import Faq from "components/home/Faq";
 import Subscription from "components/home/Subscription";
 import ExploreCourses from "components/home/ExploreCourses";
 import type { NextPage } from "next";
+import Footer from "components/home/Footer";
 
 const Home: NextPage = () => {
  return (
@@ -15,6 +16,7 @@ const Home: NextPage = () => {
    <EasyAccess />
    <Subscription />
    <Faq />
+   <Footer/>
   </>
  );
 };
