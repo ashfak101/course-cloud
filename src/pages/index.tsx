@@ -6,6 +6,7 @@ import Subscription from "components/home/Subscription";
 import ExploreCourses from "components/home/ExploreCourses";
 import type { NextPage } from "next";
 import Footer from "components/home/Footer";
+import DealoftheDay from "components/home/DealoftheDay";
 
 const Home: NextPage = () => {
  return (
@@ -13,6 +14,7 @@ const Home: NextPage = () => {
    <Banner />
    <BecomeInstructor />
    <ExploreCourses />
+   <DealoftheDay/>
    <EasyAccess />
    <Subscription />
    <Faq />
