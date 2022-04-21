@@ -7,7 +7,9 @@ import ExploreCourses from "components/home/ExploreCourses";
 import type { NextPage } from "next";
 import Footer from "components/home/Footer";
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ courses }: any) => {
+ console.log(courses);
+
  return (
   <>
    <Banner />
@@ -16,9 +18,22 @@ const Home: NextPage = () => {
    <EasyAccess />
    <Subscription />
    <Faq />
-   <Footer/>
+   <Footer />
   </>
  );
 };
 
 export default Home;
+
+export async function getStaticProps() {
+ // https://tawsifhye.github.io/data/courses.json
+
+ const courseResponse = await fetch("http://localhost:3000/api/course-data");
+ const courses = await courseResponse.json();
+
+ return {
+  props: {
+   courses,
+  },
+ };
+}
