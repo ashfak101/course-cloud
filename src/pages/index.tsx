@@ -5,19 +5,20 @@ import Faq from "components/home/Faq";
 import Subscription from "components/home/Subscription";
 import ExploreCourses from "components/home/ExploreCourses";
 import type { NextPage } from "next";
+import Footer from "components/home/Footer";
 
 const Home: NextPage = () => {
  return (
-
-     <>
-     <Banner/>
-     <BecomeInstructor/>
-     <EasyAccess/>
-     <Subscription/>
-     <Faq/>
-     </>
- )
-
+  <>
+   <Banner />
+   <BecomeInstructor />
+   <ExploreCourses />
+   <EasyAccess />
+   <Subscription />
+   <Faq />
+   <Footer/>
+  </>
+ );
 };
 
 export default Home;

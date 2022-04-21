@@ -24,7 +24,7 @@ const Faq = () => {
       <Grid container spacing={2}>
         <Grid item xs={8} xl={12}>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0'}}>
-                <Typography sx={{fontFamily:'Lato', fontStyle:'normal', fontWeight: '700', fontSize:'36px', lineHeight:'43px', textAlign:'center', color:'white', marginBottom:'20px'}}>
+                <Typography sx={{fontFamily:'Lato', fontStyle:'normal', fontWeight: '700', fontSize:'36px', lineHeight:'43px', textAlign:'center', color:'white', marginBottom:'50px', marginTop:'110px'}}>
                 Frequently asked questions
                 </Typography>
           </Item>
@@ -33,30 +33,29 @@ const Faq = () => {
       <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         <Grid item xs={8} xl={6} md={6}>
-            <Typography>Free Trail</Typography>
-          <Item>
-          <Accordion>
+            <Typography sx={{marginLeft:'10px'}}>Free Trail</Typography>
+          <Item sx={{backgroundColor:'transparent', boxShadow:'0'}}>
+          <Accordion sx={{backgroundColor:'#21252D', color:'white', marginBottom:'10px'}}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon sx={{backgroundColor:'#191C21', color:'white', borderRadius:'50%'}} />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Accordion 1</Typography>
+          <Typography>How does the free trial work?</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          <Typography sx={{textAlign:'left'}}>
+          Sit at adipiscing turpis massa amet tempus lectus aliquam. Eget at tristique in <br/> viverra ultricies nec pulvinar. Vitae magna commodo odioyut.
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion>
+      <Accordion sx={{backgroundColor:'#21252D', color:'white', marginBottom:'10px'}}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon sx={{backgroundColor:'#191C21', color:'white', borderRadius:'50%'}} />}
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-          <Typography>Accordion 2</Typography>
+          <Typography>Who is eligible to participate in free trial?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -64,27 +63,18 @@ const Faq = () => {
             malesuada lacus ex, sit amet blandit leo lobortis eget.
           </Typography>
         </AccordionDetails>
-      </Accordion>
-      <Accordion disabled>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel3a-content"
-          id="panel3a-header"
-        >
-          <Typography>Disabled Accordion</Typography>
-        </AccordionSummary>
       </Accordion>
           </Item>
         </Grid>
         <Grid item xs={4} xl={6} md={6}>
-        <Typography>General</Typography>
-          <Item><Accordion>
+        <Typography sx={{marginLeft:'10px'}}>General</Typography>
+          <Item sx={{backgroundColor:'transparent', boxShadow:'0'}}><Accordion sx={{backgroundColor:'#21252D', color:'white', marginBottom:'10px'}}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon sx={{backgroundColor:'#191C21', color:'white', borderRadius:'50%'}} />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Accordion 1</Typography>
+          <Typography>What is WorldClass?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -93,13 +83,13 @@ const Faq = () => {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion>
+      <Accordion sx={{backgroundColor:'#21252D', color:'white', marginBottom:'10px'}}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon sx={{backgroundColor:'#191C21', color:'white', borderRadius:'50%'}} />}
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-          <Typography>Accordion 2</Typography>
+          <Typography>What is included in a WorldClass membership?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -108,25 +98,35 @@ const Faq = () => {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion disabled>
+      <Accordion sx={{backgroundColor:'#21252D', color:'white', marginBottom:'10px'}}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon sx={{backgroundColor:'#191C21', color:'white', borderRadius:'50%'}} />}
           aria-controls="panel3a-content"
           id="panel3a-header"
         >
-          <Typography>Disabled Accordion</Typography>
+          <Typography>Where can I watch?</Typography>
         </AccordionSummary>
-      </Accordion></Item>
+      </Accordion>
+      <Accordion sx={{backgroundColor:'#21252D', color:'white', marginBottom:'10px'}}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon sx={{backgroundColor:'#191C21', color:'white', borderRadius:'50%'}} />}
+          aria-controls="panel3a-content"
+          id="panel3a-header"
+        >
+          <Typography>Which classes are right for me?</Typography>
+        </AccordionSummary>
+      </Accordion>
+      </Item>
         </Grid>
         <Grid item xs={4} xl={6} md={6}>
-        <Typography>Pricing & Payment</Typography>
-          <Item><Accordion>
+        <Typography sx={{marginLeft:'10px'}}>Pricing & Payment</Typography>
+          <Item sx={{backgroundColor:'transparent', boxShadow:'0'}}><Accordion sx={{backgroundColor:'#21252D', color:'white',marginBottom:'10px'}}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon sx={{backgroundColor:'#191C21', color:'white', borderRadius:'50%'}} />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Accordion 1</Typography>
+          <Typography>How much does WorldClass cost?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -135,13 +135,13 @@ const Faq = () => {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion>
+      <Accordion sx={{backgroundColor:'#21252D', color:'white', marginBottom:'10px'}}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon sx={{backgroundColor:'#191C21', color:'white', borderRadius:'50%'}} />}
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-          <Typography>Accordion 2</Typography>
+          <Typography>How does the 30-day guarantee work?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -150,13 +150,13 @@ const Faq = () => {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion disabled>
+      <Accordion sx={{backgroundColor:'#21252D', color:'white', marginBottom:'10px'}}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon sx={{backgroundColor:'#191C21', color:'white', borderRadius:'50%'}} />}
           aria-controls="panel3a-content"
           id="panel3a-header"
         >
-          <Typography>Disabled Accordion</Typography>
+          <Typography>How do I cancel?</Typography>
         </AccordionSummary>
       </Accordion></Item>
         </Grid>
