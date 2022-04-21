@@ -9,8 +9,6 @@ import Footer from "components/home/Footer";
 import { CourseData, GetCoursesData } from "../../types";
 
 const Home: NextPage<{ courses: CourseData }> = ({ courses }) => {
- console.log(courses);
-
  return (
   <>
    <Banner />

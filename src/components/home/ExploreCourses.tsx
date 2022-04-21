@@ -1,15 +1,19 @@
 import { Box, Container, Grid, Tab, Tabs, Typography } from "@mui/material";
 import CourseCard from "components/shared/coursecard/CourseCard";
 import * as React from "react";
+import { CourseData } from "../../../types";
+type Props = {
+ courses: CourseData;
+};
 
-const ExploreCourses = () => {
+const ExploreCourses = ({ courses }: Props) => {
  const courseArray = [1, 2, 3, 4];
-
  const [tabsValue, setTabsValue] = React.useState("Most Popular");
-
  const handleTabsChange = (event: React.SyntheticEvent, newValue: string) => {
   setTabsValue(newValue);
  };
+
+ console.log("logged from explore", courses);
 
  return (
   <Container maxWidth="xl" sx={{ my: 10 }}>
