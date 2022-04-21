@@ -1,4 +1,4 @@
-import { type } from "os";
+
 
 type Option ={
     id:string;
@@ -7,7 +7,7 @@ type Option ={
 }
 
 type Quiz ={
-    questioonId:string;
+    questionId:string;
     question:string;
     options:Option[];
     selectedAnswer:Option;
@@ -15,11 +15,11 @@ type Quiz ={
 }
 
 interface QuizState {
-    finalAnswer:Quiz[]|null
+    finalAnswer:Quiz[]
 }
 const initialState ={
   
-    finalAnswer:null
+    finalAnswer:[]
 }
 type Action ={
     type:string;

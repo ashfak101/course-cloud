@@ -1,7 +1,9 @@
+import { Container } from "@mui/material";
 import Quiz from "models/quizModels";
 import { useState } from "react";
 import { useSelector } from "react-redux"
 import { State } from "redux/reducers";
+import Answer from "./Answer";
 
 type AnswerArray={
     questionId:string;
@@ -31,7 +33,9 @@ const ResultsHome = () => {
     })
     
   return (
-    <div>ResultsHome</div>
+    <Container>
+        <Answer answer={answer}></Answer>
+    </Container>
   )
 }
 
