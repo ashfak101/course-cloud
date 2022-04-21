@@ -58,7 +58,6 @@ const DealoftheDay = () => {
                 </Typography>
                 <Box>
                 <Box className="counter">
-			<Typography className="title">Countdown Timer</Typography>
 			<Box className="timer-container">
 				<Box sx={{display: 'flex', flexDirection:'column', alignItems: 'center'}}>
                 <Box className="days">
