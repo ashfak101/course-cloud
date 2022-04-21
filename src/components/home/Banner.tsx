@@ -71,6 +71,7 @@ const Banner = () => {
            backgroundColor: "transparent",
            textAlign: "left",
            p: 1,
+              boxShadow: "0",
           }}
          >
           <CommonButton fontSize="1rem" textValue="GET STARTED" />
