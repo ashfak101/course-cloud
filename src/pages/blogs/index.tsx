@@ -43,7 +43,7 @@ const Blogs = () => {
             Blogs
         </Typography>
         <Box sx={{display:'flex', justifyContent:'center', textAlign:'center'}}>
-        <Box sx={{width:'797px', height:'60px', backgroundColor:'#21252D', display:'flex', alignItems: 'center', justifyContent: "center", borderRadius:'9px',}}>
+        <Box sx={{width:'797px', height:'60px', backgroundColor:'#21252D', display:'flex', alignItems: 'center', justifyContent: "center", borderRadius:'20px',}}>
             <Box>
                 
             </Box>
