@@ -32,7 +32,7 @@ const Faq = () => {
       </Grid>
       <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
-        <Grid item xs={8} xl={6} md={6}>
+        <Grid item xs={12} xl={6} md={6}>
             <Typography sx={{marginLeft:'10px'}}>Free Trail</Typography>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0'}}>
           <Accordion sx={{backgroundColor:'#21252D', color:'white', marginBottom:'10px'}}>
@@ -66,7 +66,7 @@ const Faq = () => {
       </Accordion>
           </Item>
         </Grid>
-        <Grid item xs={4} xl={6} md={6}>
+        <Grid item xs={12} xl={6} md={6}>
         <Typography sx={{marginLeft:'10px'}}>General</Typography>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0'}}><Accordion sx={{backgroundColor:'#21252D', color:'white', marginBottom:'10px'}}>
         <AccordionSummary
@@ -118,7 +118,7 @@ const Faq = () => {
       </Accordion>
       </Item>
         </Grid>
-        <Grid item xs={4} xl={6} md={6}>
+        <Grid item xs={12} xl={6} md={6}>
         <Typography sx={{marginLeft:'10px'}}>Pricing & Payment</Typography>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0'}}><Accordion sx={{backgroundColor:'#21252D', color:'white',marginBottom:'10px'}}>
         <AccordionSummary

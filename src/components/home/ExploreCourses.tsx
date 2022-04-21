@@ -1,32 +1,42 @@
 import { Box, Container, Grid, Tab, Tabs, Typography } from "@mui/material";
 import CourseCard from "components/shared/coursecard/CourseCard";
 import * as React from "react";
+import { CourseData } from "../../../types";
+type Props = {
+ courses: CourseData;
+};
 
-const ExploreCourses = () => {
- const courseArray = [1, 2, 3, 4];
-
+const ExploreCourses = ({ courses }: Props) => {
  const [tabsValue, setTabsValue] = React.useState("Most Popular");
-
  const handleTabsChange = (event: React.SyntheticEvent, newValue: string) => {
   setTabsValue(newValue);
  };
 
+ console.log("logged from explore", courses);
+
+ const [displayCourses, setDisplayCourses] = React.useState(
+  courses.mainCourses
+ );
+
+ const filterCourses = (filterCourse: string) => {
+  const updatedCourses = courses.mainCourses.filter((currentCourse) => {
+   return currentCourse.courseType === filterCourse;
+  });
+  setDisplayCourses(updatedCourses);
+ };
+
  return (
-  <Container maxWidth="xl" sx={{ my: 10 }}>
-   <Typography
-    variant="h3"
-    sx={{ fontSize: "36px", textAlign: "center", my: 4 }}
-   >
+  <Container maxWidth="xl" sx={{ pb: 15, pt: 10 }}>
+   <Typography variant="h3" sx={{ fontSize: "36px", textAlign: "center" }}>
     Explore Other Courses
    </Typography>
-
-   {/*  */}
    <Box sx={{ width: "100%" }}>
     <Tabs
      value={tabsValue}
      onChange={handleTabsChange}
      textColor="inherit"
      aria-label="secondary tabs example"
+     variant="scrollable"
      sx={{
       my: 3,
       "& .MuiTabs-indicator": {
@@ -35,29 +45,45 @@ const ExploreCourses = () => {
       },
      }}
     >
-     <Tab value="Most Popular" label="Most Popular" />
-     <Tab value="Culinary Arts" label="Culinary Arts" />
-     <Tab value="Film & Tv" label="Film & Tv" />
-     <Tab value="Lifestyle" label="Lifestyle" />
-     <Tab value="Sports & Games" label="Sports & Games" />
+     <Tab
+      value="Most Popular"
+      label="Most Popular"
+      onClick={() => setDisplayCourses(courses.mainCourses)}
+     />
+     <Tab value="Music" label="Music" onClick={() => filterCourses("Music")} />
+     <Tab
+      value="Film"
+      label="Film &#38; Tv"
+      onClick={() => filterCourses("Film & TV")}
+     />
+     <Tab
+      value="Marketing"
+      label="Marketing"
+      onClick={() => filterCourses("Marketing")}
+     />
+     <Tab
+      value="Sports"
+      label="Sports &#38; Games"
+      onClick={() => filterCourses("Sports")}
+     />
     </Tabs>
    </Box>
 
-   {/*  */}
+   {/* Marketing  "Sports" "Music"*/}
    <Grid container spacing={2}>
-    {courseArray.map((course) => (
+    {displayCourses.map((course) => (
      <Grid
       item
       xs={12}
       md={6}
       lg={3}
-      key={course}
+      key={course?.id}
       sx={{
        display: "flex",
        justifyContent: "center",
       }}
      >
-      <CourseCard />
+      <CourseCard course={course} />
      </Grid>
     ))}
    </Grid>

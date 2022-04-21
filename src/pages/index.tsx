@@ -9,8 +9,6 @@ import Footer from "components/home/Footer";
 import { CourseData, GetCoursesData } from "../../types";
 
 const Home: NextPage<{ courses: CourseData }> = ({ courses }) => {
- console.log(courses);
-
  return (
   <>
    <Banner />
@@ -27,9 +25,9 @@ const Home: NextPage<{ courses: CourseData }> = ({ courses }) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async (context) => {
- // https://tawsifhye.github.io/data/courses.json
-
- const courseResponse = await fetch("http://localhost:3000/api/course-data");
+ const courseResponse = await fetch(
+  "https://api.npoint.io/8b635b31d3c9d683fcec"
+ );
  const courses: GetCoursesData = await courseResponse.json();
 
  return {
