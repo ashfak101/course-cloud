@@ -39,7 +39,7 @@ const Question = (props:QuestionProps) => {
                           sx={{
                            
                             '&.Mui-checked': {
-                              color: "red",
+                              color: "#D19F28",
                             },
                           }}
                           />} label={element.option} 

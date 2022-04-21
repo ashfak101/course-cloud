@@ -1,5 +1,6 @@
-import { Box,Card,Container,Typography } from "@mui/material"
+import { Box,Button,Card,Container,Typography } from "@mui/material"
 import Quiz from "models/quizModels"
+import { useRouter } from "next/router"
 import { type } from "os"
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
@@ -28,8 +29,10 @@ const QuizHome = (props:QuizProps) => {
   const [showQuestion, setShowQuestion] = useState<boolean>(true);
   const [selectedAnswer, setSelectedAnswer] = useState<Array<Ans>>([]);
   const [isSelected, setIsSelected] = useState<boolean>(false);
-  const [isSubmitted, setIsSubmitted] = useState<boolean>(false)
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const router = useRouter();
   const dispatch = useDispatch();
+  
   let userSelectedAnswers:Ans[] = [];
 
   
@@ -83,7 +86,10 @@ const QuizHome = (props:QuizProps) => {
     };
    
   // console.log(quizs);
-  
+  const submitQuiz = () => {
+        setIsSubmitted(true);
+        router.push("/quiz/results");
+  };
   return (
     <Box>
         <Container 
@@ -109,7 +115,7 @@ const QuizHome = (props:QuizProps) => {
                 >
                   <Typography variant="h6" sx={{ textAlign: "left" }}>
                           <Box
-                            sx={{display: "inline",background: "red", px: "6px",py: "2px",
+                            sx={{display: "inline",background: "#D19F28", px: "6px",py: "2px",
                               borderRadius: "4px",
                               color: "#fff",
                             }}
@@ -119,6 +125,18 @@ const QuizHome = (props:QuizProps) => {
                           . {quizs[index]?.question}
                       </Typography>
                       <Question index={index} quizs={quizs} handleOnChange= {handleOnChange}/>
+                      <Box  sx={{display:"flex",justifyContent:"space-around",py:2}}>
+                                <Typography  sx={{fontWeight:600,fontSize:"26px"}}>Question {index+1}/{quizs.length}</Typography>
+                                {
+                                  index>0 && <>
+                                    <Button sx={{background:"red",px:{xs:2,sm:4,md:6},fontSize:{xs:"16px",sm:"16px",md:"16px"},fontWeight:"800",color:"#fff","&:hover":{background:"#DB4040"}}} variant="contained" onClick={goBack}>Prev</Button>                                    
+                                  </>
+                                }
+                                {
+                                  index === quizs.length - 1?<Button sx={{background:"red",px:{xs:2,sm:4,md:6},fontSize:{xs:"16px",sm:"16px",md:"16px",fontWeight:"800",color:"#fff","&:hover":{background:"#333"}}}} onClick={submitQuiz} disabled={!isSelected}
+                                  variant="contained">Submit</Button>:<Button sx={{background:"red",px:{xs:2,sm:4,md:6},fontSize:{xs:"16px",sm:"16px",md:"16px",fontWeight:"800",color:"#fff","&:hover":{background:"#333"}}}} onClick={goNext}  disabled={index === quizs.length - 1 || !isSelected}>Next</Button>
+                                }
+                      </Box>
                 </Card>
               }
         </Container>

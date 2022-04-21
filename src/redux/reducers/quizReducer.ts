@@ -1,20 +1,35 @@
 
-interface QuizState {
-    loading: boolean;
-    finalAnswer:{}[] |null
-}
-const initialState ={
-    loading:true,
-    finalAnswer:null
+
+type Option ={
+    id:string;
+    option:string;
+    isCorrect:boolean;
 }
 
-export const quizReducer=(state:QuizState =initialState,action:any):QuizState=>{
+type Quiz ={
+    questionId:string;
+    question:string;
+    options:Option[];
+    selectedAnswer:Option;
+    level:string
+}
+
+interface QuizState {
+    finalAnswer:Quiz[]
+}
+const initialState ={
+  
+    finalAnswer:[]
+}
+type Action ={
+    type:string;
+    payload:Quiz[]
+}
+export const quizReducer=(state:QuizState=initialState,action:Action):QuizState=>{
         switch(action.type){
-         
-            case  "SUMBIT_QUIZ":
+            case  "SUBMIT_QUIZ":
                 return{
                     ...state,
-                    loading:false,
                     finalAnswer:action.payload
                 }     
             default :
