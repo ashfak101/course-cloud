@@ -1,17 +1,24 @@
-import { Box,Typography } from "@mui/material"
+import { Box,Card,Container,Typography } from "@mui/material"
 import Quiz from "models/quizModels"
+import { type } from "os"
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
+import Question from "./Question"
 
 
 type QuizProps={
   quizs:Quiz[]
 }
+type Select ={
+  id:string,
+  option:string,
+  isCorrect:boolean
+}
 type Ans ={
   questionId:string,
   question:string,
   options:{}[],
-  selectedAnswer:string,
+  selectedAnswer:{},
   level:string
 }
 
@@ -59,7 +66,7 @@ const QuizHome = (props:QuizProps) => {
       currentIndex -= 1;
       setIndex(currentIndex);
     };
-    const handleOnChange = (option:string) => {
+    const handleOnChange = (option:{}) => {
       setIsSelected(true);
   
      
@@ -75,11 +82,46 @@ const QuizHome = (props:QuizProps) => {
       setSelectedAnswer(newArr);
     };
    
-  console.log(quizs);
+  // console.log(quizs);
   
   return (
     <Box>
-         <Typography variant="h2">Hello from Quiz Page</Typography>
+        <Container 
+              sx={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
+
+            <Typography variant="h2">Hello from Quiz Page</Typography>
+              {
+                showQuestion &&  <Card
+                    sx={{width:{
+                        xs:"100%",
+                        sm:"50%",
+                        md:"900px"
+                    },
+                    p:{
+                      xs: "2 2",
+                      sm: "2  2",
+                      md: "60px 80px",
+                    },
+                    boxShadow:"-8px 4px 19px 0 rgb(0 0 0 /12%)",
+                    borderRadius:"20px",
+                    mb:5
+                  }}
+                >
+                  <Typography variant="h6" sx={{ textAlign: "left" }}>
+                          <Box
+                            sx={{display: "inline",background: "red", px: "6px",py: "2px",
+                              borderRadius: "4px",
+                              color: "#fff",
+                            }}
+                          >
+                             {quizs[index]?.id}
+                          </Box>
+                          . {quizs[index]?.question}
+                      </Typography>
+                      <Question index={index} quizs={quizs} handleOnChange= {handleOnChange}/>
+                </Card>
+              }
+        </Container>
     </Box>
   )
 }
