@@ -5,12 +5,7 @@ import Grid from '@mui/material/Grid';
 import Image from "next/image";
 const Styles = {
     footerBackground: {
-        backgroundImage: `url('/assets/images/footerbackground.png')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        height: '600px',
-        width: '100%',
+        backgroundColor: '#191C21',
     }
 }
 
@@ -127,6 +122,9 @@ const Footer = () => {
       </Grid>
     </Box>
             </Container>
+            <Box sx={{backgroundColor:'#21252D', height:'60px', display: 'flex', alignItems: "center", justifyContent: "center", marginTop:'60px'}}>
+      <Typography sx={{textAlign:'center'}}>&copy; 2022 CourseCloud</Typography>
+    </Box>
         </Box>
         </>
     )
