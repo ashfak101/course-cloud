@@ -16,7 +16,7 @@ const Item = styled(Paper)(({ theme }) => ({
 const Banner = () => {
  return (
   <>
-   <Container maxWidth="xl" sx={{ mt: 5, mb: "124px" }}>
+   <Container maxWidth="xl" sx={{ mt: 10, mb: 18 }}>
     <Grid container spacing={5} sx={{ display: "flex", alignItems: "center" }}>
      <Grid item xs={12} xl={6} md={6}>
       <Item sx={{ backgroundColor: "transparent", py: 0, boxShadow: "0" }}>
@@ -71,7 +71,7 @@ const Banner = () => {
            backgroundColor: "transparent",
            textAlign: "left",
            p: 1,
-              boxShadow: "0",
+           boxShadow: "0",
           }}
          >
           <CommonButton fontSize="1rem" textValue="GET STARTED" />

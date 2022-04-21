@@ -9,8 +9,15 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import SecondaryBtn from "../buttons/SecondaryBtn";
+import { CoursesOnDeal } from "../../../../types";
 
-const CourseCard = () => {
+type Props = {
+ course: CoursesOnDeal;
+};
+
+const CourseCard = ({ course }: Props) => {
+ console.log(course);
+
  return (
   <Card sx={{ maxWidth: 345, bgcolor: "#21252D", color: "#fff" }}>
    <CardMedia
@@ -21,13 +28,13 @@ const CourseCard = () => {
    />
    <CardContent sx={{ px: 3 }}>
     <Typography gutterBottom component="div" sx={{ color: "#818181" }}>
-     Marketing
+     {course.courseType}
     </Typography>
     <Typography gutterBottom component="div" variant="h6">
-     The Complete Digital Marketing Guide Courses
+     {course.title}
     </Typography>
     <Typography variant="body2" sx={{ color: "#969696" }}>
-     Pulvinar commodo sed enim nulla elit, placerat. Vitae, tellus habitant...
+     {course.courseDetails}
     </Typography>
    </CardContent>
    <CardActions
@@ -38,10 +45,15 @@ const CourseCard = () => {
       height="40px"
       width="40px"
       objectFit={"contain"}
-      src="/assets/images/instructor-img.png"
+      src={
+       course.instructorDetails?.avatar || "/assets/images/instructor-img.png"
+      }
       alt="instructor"
+      className="instructoravatar"
      />
-     <Typography sx={{ ml: 1 }}>John Smith</Typography>
+     <Typography sx={{ ml: 1 }}>
+      {course.instructorDetails?.name || "John Smith"}
+     </Typography>
     </Box>
     <SecondaryBtn
      textValue="ADD TO CART"

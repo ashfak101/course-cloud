@@ -7,6 +7,7 @@ import ExploreCourses from "components/home/ExploreCourses";
 import type { GetStaticProps, NextPage } from "next";
 import Footer from "components/home/Footer";
 import { CourseData, GetCoursesData } from "../../types";
+import DealoftheDay from "components/home/DealoftheDay";
 
 const Home: NextPage<{ courses: CourseData }> = ({ courses }) => {
  return (
@@ -14,6 +15,7 @@ const Home: NextPage<{ courses: CourseData }> = ({ courses }) => {
    <Banner />
    <BecomeInstructor />
    <ExploreCourses courses={courses} />
+   <DealoftheDay/>
    <EasyAccess />
    <Subscription />
    <Faq />
@@ -25,8 +27,6 @@ const Home: NextPage<{ courses: CourseData }> = ({ courses }) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async (context) => {
- // https://tawsifhye.github.io/data/courses.json
-
  const courseResponse = await fetch(
   "https://api.npoint.io/8b635b31d3c9d683fcec"
  );
@@ -38,5 +38,3 @@ export const getStaticProps: GetStaticProps = async (context) => {
   },
  };
 };
-
-// $2b$10$fTaTvmDZ1B2I2oEsznShFuhOfcaSi3iEQrMI.eeE1Z5uEY94qWfnC
