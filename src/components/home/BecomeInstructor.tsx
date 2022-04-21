@@ -29,8 +29,8 @@ const BecomeInstructor = () => {
   <>
    <Box sx={{ ...Styles.becomeBackground }}>
     <Box sx={{ flexGrow: 1 }}>
-     <Grid container spacing={2} sx={{ display: "flex", alignItems: "center" }}>
-      <Grid item xs={12} xl={2} md={2}>
+     <Grid container sx={{ display: "flex", alignItems: "center" }}>
+      <Grid item xs={6} xl={2} md={2}>
        <Item sx={{ backgroundColor: "transparent", boxShadow: "0" }}>
         <Image
          src="/assets/images/personone.png"
@@ -40,7 +40,7 @@ const BecomeInstructor = () => {
         />
        </Item>
       </Grid>
-      <Grid item xs={12} xl={2} md={2}>
+      <Grid item xs={6} xl={2} md={2}>
        <Item sx={{ backgroundColor: "transparent", boxShadow: "0" }}>
         <Image
          src="/assets/images/persontwo.png"
@@ -121,8 +121,8 @@ const BecomeInstructor = () => {
      </Grid>
     </Box>
     <Box sx={{ flexGrow: 1 }}>
-     <Grid container spacing={2}>
-      <Grid item xs={12} xl={2} md={2}>
+     <Grid container>
+      <Grid item xs={6} xl={2} md={2}>
        <Item sx={{ backgroundColor: "transparent", boxShadow: "0" }}>
         <Image
          src="/assets/images/personfour.png"
@@ -132,7 +132,7 @@ const BecomeInstructor = () => {
         />
        </Item>
       </Grid>
-      <Grid item xs={12} xl={2} md={2}>
+      <Grid item xs={6} xl={2} md={2}>
        <Item sx={{ backgroundColor: "transparent", boxShadow: "0" }}>
         <Image
          src="/assets/images/personfive.png"
@@ -142,7 +142,7 @@ const BecomeInstructor = () => {
         />
        </Item>
       </Grid>
-      <Grid item xs={12} xl={2} md={2}>
+      <Grid item xs={6} xl={2} md={2}>
        <Item sx={{ backgroundColor: "transparent", boxShadow: "0" }}>
         <Image
          src="/assets/images/personsix.png"
@@ -152,7 +152,7 @@ const BecomeInstructor = () => {
         />
        </Item>
       </Grid>
-      <Grid item xs={12} xl={2} md={2}>
+      <Grid item xs={6} xl={2} md={2}>
        <Item sx={{ backgroundColor: "transparent", boxShadow: "0" }}>
         <Image
          src="/assets/images/personseven.png"
@@ -162,7 +162,7 @@ const BecomeInstructor = () => {
         />
        </Item>
       </Grid>
-      <Grid item xs={12} xl={2} md={2}>
+      <Grid item xs={6} xl={2} md={2}>
        <Item sx={{ backgroundColor: "transparent", boxShadow: "0" }}>
         <Image
          src="/assets/images/personeight.png"
@@ -172,7 +172,7 @@ const BecomeInstructor = () => {
         />
        </Item>
       </Grid>
-      <Grid item xs={12} xl={2} md={2}>
+      <Grid item xs={6} xl={2} md={2}>
        <Item sx={{ backgroundColor: "transparent", boxShadow: "0" }}>
         <Image
          src="/assets/images/personnine.png"
