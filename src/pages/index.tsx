@@ -4,21 +4,39 @@ import EasyAccess from "components/home/EasyAccess";
 import Faq from "components/home/Faq";
 import Subscription from "components/home/Subscription";
 import ExploreCourses from "components/home/ExploreCourses";
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Footer from "components/home/Footer";
+import { CourseData, GetCoursesData } from "../../types";
 
-const Home: NextPage = () => {
+const Home: NextPage<{ courses: CourseData }> = ({ courses }) => {
  return (
   <>
    <Banner />
    <BecomeInstructor />
-   <ExploreCourses />
+   <ExploreCourses courses={courses} />
    <EasyAccess />
    <Subscription />
    <Faq />
-   <Footer/>
+   <Footer />
   </>
  );
 };
 
 export default Home;
+
+export const getStaticProps: GetStaticProps = async (context) => {
+ // https://tawsifhye.github.io/data/courses.json
+
+ const courseResponse = await fetch(
+  "https://api.npoint.io/8b635b31d3c9d683fcec"
+ );
+ const courses: GetCoursesData = await courseResponse.json();
+
+ return {
+  props: {
+   courses,
+  },
+ };
+};
+
+// $2b$10$fTaTvmDZ1B2I2oEsznShFuhOfcaSi3iEQrMI.eeE1Z5uEY94qWfnC

@@ -10,7 +10,7 @@ import Quiz from "models/quizModels";
  }
 
 const Quiz =(props:QuizProps)=>{
-    console.log(props.quizs)
+    const quizs =props.quizs
 
     
     return<> 
@@ -18,7 +18,7 @@ const Quiz =(props:QuizProps)=>{
                 <title>Course Cloud || Quiz</title>
             </Head>
              <Box>
-                <QuizHome/>
+                <QuizHome quizs={quizs}/>
              </Box>
           </>
 }
