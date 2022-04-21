@@ -26,15 +26,10 @@ const ExploreCourses = ({ courses }: Props) => {
  };
 
  return (
-  <Container maxWidth="xl" sx={{ my: 10 }}>
-   <Typography
-    variant="h3"
-    sx={{ fontSize: "36px", textAlign: "center", my: 4 }}
-   >
+  <Container maxWidth="xl" sx={{ pb: 15, pt: 10 }}>
+   <Typography variant="h3" sx={{ fontSize: "36px", textAlign: "center" }}>
     Explore Other Courses
    </Typography>
-
-   {/*  */}
    <Box sx={{ width: "100%" }}>
     <Tabs
      value={tabsValue}
