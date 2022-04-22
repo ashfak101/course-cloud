@@ -1,9 +1,10 @@
 import { Container } from "@mui/material";
 import Quiz from "models/quizModels";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux"
 import { State } from "redux/reducers";
 import Answer from "./Answer";
+import QuizCourse from "./QuizCourse";
 import QuizResultHeader from "./QuizResultHeader";
 
 type AnswerArray={
@@ -32,14 +33,37 @@ const ResultsHome = () => {
                     // quizAnswerlevel.push(element.level)
                 }
             })
+            if (element.selectedAnswer.isCorrect && element.level === 'beginner') {
+                beginner++;
+            }
+            else if (element.selectedAnswer.isCorrect && element.level === 'intermediate') {
+                 intermediate++;
+            }
+            else if (element.selectedAnswer.isCorrect && element.level === 'advanced') {
+                advanced++;
+            }
     })
-    console.log(correctAnswerArray);
+    useEffect(() => {
+                if (beginner > intermediate || beginner > advanced) {
+                setLevel('beginner')
+                }
+                else if (intermediate > beginner || intermediate > advanced) {
+                    setLevel('intermediate')
+                }
+                else if (advanced > beginner || advanced > intermediate) {
+                setLevel('advanced');
+                }
+                else {
+                    setLevel('beginner');
+                    }
+      },[beginner,advanced,intermediate])
     
     
   return (
     <Container>
         <QuizResultHeader answer={answer} correctAnswerArray={correctAnswerArray}/>
         <Answer answer={answer}></Answer>
+        <QuizCourse level={level}/>
     </Container>
   )
 }

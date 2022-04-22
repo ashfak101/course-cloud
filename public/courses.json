@@ -1,0 +1,62 @@
+[
+    {
+    "id":"1",
+    "level":"intermediate",
+    "title": "Course One",
+    "courseType": "Marketing",
+    "courseDetails": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorem repellendus modi tempore magnam fuga harum ut, non officia quis!",
+    "courseCover": "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+    "videoURL":"https://youtu.be/g17Hudc100w",
+    "mainPrice": "599",
+    "discountPercent": "0.2",
+    "instructorDetails": {
+        "name": "Jhon Smith",
+        "avatar": "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+        }
+    },
+    {
+    "id":"2",
+    "title": "Course Two",
+    "level":"advanced",
+    "courseType": "Sports",
+    "courseDetails": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorem repellendus modi tempore magnam fuga harum ut, non officia quis!",
+    "courseCover": "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+    "videoURL":"https://youtu.be/g17Hudc100w",
+    "mainPrice": "599",
+    "discountPercent": "0.2",
+    "instructorDetails": {
+        "name": "Jhon Smith",
+        "avatar": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+        }
+    },
+    {
+    "id":"3",
+    "title": "Course Three", "level":"beginner",
+    "courseType": "Film & TV",
+    "courseDetails": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorem repellendus modi tempore magnam fuga harum ut, non officia quis!",
+    "videoURL":"https://youtu.be/g17Hudc100w",
+    "courseCover": "https://images.unsplash.com/photo-1420310414923-bf3651a89816?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    "mainPrice": "599",
+    "discountPercent": "0.2",
+    "instructorDetails": {
+        "name": "Jhon Smith",
+        "avatar": "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+        }
+    },
+    {
+    "id":"4",
+    "level":"beginner",
+    
+    "title": "Course Four",
+    "courseType": "Music",
+    "courseDetails": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit dolorem repellendus modi tempore magnam fuga harum ut, non officia quis!",
+    "videoURL":"https://youtu.be/g17Hudc100w",
+    "courseCover": "https://images.unsplash.com/photo-1420310414923-bf3651a89816?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    "mainPrice": "599",
+    "discountPercent": "0.2",
+    "instructorDetailsDetails": {
+        "name": "Jhon Smith",
+        "avatar": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+        }
+    }
+]
