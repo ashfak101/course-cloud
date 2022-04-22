@@ -8,6 +8,7 @@ import type { GetStaticProps, NextPage } from "next";
 import Footer from "components/home/Footer";
 import { CourseData, GetCoursesData } from "../../types";
 import DealoftheDay from "components/home/DealoftheDay";
+import FeaturedInstructors from "components/home/FeaturedInstructors";
 
 const Home: NextPage<{ courses: CourseData }> = ({ courses }) => {
  return (
@@ -15,7 +16,8 @@ const Home: NextPage<{ courses: CourseData }> = ({ courses }) => {
    <Banner />
    <BecomeInstructor />
    <ExploreCourses courses={courses} />
-   <DealoftheDay/>
+   <DealoftheDay />
+   <FeaturedInstructors />
    <EasyAccess />
    <Subscription />
    <Faq />
