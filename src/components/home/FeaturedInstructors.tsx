@@ -16,9 +16,9 @@ const FeaturedInstructors = () => {
   infinite: true,
   slidesToShow: 3,
   slidesToScroll: 1,
-  // autoplay: true,
+  autoplay: true,
   speed: 2000,
-  autoplaySpeed: 2000,
+  autoplaySpeed: 3000,
   initialSlide: 0,
   responsive: [
    {
@@ -53,16 +53,57 @@ const FeaturedInstructors = () => {
  };
 
  return (
-  <Container maxWidth="xl" sx={{ py: 8 }}>
-   <Typography variant="h3" sx={{ fontSize: "36px" }}>
+  <Container maxWidth="xl" sx={{ py: 12 }}>
+   <Typography
+    variant="h3"
+    sx={{ fontSize: "36px", mb: 4, textAlign: "center" }}
+   >
     Featured Instructor
    </Typography>
-   <div style={{ border: "1px solid red", position: "relative", zIndex: "10" }}>
-    <Button onClick={() => sliderRef?.current?.slickPrev()}>
-     <ArrowBackIosTwoToneIcon />
+   <div style={{ position: "relative", zIndex: "10" }}>
+    <Button
+     onClick={() => sliderRef?.current?.slickPrev()}
+     sx={{
+      position: "absolute",
+      top: "45%",
+      left: { xs: "-15px", md: "-15px", lg: "35px" },
+      zIndex: "10",
+      color: "white",
+      width: "60px",
+      height: "60px",
+      borderRadius: "50%",
+     }}
+    >
+     <ArrowBackIosTwoToneIcon
+      sx={{
+       borderRadius: "50%",
+       p: "8px",
+       backgroundColor: "#191C21",
+       fontSize: "3rem",
+      }}
+     />
     </Button>
-    <Button onClick={() => sliderRef?.current?.slickNext()}>
-     <ArrowForwardIosTwoToneIcon />
+    <Button
+     sx={{
+      position: "absolute",
+      top: "45%",
+      right: { xs: "-15px", md: "-15px", lg: "35px" },
+      zIndex: "10",
+      color: "white",
+      width: "60px",
+      height: "60px",
+      borderRadius: "50%",
+     }}
+     onClick={() => sliderRef?.current?.slickNext()}
+    >
+     <ArrowForwardIosTwoToneIcon
+      sx={{
+       borderRadius: "50%",
+       p: "8px",
+       backgroundColor: "#191C21",
+       fontSize: "3rem",
+      }}
+     />
     </Button>
     <Slider {...settings} ref={sliderRef}>
      <div>
