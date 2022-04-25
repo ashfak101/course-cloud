@@ -9,6 +9,7 @@ import Footer from "components/home/Footer";
 import { CourseData, GetCoursesData } from "../../types";
 import DealoftheDay from "components/home/DealoftheDay";
 import FeaturedInstructors from "components/home/FeaturedInstructors";
+import RecentBlogs from "components/home/RecentBlogs";
 import Feedback from "components/home/Feedback";
 
 const Home: NextPage<{ courses: CourseData }> = ({ courses }) => {
@@ -19,6 +20,7 @@ const Home: NextPage<{ courses: CourseData }> = ({ courses }) => {
    <ExploreCourses courses={courses} />
    <DealoftheDay courses={courses} />
    <FeaturedInstructors />
+   <RecentBlogs/>
    <Feedback />
    <EasyAccess />
    <Subscription />
