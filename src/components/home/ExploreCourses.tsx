@@ -12,7 +12,7 @@ const ExploreCourses = ({ courses }: Props) => {
   setTabsValue(newValue);
  };
 
- console.log("logged from explore", courses);
+//  console.log("logged from explore", courses);
 
  const [displayCourses, setDisplayCourses] = React.useState(
   courses.mainCourses

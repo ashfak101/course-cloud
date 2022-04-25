@@ -20,9 +20,14 @@ import { useState } from "react";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import ContactSupportOutlinedIcon from "@mui/icons-material/ContactSupportOutlined";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import useAuth from "hooks/useAuth";
+import LoginModal from '../Auth/LoginModal'
 
 const Navbar = () => {
  const [navState, setNavState] = useState(false);
+ const { user, logOut, open, setOpen } = useAuth();
+ const handleOpen = () => setOpen(true);
+ const handleClose = () => setOpen(false);
 
  return (
   <>
@@ -105,7 +110,7 @@ const Navbar = () => {
          my: { xs: 1 },
         }}
        >
-        <CommonButton fontSize=".9rem" textValue="Login" />
+        <CommonButton fontSize=".9rem" textValue={!user.email ? 'Login' : "Logout"}onClick={!user.email ? handleOpen : logOut} />
        </Box>
       </Box>
       <Button
@@ -117,6 +122,8 @@ const Navbar = () => {
      </Toolbar>
     </Container>
    </AppBar>
+
+   <LoginModal handleClose={handleClose} open={open} />
 
    <Drawer anchor="right" open={navState} onClose={() => setNavState(false)}>
     <Box sx={{ width: 250, bgcolor: "#191C23", height: "100vh" }}>
@@ -176,7 +183,13 @@ const Navbar = () => {
         SUPPORT
        </Button>
       </Link>
+ 
      </Box>
+     <Box
+      sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+     >
+              <CommonButton fontSize=".9rem" textValue={!user.email ? 'Login' : "Logout"}onClick={!user.email ? handleOpen : logOut} />
+         </Box>
     </Box>
    </Drawer>
   </>

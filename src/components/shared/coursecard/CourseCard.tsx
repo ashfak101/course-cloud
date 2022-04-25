@@ -16,7 +16,7 @@ type Props = {
 };
 
 const CourseCard = ({ course }: Props) => {
- console.log(course);
+//  console.log(course);
 
  return (
   <Card sx={{ maxWidth: 345, bgcolor: "#21252D", color: "#fff" }}>
