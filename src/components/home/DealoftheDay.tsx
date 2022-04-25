@@ -2,10 +2,14 @@ import { Box, Button, Container, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+import * as React from "react";
 import Image from "next/image";
 import CommonButton from "components/shared/buttons/CommonButton";
 import { useEffect, useState } from "react";
 import moment from "moment";
+import CourseCard from "components/shared/coursecard/CourseCard";
+import { CourseData } from "../../../types";
+
 const Styles = {
  dealBackground: {
   backgroundImage: `url('/assets/images/dealbackground.png')`,
@@ -26,12 +30,20 @@ const Item = styled(Paper)(({ theme }) => ({
  color: theme.palette.text.secondary,
 }));
 
-const DealoftheDay = () => {
+type Props = {
+ courses: CourseData;
+};
+
+const DealoftheDay = ({ courses }: Props) => {
  const [days, setDays] = useState(0);
  const [hours, setHours] = useState(0);
  const [minutes, setMinutes] = useState(0);
  const [seconds, setSeconds] = useState(0);
  const [showSemicolon, setShowSemicolon] = useState(false);
+
+ const [displayCourses, setDisplayCourses] = React.useState(
+  courses.mainCourses
+ );
 
  useEffect(() => {
   setInterval(() => {
@@ -138,6 +150,24 @@ const DealoftheDay = () => {
        </Box>
       </Box>
      </Box>
+     <Grid container spacing={2}>
+      {displayCourses?.slice(0, 3).map((course) => (
+       <Grid
+        item
+        xs={12}
+        md={4}
+        lg={4}
+        key={course?.id}
+        sx={{
+         display: "flex",
+         justifyContent: "center",
+         my: 4,
+        }}
+       >
+        <CourseCard course={course} isDiscounted={true} />
+       </Grid>
+      ))}
+     </Grid>
     </Container>
    </Box>
   </>
