@@ -1,9 +1,18 @@
 import { Container, Box, Typography } from "@mui/material"
-
+const Styles = {
+    cartBackground: {
+     backgroundImage: `url('/assets/images/cartheader.png')`,
+     backgroundSize: "cover",
+     backgroundPosition: "center",
+     backgroundRepeat: "no-repeat",
+     height: "100%",
+     width: "100%",
+    },
+   };
 
 const CartHome = () => {
     return (
-        <Box sx={{ height: "211px", background: "#191C21" }}>
+        <Box sx={{...Styles.cartBackground}}>
             <Container sx={{py:9}}>
                 <Typography sx={{color:"#B2ADAD"}}>Home / MyCart</Typography>
                 <Typography sx={{color:"#FBF4F4",fontFamily:"Lato",fontWeight:"700",fontSize:"30px"}}>MyCart</Typography>
