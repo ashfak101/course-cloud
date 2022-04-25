@@ -93,9 +93,7 @@ const QuizHome = (props: QuizProps) => {
   return (
     <Box>
       <Container
-        sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", }}>
-
-        <Typography variant="h2">Hello from Quiz Page</Typography>
+        sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", mt:10}}>
         {
           showQuestion && <Card
             sx={{
