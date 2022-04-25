@@ -13,13 +13,20 @@ import { CoursesOnDeal } from "../../../../types";
 
 type Props = {
  course: CoursesOnDeal;
+ isDiscounted: boolean;
 };
 
-const CourseCard = ({ course }: Props) => {
- console.log(course);
+const CourseCard = ({ course, isDiscounted }: Props) => {
+//  console.log(course);
 
  return (
-  <Card sx={{ maxWidth: 345, bgcolor: "#21252D", color: "#fff" }}>
+  <Card
+   sx={{
+    maxWidth: `${(isDiscounted && "420px") || "345px"}`,
+    bgcolor: "#21252D",
+    color: "#fff",
+   }}
+  >
    <CardMedia
     component="img"
     height="212"
@@ -38,35 +45,45 @@ const CourseCard = ({ course }: Props) => {
        "&::before": {
         position: "absolute",
         zIndex: "100",
-        content: `"£399"`,
+        content: `'${(isDiscounted && "20%") || "£399"}'`,
         fontWeight: "bold",
         color: "#FA5862",
         display: "inline-block",
         marginTop: "8px",
         top: "10%",
-        left: "23%",
+        left: `${(isDiscounted && "29%") || "23%"}`,
        },
        "&::after": {
         position: "absolute",
         zIndex: "100",
-        content: `"£599"`,
+        content: `'${(isDiscounted && "off") || "£599"}'`,
         fontSize: ".9rem",
         color: "#000",
-        textDecoration: "line-through",
+        textDecoration: `${(isDiscounted && "none") || "line-through"}`,
         display: "inline-block",
         marginTop: "8px",
         bottom: "35%",
-        left: "26%",
+        left: `${(isDiscounted && "35%") || "26%"}`,
        },
       }}
      >
-      <Image
-       src="/assets/images/explore-tag-img.png"
-       height="70px"
-       width="70px"
-       alt="logo"
-       objectFit={"contain"}
-      />
+      {(isDiscounted && (
+       <Image
+        src={`/assets/images/discounted-tag-img.png`}
+        height="70px"
+        width="70px"
+        alt="logo"
+        objectFit={"contain"}
+       />
+      )) || (
+       <Image
+        src={`/assets/images/explore-tag-img.png`}
+        height="70px"
+        width="70px"
+        alt="logo"
+        objectFit={"contain"}
+       />
+      )}
      </Box>
     </Box>
     <Typography gutterBottom component="div" variant="h6">

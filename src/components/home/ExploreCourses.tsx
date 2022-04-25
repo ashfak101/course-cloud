@@ -12,7 +12,7 @@ const ExploreCourses = ({ courses }: Props) => {
   setTabsValue(newValue);
  };
 
- console.log("logged from explore", courses);
+//  console.log("logged from explore", courses);
 
  const [displayCourses, setDisplayCourses] = React.useState(
   courses.mainCourses
@@ -71,7 +71,7 @@ const ExploreCourses = ({ courses }: Props) => {
 
    {/* Marketing  "Sports" "Music"*/}
    <Grid container spacing={2}>
-    {displayCourses.map((course) => (
+    {displayCourses?.slice(0, 4).map((course) => (
      <Grid
       item
       xs={12}
@@ -83,7 +83,7 @@ const ExploreCourses = ({ courses }: Props) => {
        justifyContent: "center",
       }}
      >
-      <CourseCard course={course} />
+      <CourseCard course={course} isDiscounted={false} />
      </Grid>
     ))}
    </Grid>

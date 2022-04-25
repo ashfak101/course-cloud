@@ -74,7 +74,11 @@ const Banner = () => {
            boxShadow: "0",
           }}
          >
-          <CommonButton fontSize="1rem" textValue="GET STARTED" />
+          <CommonButton
+           fontSize="1rem"
+           textValue="GET STARTED"
+           onClick={() => alert("hello")}
+          />
          </Item>
         </Grid>
         <Grid item xs={12} xl={6} md={12}>
