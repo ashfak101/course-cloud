@@ -16,7 +16,7 @@ const Home: NextPage<{ courses: CourseData }> = ({ courses }) => {
    <Banner />
    <BecomeInstructor />
    <ExploreCourses courses={courses} />
-   <DealoftheDay />
+   <DealoftheDay courses={courses} />
    <FeaturedInstructors />
    <EasyAccess />
    <Subscription />
