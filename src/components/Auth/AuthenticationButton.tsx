@@ -26,7 +26,7 @@ const AuthenticationButton = (props:ButtonProps) => {
                 onClick={props.onClick}
             >
                 {props.icon &&
-                    <Box sx={{ mr: 2 }}><Image src={props.icon} alt="" height="50px" width="50px" /></Box>
+                    <Box sx={{ mr: 2 }}><Image src={props.icon} alt="" height="21px" width="21px" /></Box>
                 }
                 {props.children}
             </Button>
