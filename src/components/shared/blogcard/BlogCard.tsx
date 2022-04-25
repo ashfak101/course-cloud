@@ -31,7 +31,7 @@ const BlogCard = () => {
         alt="green iguana"
       />
       <Avatar sx={{  position:'absolute', top: 240, left:22}} aria-label="recipe">
-            <Image src="/assets/images/avatarone.png" width="44px" height="44px"/>
+            <Image src="/assets/images/avatarone.png" width="44px" height="44px" alt=""/>
           </Avatar>
       <CardContent>
         <Typography gutterBottom component="div" sx={{color: 'white', fontFamily:'Lato', fontStyle: 'normal', fontWeight: '700', fontSize:'16px', lineHeight:'140%', marginTop:'18px'}}>
@@ -53,7 +53,7 @@ Pitching Games
         </Grid>
         <Grid item xs={4} xl={4} md={4}>
           <Item sx={{textAlign:'right', backgroundColor:'transparent', boxShadow:'0', marginRight:'10px'}}>
-          <Image src="/assets/images/saved.png" width="21px" height="26px"/>
+          <Image src="/assets/images/saved.png" width="21px" height="26px" alt=""/>
           </Item>
         </Grid>
       </Grid>
