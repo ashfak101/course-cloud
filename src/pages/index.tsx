@@ -9,6 +9,7 @@ import Footer from "components/home/Footer";
 import { CourseData, GetCoursesData } from "../../types";
 import DealoftheDay from "components/home/DealoftheDay";
 import FeaturedInstructors from "components/home/FeaturedInstructors";
+import Feedback from "components/home/Feedback";
 
 const Home: NextPage<{ courses: CourseData }> = ({ courses }) => {
  return (
@@ -18,6 +19,7 @@ const Home: NextPage<{ courses: CourseData }> = ({ courses }) => {
    <ExploreCourses courses={courses} />
    <DealoftheDay courses={courses} />
    <FeaturedInstructors />
+   <Feedback />
    <EasyAccess />
    <Subscription />
    <Faq />
@@ -29,14 +31,14 @@ const Home: NextPage<{ courses: CourseData }> = ({ courses }) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    const courseResponse = await fetch(
-        "https://api.npoint.io/8b635b31d3c9d683fcec"
-    );
-    const courses: GetCoursesData = await courseResponse.json();
+ const courseResponse = await fetch(
+  "https://api.npoint.io/8b635b31d3c9d683fcec"
+ );
+ const courses: GetCoursesData = await courseResponse.json();
 
-    return {
-        props: {
-            courses,
-        },
-    };
+ return {
+  props: {
+   courses,
+  },
+ };
 };
