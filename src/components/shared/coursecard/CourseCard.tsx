@@ -27,9 +27,48 @@ const CourseCard = ({ course }: Props) => {
     alt="green iguana"
    />
    <CardContent sx={{ px: 3 }}>
-    <Typography gutterBottom component="div" sx={{ color: "#818181" }}>
-     {course.courseType}
-    </Typography>
+    <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+     <Typography gutterBottom component="div" sx={{ color: "#818181" }}>
+      {course.courseType}
+     </Typography>
+     <Box
+      sx={{
+       mt: "-52px",
+       position: "relative",
+       "&::before": {
+        position: "absolute",
+        zIndex: "100",
+        content: `"£399"`,
+        fontWeight: "bold",
+        color: "#FA5862",
+        display: "inline-block",
+        marginTop: "8px",
+        top: "10%",
+        left: "23%",
+       },
+       "&::after": {
+        position: "absolute",
+        zIndex: "100",
+        content: `"£599"`,
+        fontSize: ".9rem",
+        color: "#000",
+        textDecoration: "line-through",
+        display: "inline-block",
+        marginTop: "8px",
+        bottom: "35%",
+        left: "26%",
+       },
+      }}
+     >
+      <Image
+       src="/assets/images/explore-tag-img.png"
+       height="70px"
+       width="70px"
+       alt="logo"
+       objectFit={"contain"}
+      />
+     </Box>
+    </Box>
     <Typography gutterBottom component="div" variant="h6">
      {course.title}
     </Typography>
