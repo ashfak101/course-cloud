@@ -145,12 +145,12 @@ const Blogs = () => {
               </Typography>
           </Item>
         </Grid>
-        <Grid item xs={2} xl={1}>
+        <Grid item xs={2} xl={1} md={1}>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0', textAlign: 'left'}}>
               <Image src="/assets/images/blogauthor.png" width={27} height={27}/>
           </Item>
         </Grid>
-        <Grid item xs={4} xl={2}>
+        <Grid item xs={4} xl={2} md={2}>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0'}}>
               <Typography sx={{ color:'white', textAlign:'left'}}>
               By Alan Bell
