@@ -6,7 +6,10 @@ import ArrowBackIosTwoToneIcon from "@mui/icons-material/ArrowBackIosTwoTone";
 import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTone";
 
 const Feedback = () => {
+ const reviewArray: number[] = [1, 2, 3, 5, 6];
+
  const sliderRef = useRef<any>(null!);
+
  const settings = {
   customPaging: function (i: any) {
    return <a className="dot"> </a>;
@@ -31,7 +34,7 @@ const Feedback = () => {
    }}
   >
    <Container>
-    <Typography sx={{ textAlign: "center" }} variant="h3">
+    <Typography sx={{ textAlign: "center", fontSize: "36px" }} variant="h3">
      What Students Are Saying
     </Typography>
 
@@ -80,7 +83,44 @@ const Feedback = () => {
        }}
       />
      </Button>
-     <Slider {...settings}>
+     <Slider {...settings} ref={sliderRef}>
+      {reviewArray.map((item) => (
+       <div key={item}>
+        <Box
+         sx={{
+          display: { xs: "block", md: "flex" },
+          alignItems: "center",
+          justifyContent: "center",
+          mx: "0 auto",
+          textAlign: "center",
+         }}
+        >
+         <Typography
+          sx={{
+           maxWidth: "512px",
+           py: 10,
+           px: 5,
+           bgcolor: "#191C21",
+           borderRadius: "10px",
+           m: { xs: "0 auto", md: "0 -30px 0 0" },
+           position: "relative",
+           zIndex: "10",
+          }}
+         >
+          “I“ve learned a positively immeasurable amount of things from Georgina
+          Sims and Holly Tyler. It gave me this sense of possibility. Like I can
+          actually do it.”
+         </Typography>
+         <Image
+          src="/assets/images/review-person-img.png"
+          height="500px"
+          width="310px"
+          alt="logo"
+          objectFit="contain"
+         />
+        </Box>
+       </div>
+      ))}
       <div>
        <Box
         sx={{
@@ -116,19 +156,6 @@ const Feedback = () => {
         />
        </Box>
       </div>
-      <div>1000</div>
-      <div>
-       <h3>3</h3>
-      </div>
-      <div>
-       <h3>4</h3>
-      </div>
-      <div>
-       <h3>5</h3>
-      </div>
-      <div>
-       <h3>6</h3>
-      </div>
      </Slider>
     </div>
    </Container>
@@ -137,3 +164,54 @@ const Feedback = () => {
 };
 
 export default Feedback;
+
+/* 
+
+
+ <Button
+      onClick={() => console.log("clicked")}
+      sx={{
+       position: "absolute",
+       top: "45%",
+       left: { xs: "-15px", md: "-15px", lg: "35px" },
+       zIndex: "10",
+       color: "white",
+       width: "60px",
+       height: "60px",
+       borderRadius: "50%",
+      }}
+     >
+      <ArrowBackIosTwoToneIcon
+       sx={{
+        borderRadius: "50%",
+        p: "8px",
+        backgroundColor: "#191C21",
+        fontSize: "3rem",
+       }}
+      />
+     </Button>
+     <Button
+      sx={{
+       position: "absolute",
+       top: "45%",
+       right: { xs: "-15px", md: "-15px", lg: "35px" },
+       zIndex: "10",
+       color: "white",
+       width: "60px",
+       height: "60px",
+       borderRadius: "50%",
+      }}
+      onClick={() => sliderRef?.current?.slickNext()}
+     >
+      <ArrowForwardIosTwoToneIcon
+       sx={{
+        borderRadius: "50%",
+        p: "8px",
+        backgroundColor: "#191C21",
+        fontSize: "3rem",
+       }}
+      />
+     </Button>
+
+
+*/
