@@ -133,7 +133,7 @@ const FeaturedInstructors = () => {
           <Typography sx={{ fontWeight: "light", mb: 1 }}>
            Teaches Writing for Television
           </Typography>
-          <CommonButton fontSize="0.9rem" textValue="VIEW DETAILS" />
+          <CommonButton fontSize="0.9rem" textValue="VIEW DETAILS" onClick="" />
          </Box>
         </Box>
         <Box sx={{ bgcolor: "#21252D", py: 2 }}>
@@ -178,7 +178,7 @@ const FeaturedInstructors = () => {
           <Typography sx={{ fontWeight: "light", mb: 1 }}>
            Teaches Writing for Television
           </Typography>
-          <CommonButton fontSize="0.9rem" textValue="VIEW DETAILS" />
+          <CommonButton fontSize="0.9rem" textValue="VIEW DETAILS" onClick="" />
          </Box>
         </Box>
         <Box sx={{ bgcolor: "#21252D", py: 2 }}>
@@ -223,7 +223,7 @@ const FeaturedInstructors = () => {
           <Typography sx={{ fontWeight: "light", mb: 1 }}>
            Teaches Writing for Television
           </Typography>
-          <CommonButton fontSize="0.9rem" textValue="VIEW DETAILS" />
+          <CommonButton fontSize="0.9rem" textValue="VIEW DETAILS" onClick=""/>
          </Box>
         </Box>
         <Box sx={{ bgcolor: "#21252D", py: 2 }}>
@@ -268,7 +268,7 @@ const FeaturedInstructors = () => {
           <Typography sx={{ fontWeight: "light", mb: 1 }}>
            Teaches Writing for Television
           </Typography>
-          <CommonButton fontSize="0.9rem" textValue="VIEW DETAILS" />
+          <CommonButton fontSize="0.9rem" textValue="VIEW DETAILS" onClick=""/>
          </Box>
         </Box>
         <Box sx={{ bgcolor: "#21252D", py: 2 }}>

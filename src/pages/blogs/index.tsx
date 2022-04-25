@@ -75,7 +75,7 @@ const Blogs = () => {
                     <Typography sx={{fontFamily:'Lato', fontStyle:'normal', fontWeight: '400', fontSize:'18px', lineHeight:'140%', textAlign:'center', color: "white", marginBottom:'45px'}}>
                     Pursue your passion with online classes taught by award - winning chefs, <br/> writers, and performers.
                     </Typography>
-                    <CommonButton fontSize="1rem" textValue="VIEW MORE"/>
+                    <CommonButton fontSize="1rem" textValue="VIEW MORE" onClick=""/>
                 </Box>
             </Container>
         </Box>
@@ -83,10 +83,10 @@ const Blogs = () => {
             Blogs
         </Typography>
         <Box sx={{display:'flex', justifyContent:'center', textAlign:'center'}}>
-        <Box sx={{width:'697px', height:'100%', backgroundColor:'#21252D', display:'flex', alignItems: 'center', justifyContent: "center", borderRadius:'20px', padding:'0px 0px'}}>
+        <Box sx={{width:{xl:'620px', xs:'100%', md:'620px'}, backgroundColor:'#21252D', borderRadius:{xl:'20px', md:'20px'}, display:{xl:'flex', md:'flex'}, justifyContent:'center'}}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
   <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" textColor="inherit"
-     variant="scrollable"
+     variant="scrollable" 
      sx={{
       "& .MuiTabs-indicator": {
        backgroundColor: "#DC9202",
@@ -96,8 +96,8 @@ const Blogs = () => {
     <Tab label="All" {...a11yProps(0)} />
     <Tab label="Technology" {...a11yProps(1)} />
     <Tab label="Marketing" {...a11yProps(2)} />
-    <Tab label="Design" {...a11yProps(2)} />
-    <Tab label="Development" {...a11yProps(2)} />
+    <Tab label="Design" {...a11yProps(3)} />
+    <Tab label="Development" {...a11yProps(4)} />
   </Tabs>
 </Box>
 
@@ -113,7 +113,7 @@ const Blogs = () => {
       <Grid container spacing={2}>
         <Grid item xs={12} xl={12} md={12}>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0'}}>
-              <Image src="/assets/images/blogone.png" width={366} height={278}/>
+              <Image src="/assets/images/blogone.png" width={366} height={278} alt=""/>
           </Item>
         </Grid>
       </Grid>
@@ -147,7 +147,7 @@ const Blogs = () => {
         </Grid>
         <Grid item xs={2} xl={1}>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0', textAlign: 'left'}}>
-              <Image src="/assets/images/blogauthor.png" width={27} height={27}/>
+              <Image src="/assets/images/blogauthor.png" width={27} height={27} alt=""/>
           </Item>
         </Grid>
         <Grid item xs={4} xl={2}>
@@ -173,7 +173,7 @@ const Blogs = () => {
         </Grid>
         <Grid item xs={2}>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0', marginTop:'3px'}}>
-              <Image src="/assets/images/saved.png" width={21} height={26}/>
+              <Image src="/assets/images/saved.png" width={21} height={26} alt=""/>
           </Item>
         </Grid>
       </Grid>

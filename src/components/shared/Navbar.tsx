@@ -21,15 +21,32 @@ import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import ContactSupportOutlinedIcon from "@mui/icons-material/ContactSupportOutlined";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import { useRouter } from "next/router";
+import useAuth from "hooks/useAuth";
+import LoginModal from '../Auth/LoginModal'
+import { EmailAuthCredential } from "firebase/auth";
 
+// type Email={
+//     email:string;
+// }
+// type Auth ={
+//     user:User;
+//     logOut: any;
+//     open:boolean;
+//     setOpen:any;
+// }
 const Navbar = () => {
     const [navState, setNavState] = useState<boolean>(false);
     const router= useRouter()
+    const { user, logOut, open, setOpen } = useAuth();
+    const email: any = user.email;
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     const navs=[
         {name:"CATEGORIES",link:'/'},
         {name:"FREE QUIZ",link:'/quiz'},
         {name:"BLOGS", link:'/blogs'}
     ]
+    
     return (
         <>
             <AppBar sx={{ bgcolor: "#21252D" }} position="static">
@@ -107,7 +124,7 @@ const Navbar = () => {
                                     my: { xs: 1 },
                                 }}
                             >
-                                <CommonButton fontSize=".9rem" textValue="Login" />
+                                <CommonButton fontSize=".9rem" textValue={!email ? 'Login' : "Logout"}onClick={!user.email ? handleOpen : logOut} />
                             </Box>
                         </Box>
                         <Button
@@ -119,7 +136,7 @@ const Navbar = () => {
                     </Toolbar>
                 </Container>
             </AppBar>
-
+            <LoginModal handleClose={handleClose} open={open} />
             <Drawer anchor="right" open={navState} onClose={() => setNavState(false)}>
                 <Box sx={{ width: 250, bgcolor: "#191C23", height: "100vh" }}>
                     <Box sx={{ textAlign: "center", mt: 3 }}>
@@ -179,6 +196,11 @@ const Navbar = () => {
                             </Button>
                         </Link>
                     </Box>
+                    <Box
+         sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+        >
+                 <CommonButton fontSize=".9rem" textValue={!email ? 'Login' : "Logout"}onClick={!email ? handleOpen : logOut} />
+            </Box>
                 </Box>
             </Drawer>
         </>

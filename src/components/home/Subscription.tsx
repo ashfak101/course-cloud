@@ -41,7 +41,7 @@ const Subscription = () => {
                 </Typography>
           </Item>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0', marginBottom:'66px'}}>
-          <CommonButton fontSize="1rem" textValue="GET STARTED" />
+          <CommonButton fontSize="1rem" textValue="GET STARTED" onClick=""/>
           </Item>
         </Grid>
       </Grid>
