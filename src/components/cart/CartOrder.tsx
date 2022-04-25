@@ -17,17 +17,21 @@ const CartOrder = () => {
     return (
         <Box>
             <Container>
-            <Grid container spacing={2} >
+            <Grid container spacing={2} sx={{mt:7}}>
                 <Grid item xs={12} md={6}>
                     <Item>xs=8</Item>
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={6} >
                     <Item sx={{p:'19px 32px'}}>
                         <Typography variant='h4' sx={{fontFamily:"sofia Pro",fontWeight:"600",fontSize:"30px",color:"#fff"}}>Your Order</Typography>
                         <Box>
-                            <Box sx={{display:"flex",justifyContent:'space-between'}}>
+                            <Box sx={{display:"flex",justifyContent:'space-between',color:"#FBF4F4",mt:2}}>
                                 <Typography>Product</Typography>
                                 <Typography>Subtotal</Typography>
+                            </Box>
+                            <Box sx={{display:"flex",justifyContent:'space-between',color:"#FBF4F4",mt:2}}>
+                                 <Typography>Certificate in British Sign Language (BSL) Level 1 & 2</Typography>
+                                 <Typography>15.00</Typography>
                             </Box>
                         </Box>
                     </Item>
