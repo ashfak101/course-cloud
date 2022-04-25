@@ -17,6 +17,7 @@ const SecondaryBtn = (props: ButtonProps) => {
      border: `1px solid  ${props.hoverBorderColor}`,
     },
    }}
+   onClick={() => alert("onClick secondary btn component")}
   >
    {props.textValue}
   </Button>
