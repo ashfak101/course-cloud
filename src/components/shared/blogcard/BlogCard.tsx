@@ -48,7 +48,7 @@ Pitching Games
       <Grid container spacing={2} sx={{display: 'flex', alignItems:'center',}}>
         <Grid item xs={8} xl={8} md={8}>
           <Item sx={{textAlign:'left', backgroundColor:'transparent', boxShadow:'0' }}>
-          <Button sx={{border:'1px solid #D19F28', color:'white'}}>READ MORE</Button>
+          <Button sx={{border:'1px solid #D19F28', color:'white', fontFamily:'Lato', fontStyle: 'normal', fontWeight: '500', fontSize:'14px', lineHeight:'140%', paddingLeft:'27px', paddingRight:'27px', paddingTop:'10px', paddingBottom:'10px'}}>READ MORE</Button>
           </Item>
         </Grid>
         <Grid item xs={4} xl={4} md={4}>
