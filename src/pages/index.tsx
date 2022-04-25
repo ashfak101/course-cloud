@@ -8,20 +8,22 @@ import type { GetStaticProps, NextPage } from "next";
 import Footer from "components/home/Footer";
 import { CourseData, GetCoursesData } from "../../types";
 import DealoftheDay from "components/home/DealoftheDay";
+import FeaturedInstructors from "components/home/FeaturedInstructors";
 
 const Home: NextPage<{ courses: CourseData }> = ({ courses }) => {
-    return (
-        <>
-            <Banner />
-            <BecomeInstructor />
-            <ExploreCourses courses={courses} />
-            <DealoftheDay />
-            <EasyAccess />
-            <Subscription />
-            <Faq />
-            <Footer />
-        </>
-    );
+ return (
+  <>
+   <Banner />
+   <BecomeInstructor />
+   <ExploreCourses courses={courses} />
+   <DealoftheDay />
+   <FeaturedInstructors />
+   <EasyAccess />
+   <Subscription />
+   <Faq />
+   <Footer />
+  </>
+ );
 };
 
 export default Home;

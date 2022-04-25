@@ -28,7 +28,7 @@ const Navbar = () => {
     const navs=[
         {name:"CATEGORIES",link:'/'},
         {name:"FREE QUIZ",link:'/quiz'},
-        {name:"SUPPORT", link:'/'}
+        {name:"BLOGS", link:'/blogs'}
     ]
     return (
         <>
@@ -90,13 +90,13 @@ const Navbar = () => {
                         </Typography>
                         <Box sx={{ display: { xs: "none", md: "block" } }}>
                              {
-                                 navs.map(nav=><>
-                                    <Link href={nav.link}>
-                                           <a style={{ margin: "0px 1em 0px 1em", fontWeight: "200" }}>
+                                 navs.map((nav)=>
+                                    <Link key={nav.name} href={nav.link}>
+                                           <a style={{ margin: "0px 1em 0px 1em", fontWeight: "200",color: router.pathname == nav.link ? "#D19F28": "#fff" }}>
                                          {nav.name}
                                       </a>
                                    </Link>   
-                                 </>)
+                                 )
                              }
 
                             <Box
