@@ -17,7 +17,7 @@ type Props = {
 };
 
 const CourseCard = ({ course, isDiscounted }: Props) => {
-//  console.log(course);
+let price: any =(parseFloat(course.mainPrice)-(parseFloat(course.mainPrice)*parseFloat(course.discountPercent))).toFixed();
 
  return (
   <Card
@@ -30,7 +30,7 @@ const CourseCard = ({ course, isDiscounted }: Props) => {
    <CardMedia
     component="img"
     height="212"
-    image="/assets/images/cardimg.png"
+    image={course.courseCover}
     alt="green iguana"
    />
    <CardContent sx={{ px: 3 }}>
@@ -45,7 +45,7 @@ const CourseCard = ({ course, isDiscounted }: Props) => {
        "&::before": {
         position: "absolute",
         zIndex: "100",
-        content: `'${(isDiscounted && "20%") || "£399"}'`,
+        content: `'${(isDiscounted && parseFloat(course.discountPercent)*100 + "%" || '£'+ price)}'`,
         fontWeight: "bold",
         color: "#FA5862",
         display: "inline-block",
@@ -56,7 +56,7 @@ const CourseCard = ({ course, isDiscounted }: Props) => {
        "&::after": {
         position: "absolute",
         zIndex: "100",
-        content: `'${(isDiscounted && "off") || "£599"}'`,
+        content: `'${(isDiscounted && "off" ||  '£'+ course.mainPrice)}'`,
         fontSize: ".9rem",
         color: "#000",
         textDecoration: `${(isDiscounted && "none") || "line-through"}`,
