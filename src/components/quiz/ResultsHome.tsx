@@ -17,32 +17,6 @@ type AnswerArray = {
 }
 
 const ResultsHome = () => {
-<<<<<<< HEAD
-    
-    const answer= useSelector((state:State)=>state.allAnswer.finalAnswer)
-    const [level,setLevel]=useState('')
-    let beginner:number = 0;
-    let intermediate:number = 0;
-    let advanced:number = 0;
-    let correctAnswerArray:string[]=[];
-    // console.log(Array(answer));
-    
-    answer?.forEach((element)=>{
-            element.options.forEach((option)=>{
-                if(option.isCorrect && element.selectedAnswer.isCorrect){
-                    correctAnswerArray.push(option.option)
-                    // quizAnswerlevel.push(element.level)
-                }
-            })
-            if (element.selectedAnswer.isCorrect && element.level === 'beginner') {
-                beginner++;
-            }
-            else if (element.selectedAnswer.isCorrect && element.level === 'intermediate') {
-                 intermediate++;
-            }
-            else if (element.selectedAnswer.isCorrect && element.level === 'advanced') {
-                advanced++;
-=======
 
     const answer = useSelector((state: State) => state.allAnswer.finalAnswer)
     const [level, setLevel] = useState('')
@@ -57,7 +31,6 @@ const ResultsHome = () => {
             if (option.isCorrect && element.selectedAnswer.isCorrect) {
                 correctAnswerArray.push(option.option)
                 // quizAnswerlevel.push(element.level)
->>>>>>> 26867378a807a710b4046b745c2f8c0b35064552
             }
         })
         if (element.selectedAnswer.isCorrect && element.level === 'beginner') {

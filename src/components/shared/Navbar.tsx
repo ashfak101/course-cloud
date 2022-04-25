@@ -23,11 +23,22 @@ import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import { useRouter } from "next/router";
 import useAuth from "hooks/useAuth";
 import LoginModal from '../Auth/LoginModal'
+import { EmailAuthCredential } from "firebase/auth";
 
+// type Email={
+//     email:string;
+// }
+// type Auth ={
+//     user:User;
+//     logOut: any;
+//     open:boolean;
+//     setOpen:any;
+// }
 const Navbar = () => {
     const [navState, setNavState] = useState<boolean>(false);
     const router= useRouter()
     const { user, logOut, open, setOpen } = useAuth();
+    const email: any = user.email;
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const navs=[
@@ -35,6 +46,7 @@ const Navbar = () => {
         {name:"FREE QUIZ",link:'/quiz'},
         {name:"BLOGS", link:'/blogs'}
     ]
+    
     return (
         <>
             <AppBar sx={{ bgcolor: "#21252D" }} position="static">
@@ -112,7 +124,7 @@ const Navbar = () => {
                                     my: { xs: 1 },
                                 }}
                             >
-                                <CommonButton fontSize=".9rem" textValue={!user.email ? 'Login' : "Logout"}onClick={!user.email ? handleOpen : logOut} />
+                                <CommonButton fontSize=".9rem" textValue={!email ? 'Login' : "Logout"}onClick={!user.email ? handleOpen : logOut} />
                             </Box>
                         </Box>
                         <Button
@@ -187,7 +199,7 @@ const Navbar = () => {
                     <Box
          sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
         >
-                 <CommonButton fontSize=".9rem" textValue={!user.email ? 'Login' : "Logout"}onClick={!user.email ? handleOpen : logOut} />
+                 <CommonButton fontSize=".9rem" textValue={!email ? 'Login' : "Logout"}onClick={!email ? handleOpen : logOut} />
             </Box>
                 </Box>
             </Drawer>

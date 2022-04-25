@@ -2,7 +2,14 @@ import { Box, Button } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
 
-const AuthenticationButton = ({ children, backgroundColor, icon, onClick }) => {
+type ButtonProps = {
+    children: any ;
+    backgroundColor: string;
+    icon: any;
+    onClick: any;
+}
+
+const AuthenticationButton = (props:ButtonProps) => {
     return (
         <Box>
             <Button variant="contained" sx={{
@@ -14,14 +21,14 @@ const AuthenticationButton = ({ children, backgroundColor, icon, onClick }) => {
                 borderRadius: '5px',
                 mt: 3,
                 py: '21px',
-                backgroundColor: backgroundColor
+                backgroundColor: props.backgroundColor
             }}
-                onClick={onClick}
+                onClick={props.onClick}
             >
-                {icon &&
-                    <Box sx={{ mr: 2 }}><Image src={icon} alt="" height="50px" width="50px" /></Box>
+                {props.icon &&
+                    <Box sx={{ mr: 2 }}><Image src={props.icon} alt="" height="50px" width="50px" /></Box>
                 }
-                {children}
+                {props.children}
             </Button>
         </Box>
     );

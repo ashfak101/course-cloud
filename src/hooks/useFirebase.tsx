@@ -16,13 +16,13 @@ initializeAuthentication();
 const GoogleProvider = new GoogleAuthProvider();
 
 const useFirebase = () => {
-    const [user, setUser] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
-    const [open, setOpen] = useState(false);
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const [registered, setRegistered] = useState(true)
+    const [user, setUser] = useState<object>({});
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [open, setOpen] = useState<boolean>(false);
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [error, setError] = useState<string>("");
+    const [registered, setRegistered] = useState<boolean>(true)
     const auth = getAuth();
 
     //google sign in
@@ -55,15 +55,15 @@ const useFirebase = () => {
             })
             .finally(() => setIsLoading(false));
     }
-    const handleEmailChange = (e) => {
+    const handleEmailChange = (e:any) => {
         setEmail(e.target.value);
     };
 
-    const handlePasswordChange = (e) => {
+    const handlePasswordChange = (e:any) => {
         setPassword(e.target.value);
     };
 
-    const handleRegistration = (e) => {
+    const handleRegistration = (e:any) => {
         e.preventDefault();
         if (password.length < 6) {
             setError("Password should be at least 6 characters");
@@ -74,7 +74,7 @@ const useFirebase = () => {
         registered ? processLogin(email, password) : registerNewUser(email, password);
     };
 
-    const processLogin = (email, password) => {
+    const processLogin = (email:string, password:string) => {
         return signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
                 const user = result.user;
@@ -92,10 +92,10 @@ const useFirebase = () => {
             });
     };
 
-    const registerNewUser = (email, password) => {
+    const registerNewUser = (email: string, password: string) => {
         return createUserWithEmailAndPassword(auth, email, password)
             .then((result) => {
-                verifyEmail();
+          
             })
             .catch((error) => {
                 setError(error.message);
@@ -108,11 +108,7 @@ const useFirebase = () => {
                 window.location.reload();
             });
     };
-    const verifyEmail = () => {
-        sendEmailVerification(auth.currentUser).then((result) => {
-            setError("Email Sent Please verify");
-        });
-    };
+  
     const handleResetPassword = () => {
         sendPasswordResetEmail(auth, email)
             .then((result) => {
@@ -140,7 +136,7 @@ const useFirebase = () => {
 
     //observe user state change
     useEffect(() => {
-        const unsubscribed = onAuthStateChanged(auth, (user) => {
+        const unsubscribed : any = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
             } else {

@@ -75,7 +75,7 @@ const Blogs = () => {
                     <Typography sx={{fontFamily:'Lato', fontStyle:'normal', fontWeight: '400', fontSize:'18px', lineHeight:'140%', textAlign:'center', color: "white", marginBottom:'45px'}}>
                     Pursue your passion with online classes taught by award - winning chefs, <br/> writers, and performers.
                     </Typography>
-                    <CommonButton fontSize="1rem" textValue="VIEW MORE"/>
+                    <CommonButton fontSize="1rem" textValue="VIEW MORE" onClick=""/>
                 </Box>
             </Container>
         </Box>
@@ -113,7 +113,7 @@ const Blogs = () => {
       <Grid container spacing={2}>
         <Grid item xs={12} xl={12} md={12}>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0'}}>
-              <Image src="/assets/images/blogone.png" width={366} height={278}/>
+              <Image src="/assets/images/blogone.png" width={366} height={278} alt=""/>
           </Item>
         </Grid>
       </Grid>
@@ -147,7 +147,7 @@ const Blogs = () => {
         </Grid>
         <Grid item xs={2} xl={1}>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0', textAlign: 'left'}}>
-              <Image src="/assets/images/blogauthor.png" width={27} height={27}/>
+              <Image src="/assets/images/blogauthor.png" width={27} height={27} alt=""/>
           </Item>
         </Grid>
         <Grid item xs={4} xl={2}>
@@ -173,7 +173,7 @@ const Blogs = () => {
         </Grid>
         <Grid item xs={2}>
           <Item sx={{backgroundColor:'transparent', boxShadow:'0', marginTop:'3px'}}>
-              <Image src="/assets/images/saved.png" width={21} height={26}/>
+              <Image src="/assets/images/saved.png" width={21} height={26} alt=""/>
           </Item>
         </Grid>
       </Grid>

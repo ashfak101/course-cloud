@@ -26,15 +26,6 @@ const QuizCourse = (props: Props) => {
     const [courses, setCourses] = useState<Array<AllCourses>>([])
     useEffect(() => {
         fetch('/courses.json')
-<<<<<<< HEAD
-        .then(res=>res.json())
-        .then(data=>setAllCourses(data))
-    },[])
-    // console.log(allCourses);
-    
-    useEffect(()=>{
-        const courseBylevel=(allCourses).filter(course=>course.level === level)
-=======
             .then(res => res.json())
             .then(data => setAllCourses(data))
     }, [])
@@ -42,7 +33,6 @@ const QuizCourse = (props: Props) => {
 
     useEffect(() => {
         const courseBylevel = (allCourses).filter(course => course.level === level)
->>>>>>> 26867378a807a710b4046b745c2f8c0b35064552
         setCourses(courseBylevel)
     }, [allCourses, level])
     return (

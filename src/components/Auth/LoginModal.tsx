@@ -32,9 +32,13 @@ const Styles = {
     }
 }
 
+type ModalProps ={
+    handleClose: any;
+    open: boolean;
+}
 
 
-const LoginModal = ({ handleClose }) => {
+const LoginModal = (props:ModalProps) => {
     const { handleGoogleSignIn, handleFacebookSignIn, registered, setRegistered, open, handleEmailChange,
         handlePasswordChange,
         handleRegistration, } = useAuth();
@@ -59,7 +63,7 @@ const LoginModal = ({ handleClose }) => {
         >
 
             <Box sx={Styles.modal}>
-                <CloseIcon onClick={handleClose}
+                <CloseIcon onClick={props.handleClose}
                     style={{
                         position: 'absolute',
                         top: 16, right: 16,
@@ -69,10 +73,6 @@ const LoginModal = ({ handleClose }) => {
                         cursor: 'pointer',
                         color: 'black',
                         transition: '.5s',
-                        '&:hover': {
-                            color: 'white',
-                            backgroundColor: 'black'
-                        }
                     }} />
                 <Box sx={{ my: 5 }}>
                     <Typography id="modal-modal-title" sx={{
@@ -93,7 +93,7 @@ const LoginModal = ({ handleClose }) => {
                         <hr style={{ width: '40%' }} /> <span style={{
                             fontWeight: 600,
                             fontSize: '12px',
-                            texAlign: 'center',
+                            textAlign: 'center',
                             textTransform: 'uppercase',
                             color: '#767676'
                         }}>OR</span> <hr style={{ width: '40%' }} />
@@ -104,7 +104,7 @@ const LoginModal = ({ handleClose }) => {
 
                         <Typography sx={Styles.label}>Password</Typography>
                         <TextField onBlur={handlePasswordChange} variant="outlined" type='password' sx={Styles.form} />
-                        <AuthenticationButton onClick={handleRegistration} backgroundColor='#C63437' >{registered ? 'Log In' : 'Sign Up'}</AuthenticationButton>
+                        <AuthenticationButton onClick={handleRegistration} backgroundColor='#C63437' icon="" >{registered ? 'Log In' : 'Sign Up'}</AuthenticationButton>
                         <Typography sx={{
                             fontWeight: 'bold',
                             fontSize: '16px',
