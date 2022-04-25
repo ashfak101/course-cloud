@@ -17,7 +17,7 @@ type Props = {
 };
 
 const CourseCard = ({ course, isDiscounted }: Props) => {
- console.log(course);
+//  console.log(course);
 
  return (
   <Card

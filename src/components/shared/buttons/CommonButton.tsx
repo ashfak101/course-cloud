@@ -2,6 +2,7 @@ import { Button } from "@mui/material";
 type ButtonProps = {
  textValue: string;
  fontSize: string;
+ onClick: any;
 };
 const CommonButton = (props: ButtonProps) => {
  return (
@@ -16,6 +17,7 @@ const CommonButton = (props: ButtonProps) => {
      bgcolor: "#FBF4F4",
     },
    }}
+   onClick={props.onClick}
   >
    {props.textValue}
   </Button>
