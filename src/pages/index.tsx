@@ -20,8 +20,8 @@ const Home: NextPage<{ courses: CourseData }> = ({ courses }) => {
    <ExploreCourses courses={courses} />
    <DealoftheDay courses={courses} />
    <FeaturedInstructors />
-   <RecentBlogs/>
    <Feedback />
+   <RecentBlogs />
    <EasyAccess />
    <Subscription />
    <Faq />
