@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material"
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
+
 type Option = {
   id: string;
   option: string;

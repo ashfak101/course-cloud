@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Container } from "@mui/material";
 import Quiz from "models/quizModels";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux"
@@ -61,8 +61,14 @@ const ResultsHome = () => {
 
     return (
         <Container>
-            <QuizResultHeader answer={answer} correctAnswerArray={correctAnswerArray} />
-            <Answer answer={answer}></Answer>
+            <Accordion sx={{background:"#0f0f0f",color:"#fff"}}>
+                <AccordionSummary 
+                    aria-controls="panel1a-content"
+                    id="panel1a-header">
+                    <QuizResultHeader answer={answer} correctAnswerArray={correctAnswerArray} /></AccordionSummary>
+                <AccordionDetails>
+                    <Answer answer={answer}></Answer> </AccordionDetails>
+            </Accordion>
             <QuizCourse level={level} />
         </Container>
     )
