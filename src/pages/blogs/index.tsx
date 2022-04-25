@@ -83,10 +83,10 @@ const Blogs = () => {
             Blogs
         </Typography>
         <Box sx={{display:'flex', justifyContent:'center', textAlign:'center'}}>
-        <Box sx={{width:'697px', height:'100%', backgroundColor:'#21252D', display:'flex', alignItems: 'center', justifyContent: "center", borderRadius:'20px', padding:'0px 0px'}}>
+        <Box sx={{width:{xl:'620px', xs:'100%', md:'620px'}, backgroundColor:'#21252D', borderRadius:{xl:'20px', md:'20px'}, display:{xl:'flex', md:'flex'}, justifyContent:'center'}}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
   <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" textColor="inherit"
-     variant="scrollable"
+     variant="scrollable" 
      sx={{
       "& .MuiTabs-indicator": {
        backgroundColor: "#DC9202",
@@ -96,8 +96,8 @@ const Blogs = () => {
     <Tab label="All" {...a11yProps(0)} />
     <Tab label="Technology" {...a11yProps(1)} />
     <Tab label="Marketing" {...a11yProps(2)} />
-    <Tab label="Design" {...a11yProps(2)} />
-    <Tab label="Development" {...a11yProps(2)} />
+    <Tab label="Design" {...a11yProps(3)} />
+    <Tab label="Development" {...a11yProps(4)} />
   </Tabs>
 </Box>
 
