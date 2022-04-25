@@ -1,8 +1,9 @@
+import CartHome from "components/cart/CartHome"
 
 
 const index = () => {
   return (
-    <div>index</div>
+    <CartHome></CartHome>
   )
 }
 

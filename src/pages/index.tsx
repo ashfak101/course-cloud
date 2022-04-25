@@ -19,8 +19,8 @@ const Home: NextPage<{ courses: CourseData }> = ({ courses }) => {
    <BecomeInstructor />
    <ExploreCourses courses={courses} />
    <DealoftheDay courses={courses} />
-   <FeaturedInstructors />
-   <Feedback />
+   <FeaturedInstructors courses={courses} />
+   <Feedback courses={courses} />
    <RecentBlogs />
    <EasyAccess />
    <Subscription />
