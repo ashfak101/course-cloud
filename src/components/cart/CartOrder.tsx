@@ -4,9 +4,12 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { Button, Container, TextField, Typography } from '@mui/material';
-import Image from 'next/image';
+
 import { State } from 'redux/reducers';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import ProductInfo from './ProductInfo';
+import { CartState } from 'redux/reducers/cartReducer';
+import { addSubTotal } from 'redux/actions/cartAction';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -34,14 +37,40 @@ const CssTextField = styled(TextField)({
     },
   },
 });
+
+const Styles = {
+  cart: {
+    display: 'flex', justifyContent: 'space-between', my: 4, color: '#FBF4F4', borderBottom: '0.568px solid #C6C6C6', pb: 2
+  }
+}
 const CartOrder = () => {
-  const { cart, subTotal, total, disCountPrice, cuponUsed } = useSelector((state: State) => state.allCartItem);
+  const { cart, subTotal, total, disCountPrice, cuponUsed }: CartState = useSelector((state: State) => state.allCartItem);
+  const dispatch = useDispatch();
+  let primaryTotal: number = 0;
+
+  let finalTotal: number = 0;
+  /* React.useEffect(() => {
+    cart?.forEach((item) => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      primaryTotal = primaryTotal + parseFloat(item.mainPrice)
+      dispatch(addSubTotal(primaryTotal));
+      console.log(primaryTotal, item.mainPrice)
+    });
+
+  }, [cart]); */
 
   return (
     <Box sx={{ mt: 10 }}>
       <Container maxWidth='xl' >
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>
+            <Grid item xs={12} xl={6}>
+              {
+                cart.map((item) => (
+                  <ProductInfo key={item.id} product={item} />
+                ))
+              }
+            </Grid>
 
             <Grid item xs={12} xl={6}>
               <Item sx={{ backgroundColor: "#282D37", boxShadow: "0", p: 5, borderRadius: '15px' }}>
@@ -52,16 +81,19 @@ const CartOrder = () => {
                   <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>Product</Typography>
                   <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>Subtotal</Typography>
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', my: 4, color: '#FBF4F4', borderBottom: '0.568px solid #C6C6C6', pb: 2 }}>
-                  <Typography sx={{ fontWeight: '600', fontSize: '20px', width: '350px', textAlign: 'left' }}>Certificate in British Sign Language
-                    (BSL) Level 1 & 2</Typography>
-                  <Typography sx={{ fontWeight: '600', fontSize: '20px', }}>	£15.00</Typography>
-                </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', my: 4, color: '#FBF4F4', borderBottom: '0.568px solid #C6C6C6', pb: 2 }}>
+                {
+                  cart.map((item) => (
+                    <Box sx={Styles.cart} key={item.id}>
+                      <Typography sx={{ fontWeight: '600', fontSize: '20px', width: '350px', textAlign: 'left' }}>{item.title}</Typography>
+                      <Typography sx={{ fontWeight: '600', fontSize: '20px', }}>	£{item.mainPrice}</Typography>
+                    </Box>
+                  ))
+                }
+                <Box sx={Styles.cart}>
                   <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>Subtotal</Typography>
-                  <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>	£35.00</Typography>
+                  <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>	£{subTotal}</Typography>
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', my: 4, color: '#FBF4F4', borderBottom: '0.568px solid #C6C6C6', pb: 2 }}>
+                <Box sx={Styles.cart}>
                   <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>Total</Typography>
                   <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>	£35.00</Typography>
                 </Box>
@@ -78,16 +110,6 @@ const CartOrder = () => {
                       }
                     }}>Apply</Button>
                   </form>
-                  <Button sx={{
-                    fontSize: '15px'
-                    , color: '#191C21',
-                    bgcolor: '#D19F28',
-                    p: "15px 65px",
-                    mt:2,
-                    "&:hover": {
-                      bgcolor: '#FBDE44'
-                    }
-                  }}>Proceed To Checkout</Button>
                 </Box>
               </Item>
             </Grid>

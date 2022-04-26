@@ -9,7 +9,7 @@ const initialState={
     cuponUsed: false
 }
 
-interface CartState {
+export interface CartState {
     cart:CoursesOnDeal[];
     subTotal:number;
     total:number;
@@ -18,14 +18,16 @@ interface CartState {
 }
 type Actions ={
     type :string,
-    payload:number|{}|string
+    payload:number|{}|string;
+   
 }
+
 export const cartReducer=(state:CartState=initialState,action:Actions)=>{
       switch(action.type){
           case "ADD_TO_CART":
               return{
                   ...state,
-                  cart:action.payload
+                  cart:action.payload,
               } 
           case "ADD_TOTAL":
               return{
@@ -35,7 +37,7 @@ export const cartReducer=(state:CartState=initialState,action:Actions)=>{
           case  "ADD_SUBTOTAL":
               return{
                   ...state,
-                  subTotal:action.payload
+                  subTotal:state.subTotal+ parseFloat(action.payload)
               }    
           case "DISCOUNT_PRICE":
               return{
