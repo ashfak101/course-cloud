@@ -89,14 +89,24 @@ const CartOrder = () => {
                     <CssTextField sx={{ background: "#fff", borderRadius: '5px' }} id="outlined-basic" placeholder='Enter Cupon' variant="outlined" />
                     <Button type='submit' variant='contained' sx={{
                       fontSize: '15px'
-                      , color: '#191C21', 
+                      , color: '#191C21',
                       bgcolor: '#D19F28', p: "15px 25px", borderRadius: '0 5px 5px 0',
-                       ml: '-2px',
-                       "&:hover":{
-                          bgcolor:'#FBDE44'
-                       }
+                      ml: '-2px',
+                      "&:hover": {
+                        bgcolor: '#FBDE44'
+                      }
                     }}>Apply</Button>
                   </form>
+                  <Button sx={{
+                    fontSize: '15px'
+                    , color: '#191C21',
+                    bgcolor: '#D19F28',
+                    p: "15px 65px",
+                    mt:2,
+                    "&:hover": {
+                      bgcolor: '#FBDE44'
+                    }
+                  }}>Proceed To Checkout</Button>
                 </Box>
               </Item>
             </Grid>
