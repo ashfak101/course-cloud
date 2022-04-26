@@ -4,6 +4,7 @@ import DealoftheDay from "components/home/DealoftheDay";
 import EasyAccess from "components/home/EasyAccess";
 import ExploreCourses from "components/home/ExploreCourses";
 import Faq from "components/home/Faq";
+
 import FeaturedInstructors from "components/home/FeaturedInstructors";
 import Feedback from "components/home/Feedback";
 import Footer from "components/home/Footer";
@@ -16,6 +17,7 @@ import FeaturedInstructors from "components/home/FeaturedInstructors";
 import Feedback from "components/home/Feedback";
 import RecentBlogs from "components/home/RecentBlogs";
 import { GetBlogsData, BlogsData } from "../../types-blog";
+
 
 
 const Home: NextPage<{ courses: CourseData; blogs: BlogsData }> = ({
