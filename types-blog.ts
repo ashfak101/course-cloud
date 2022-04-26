@@ -1,4 +1,8 @@
 export interface GetBlogsData {
+ data: BlogsData[];
+}
+
+export interface BlogsData {
  id: string;
  img: string;
  title: string;
