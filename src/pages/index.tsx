@@ -11,6 +11,7 @@ import DealoftheDay from "components/home/DealoftheDay";
 import FeaturedInstructors from "components/home/FeaturedInstructors";
 import Feedback from "components/home/Feedback";
 import { GetBlogsData } from "../../types-blog";
+import RecentBlogs from "components/home/RecentBlogs";
 
 const Home: NextPage<{ courses: CourseData }> = ({ courses }) => {
  return (
@@ -37,21 +38,15 @@ export const getStaticProps: GetStaticProps = async (context) => {
   "https://api.npoint.io/8b635b31d3c9d683fcec"
  );
 
- const blogResponse = await fetch(
-    "https://api.npoint.io/25e8205992894fabbd1d"
-);
-const blogs: GetBlogsData = await blogResponse.json();
-
-
+ const blogResponse = await fetch("https://api.npoint.io/25e8205992894fabbd1d");
+ const blogs: GetBlogsData = await blogResponse.json();
 
  const courses: GetCoursesData = await courseResponse.json();
 
  return {
   props: {
    courses,
-   blogs
+   blogs,
   },
  };
 };
-
-
