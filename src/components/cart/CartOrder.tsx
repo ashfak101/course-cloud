@@ -78,6 +78,16 @@ const CartOrder = () => {
                       }
                     }}>Apply</Button>
                   </form>
+                  <Button sx={{
+                    fontSize: '15px'
+                    , color: '#191C21',
+                    bgcolor: '#D19F28',
+                    p: "15px 65px",
+                    mt:2,
+                    "&:hover": {
+                      bgcolor: '#FBDE44'
+                    }
+                  }}>Proceed To Checkout</Button>
                 </Box>
               </Item>
             </Grid>
