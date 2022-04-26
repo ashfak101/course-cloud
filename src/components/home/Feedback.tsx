@@ -5,7 +5,6 @@ import Slider from "react-slick";
 import ArrowBackIosTwoToneIcon from "@mui/icons-material/ArrowBackIosTwoTone";
 import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTone";
 import { CourseData } from "../../../types";
-import { profile } from "console";
 
 type Props = {
  courses: CourseData;
