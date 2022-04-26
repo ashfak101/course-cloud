@@ -1,3 +1,5 @@
+import { type } from 'os';
+import { CoursesOnDeal } from "../../../types";
 
 const initialState={
     cart:[],
@@ -5,14 +7,18 @@ const initialState={
     total:0,
     disCountPrice:0,
 }
+
 interface CartState {
-    cart:{}[];
+    cart:CoursesOnDeal[];
     subTotal:number;
     total:number;
     disCountPrice:number
 }
-
-export const cartReducer=(state:CartState=initialState,action:any)=>{
+type Actions ={
+    type :string,
+    payload:number|{}|string
+}
+export const cartReducer=(state:CartState=initialState,action:Actions)=>{
       switch(action.type){
           case "ADD_TO_CART":
               return{

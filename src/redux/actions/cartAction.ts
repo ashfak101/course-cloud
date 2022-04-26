@@ -1,6 +1,7 @@
+import { CoursesOnDeal } from "../../../types"
 
 
-export const addToCart=(payload:{}[])=>{
+export const addToCart=(payload: CoursesOnDeal[])=>{
     return {
         type: 'ADD_TO_CART',
         payload
