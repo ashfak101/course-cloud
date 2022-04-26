@@ -16,14 +16,14 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const CartOrder = () => {
   return (
-    <Box sx={{mt:10}}>
+    <Box sx={{ mt: 10 }}>
       <Container maxWidth='xl' >
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>
             <Grid item xs={12} xl={6}>
               <Item sx={{ backgroundColor: "transparent", boxShadow: "0", border: "1px solid gray", borderRadius: '10px' }}>
-                <Box sx={{ flexGrow: 1 }}>
-                  <Grid container spacing={2} sx={{ display: 'flex', alignItems: 'center' }}>
+                <Box sx={{ flexGrow: 1, }}>
+                  <Grid container spacing={2} sx={{ display: 'flex', alignItems: 'center', }}>
                     <Grid item xs={12} xl={4}>
                       <Item sx={{ backgroundColor: "transparent", boxShadow: "0" }}>
                         <Image src='/assets/images/cartone.png' width='158.23' height='118' alt='cartimage' />
@@ -45,11 +45,30 @@ const CartOrder = () => {
               </Item>
             </Grid>
             <Grid item xs={12} xl={6}>
-              <Item sx={{ backgroundColor: "#282D37", boxShadow: "0",p:5 }}>
+              <Item sx={{ backgroundColor: "#282D37", boxShadow: "0", p: 5, borderRadius: '15px' }}>
                 <Typography sx={{ fontFamily: "Lato", fontWeight: "600", fontSize: "30px", fontStyle: "normal", lineHeight: '42px', textAlign: 'left', color: 'white' }}>
                   Your Order
                 </Typography>
-                
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', my: 4, color: '#FBF4F4' }}>
+                  <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>Product</Typography>
+                  <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>Subtotal</Typography>
+                </Box>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', my: 4, color: '#FBF4F4',borderBottom:'0.568px solid #C6C6C6',pb:2 }}>
+                  <Typography sx={{ fontWeight: '600', fontSize: '20px',width:'350px' ,textAlign:'left'}}>Certificate in British Sign Language
+                    (BSL) Level 1 & 2</Typography>
+                  <Typography sx={{ fontWeight: '600', fontSize: '20px', }}>	£15.00</Typography>
+                </Box>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', my: 4, color: '#FBF4F4', borderBottom:'0.568px solid #C6C6C6',pb:2}}>
+                  <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>Subtotal</Typography>
+                  <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>	£35.00</Typography>
+                </Box>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', my: 4, color: '#FBF4F4',borderBottom:'0.568px solid #C6C6C6',pb:2 }}>
+                  <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>Total</Typography>
+                  <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>	£35.00</Typography>
+                </Box>
+                <Box>
+                  
+                </Box>
               </Item>
             </Grid>
           </Grid>
