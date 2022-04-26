@@ -20,6 +20,7 @@ export interface CoursesOnDeal {
  discountPercent: string;
  instructorDetails?: InstructorDetailsDetails;
  instructorDetailsDetails?: InstructorDetailsDetails;
+ quantity?: number;
 }
 
 export interface InstructorDetailsDetails {

@@ -44,7 +44,8 @@ const Navbar = () => {
     const navs = [
         { name: "CATEGORIES", link: '/' },
         { name: "FREE QUIZ", link: '/quiz' },
-        { name: "BLOGS", link: '/blogs' }
+        { name: "BLOGS", link: '/blogs' },
+        { name: "CART", link: '/cart' }
     ]
 
     return (
@@ -184,7 +185,7 @@ const Navbar = () => {
                         sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
                     >
                         <SupportAgentIcon sx={{ color: "#DC9202", mr: 1 }} />
-                        <Link href="/" passHref>
+                        <Link href="/blogs" passHref>
                             <Button
                                 sx={{
                                     color: "#fff",
@@ -192,7 +193,23 @@ const Navbar = () => {
                                     my: 3,
                                 }}
                             >
-                                SUPPORT
+                                BLOGS
+                            </Button>
+                        </Link>
+                    </Box>
+                    <Box
+                        sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+                    >
+                        <SupportAgentIcon sx={{ color: "#DC9202", mr: 1 }} />
+                        <Link href="/cart" passHref>
+                            <Button
+                                sx={{
+                                    color: "#fff",
+                                    textAlign: "center",
+                                    my: 3,
+                                }}
+                            >
+                                CART
                             </Button>
                         </Link>
                     </Box>

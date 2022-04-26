@@ -37,18 +37,18 @@ const Home: NextPage<{ courses: CourseData; blogs: BlogsData[]}> = ({
 export default Home;
 
 export const getStaticProps: GetStaticProps = async (context) => {
- const courseResponse = await fetch(
-  "https://api.npoint.io/8b635b31d3c9d683fcec"
- );
- const courses: GetCoursesData = await courseResponse.json();
+    const courseResponse = await fetch(
+        "https://api.npoint.io/8b635b31d3c9d683fcec"
+    );
+    const courses: GetCoursesData = await courseResponse.json();
 
  const blogResponse = await fetch("https://api.npoint.io/25e8205992894fabbd1d");
  const blogs: GetBlogsData = await blogResponse.json();
 
- return {
-  props: {
-   courses,
-   blogs,
-  },
- };
+    return {
+        props: {
+            courses,
+            blogs,
+        },
+    };
 };
