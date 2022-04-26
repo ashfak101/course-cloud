@@ -16,6 +16,7 @@ const Styles = {
         borderRadius: '2px',
         boxShadow: 24,
         p: 4,
+        width:{sm:'400px', xs:'100%'},
     },
     form: {
         width: '100%',
@@ -85,10 +86,10 @@ const LoginModal = (props:ModalProps) => {
 
                     </Typography>
                     {isFunction &&
-                        <AuthenticationButton onClick={handleGoogleSignIn} backgroundColor='#4688F1' icon='/public/assets/images/google-icon.png' >Log In With Google</AuthenticationButton>
+                        <AuthenticationButton onClick={handleGoogleSignIn} backgroundColor='#4688F1' icon='/assets/images/google-icon.png' >Log In With Google</AuthenticationButton>
                     }
 
-                    <AuthenticationButton backgroundColor='#3E5C97' icon='/public/assets/images/facebook-icon.png' onClick={handleFacebookSignIn}>Log In With Facebook</AuthenticationButton>
+                    <AuthenticationButton backgroundColor='#3E5C97' icon='/assets/images/facebook-icon.png' onClick={handleFacebookSignIn}>Log In With Facebook</AuthenticationButton>
                     <Box sx={{ mt: '100px', mb: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <hr style={{ width: '40%' }} /> <span style={{
                             fontWeight: 600,

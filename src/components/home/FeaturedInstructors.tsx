@@ -6,8 +6,13 @@ import CommonButton from "components/shared/buttons/CommonButton";
 import ArrowBackIosTwoToneIcon from "@mui/icons-material/ArrowBackIosTwoTone";
 import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTone";
 import { useRef } from "react";
+import { CourseData } from "../../../types";
 
-const FeaturedInstructors = () => {
+type Props = {
+ courses: CourseData;
+};
+
+const FeaturedInstructors = ({ courses }: Props) => {
  const sliderRef = useRef<any>(null!);
 
  const settings = {
@@ -106,202 +111,63 @@ const FeaturedInstructors = () => {
      />
     </Button>
     <Slider {...settings} ref={sliderRef}>
-     <div>
-      <Box
-       sx={{
-        textAlign: "center",
-        maxWidth: 366,
-        margin: "0 auto",
-       }}
-      >
-       <Box sx={{ margin: "0 8px" }}>
-        <Box
-         sx={{
-          backgroundImage: `url(/assets/images/personone.png)`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          height: "294px",
-          display: "flex",
-          alignItems: "flex-end",
-          justifyContent: "center",
-         }}
-        >
-         <Box sx={{ mb: 3 }}>
-          <Typography variant="h4" sx={{ fontSize: "30px" }}>
-           Connor Francis
-          </Typography>
-          <Typography sx={{ fontWeight: "light", mb: 1 }}>
-           Teaches Writing for Television
-          </Typography>
-          <CommonButton
-           fontSize="0.9rem"
-           textValue="VIEW DETAILS"
-           onClick={() => alert("hello")}
-          />
+     {courses.featuredInstructor.map((profile) => (
+      <div key={profile.id}>
+       <Box
+        sx={{
+         textAlign: "center",
+         maxWidth: 366,
+         margin: "0 auto",
+        }}
+       >
+        <Box sx={{ margin: "0 8px" }}>
+         <Box
+          sx={{
+           backgroundImage: `url(${profile.avatar})`,
+           backgroundSize: "cover",
+           backgroundPosition: "center",
+           height: "294px",
+           display: "flex",
+           alignItems: "flex-end",
+           justifyContent: "center",
+          }}
+         >
+          <Box sx={{ mb: 3 }}>
+           <Typography variant="h4" sx={{ fontSize: "30px" }}>
+            {profile.name}
+           </Typography>
+           <Typography sx={{ fontWeight: "light", mb: 1 }}>
+            {profile.department}
+           </Typography>
+           <CommonButton
+            fontSize="0.9rem"
+            textValue="VIEW DETAILS"
+            onClick={() => alert("hello")}
+           />
+          </Box>
+         </Box>
+         <Box sx={{ bgcolor: "#21252D", py: 2 }}>
+          <Grid container>
+           <Grid item xs={6} sx={{ borderRight: "1px dashed #494949" }}>
+            <Typography variant="h6">
+             {profile.numberOfClasses}+ Classes
+            </Typography>
+            <Typography sx={{ fontWeight: "300" }}>From the masters</Typography>
+           </Grid>
+           <Grid item xs={6}>
+            <Typography variant="h6">
+             {profile.numberOfLessons} Lessons
+            </Typography>
+            <Typography sx={{ fontWeight: "300" }}>
+             Average per class
+            </Typography>
+           </Grid>
+          </Grid>
          </Box>
         </Box>
-        <Box sx={{ bgcolor: "#21252D", py: 2 }}>
-         <Grid container>
-          <Grid item xs={6} sx={{ borderRight: "1px dashed #494949" }}>
-           <Typography variant="h6">85+ Classes</Typography>
-           <Typography sx={{ fontWeight: "300" }}>From the masters</Typography>
-          </Grid>
-          <Grid item xs={6}>
-           <Typography variant="h6">20 Lessons</Typography>
-           <Typography sx={{ fontWeight: "300" }}>Average per class</Typography>
-          </Grid>
-         </Grid>
-        </Box>
        </Box>
-      </Box>
-     </div>
-     <div>
-      <Box
-       sx={{
-        textAlign: "center",
-        maxWidth: 366,
-        margin: "0 auto",
-       }}
-      >
-       <Box sx={{ margin: "0 8px" }}>
-        <Box
-         sx={{
-          backgroundImage: `url(/assets/images/personone.png)`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          height: "294px",
-          display: "flex",
-          alignItems: "flex-end",
-          justifyContent: "center",
-         }}
-        >
-         <Box sx={{ mb: 3 }}>
-          <Typography variant="h4" sx={{ fontSize: "30px" }}>
-           Connor Francis
-          </Typography>
-          <Typography sx={{ fontWeight: "light", mb: 1 }}>
-           Teaches Writing for Television
-          </Typography>
-          <CommonButton
-           fontSize="0.9rem"
-           textValue="VIEW DETAILS"
-           onClick={() => alert("hello")}
-          />
-         </Box>
-        </Box>
-        <Box sx={{ bgcolor: "#21252D", py: 2 }}>
-         <Grid container>
-          <Grid item xs={6} sx={{ borderRight: "1px dashed #494949" }}>
-           <Typography variant="h6">85+ Classes</Typography>
-           <Typography sx={{ fontWeight: "300" }}>From the masters</Typography>
-          </Grid>
-          <Grid item xs={6}>
-           <Typography variant="h6">20 Lessons</Typography>
-           <Typography sx={{ fontWeight: "300" }}>Average per class</Typography>
-          </Grid>
-         </Grid>
-        </Box>
-       </Box>
-      </Box>
-     </div>
-     <div>
-      <Box
-       sx={{
-        textAlign: "center",
-        maxWidth: 366,
-        margin: "0 auto",
-       }}
-      >
-       <Box sx={{ margin: "0 8px" }}>
-        <Box
-         sx={{
-          backgroundImage: `url(/assets/images/personone.png)`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          height: "294px",
-          display: "flex",
-          alignItems: "flex-end",
-          justifyContent: "center",
-         }}
-        >
-         <Box sx={{ mb: 3 }}>
-          <Typography variant="h4" sx={{ fontSize: "30px" }}>
-           Connor Francis
-          </Typography>
-          <Typography sx={{ fontWeight: "light", mb: 1 }}>
-           Teaches Writing for Television
-          </Typography>
-          <CommonButton
-           fontSize="0.9rem"
-           textValue="VIEW DETAILS"
-           onClick={() => alert("hello")}
-          />
-         </Box>
-        </Box>
-        <Box sx={{ bgcolor: "#21252D", py: 2 }}>
-         <Grid container>
-          <Grid item xs={6} sx={{ borderRight: "1px dashed #494949" }}>
-           <Typography variant="h6">85+ Classes</Typography>
-           <Typography sx={{ fontWeight: "300" }}>From the masters</Typography>
-          </Grid>
-          <Grid item xs={6}>
-           <Typography variant="h6">20 Lessons</Typography>
-           <Typography sx={{ fontWeight: "300" }}>Average per class</Typography>
-          </Grid>
-         </Grid>
-        </Box>
-       </Box>
-      </Box>
-     </div>
-     <div>
-      <Box
-       sx={{
-        textAlign: "center",
-        maxWidth: 366,
-        margin: "0 auto",
-       }}
-      >
-       <Box sx={{ margin: "0 8px" }}>
-        <Box
-         sx={{
-          backgroundImage: `url(/assets/images/personone.png)`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          height: "294px",
-          display: "flex",
-          alignItems: "flex-end",
-          justifyContent: "center",
-         }}
-        >
-         <Box sx={{ mb: 3 }}>
-          <Typography variant="h4" sx={{ fontSize: "30px" }}>
-           Connor Francis
-          </Typography>
-          <Typography sx={{ fontWeight: "light", mb: 1 }}>
-           Teaches Writing for Television
-          </Typography>
-          <CommonButton
-           fontSize="0.9rem"
-           textValue="VIEW DETAILS"
-           onClick={() => alert("hello")}
-          />
-         </Box>
-        </Box>
-        <Box sx={{ bgcolor: "#21252D", py: 2 }}>
-         <Grid container>
-          <Grid item xs={6} sx={{ borderRight: "1px dashed #494949" }}>
-           <Typography variant="h6">85+ Classes</Typography>
-           <Typography sx={{ fontWeight: "300" }}>From the masters</Typography>
-          </Grid>
-          <Grid item xs={6}>
-           <Typography variant="h6">20 Lessons</Typography>
-           <Typography sx={{ fontWeight: "300" }}>Average per class</Typography>
-          </Grid>
-         </Grid>
-        </Box>
-       </Box>
-      </Box>
-     </div>
+      </div>
+     ))}
     </Slider>
    </div>
   </Container>
