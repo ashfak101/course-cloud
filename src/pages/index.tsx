@@ -9,6 +9,8 @@ import Footer from "components/home/Footer";
 import { CourseData, GetCoursesData } from "../../types";
 import DealoftheDay from "components/home/DealoftheDay";
 import FeaturedInstructors from "components/home/FeaturedInstructors";
+import Feedback from "components/home/Feedback";
+import RecentBlogs from "components/home/RecentBlogs";
 
 const Home: NextPage<{ courses: CourseData }> = ({ courses }) => {
  return (
