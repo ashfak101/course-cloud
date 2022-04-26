@@ -10,6 +10,11 @@ import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { Box } from '@mui/system';
+import { BlogsData } from '../../../../types-blog';
+
+type Props = {
+  blog: BlogsData;
+}
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -19,7 +24,7 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
   }));
 
-const BlogCard = () => {
+const BlogCard = ({blog}: Props) => {
     return(
         <>
         <Card sx={{ maxWidth: 345, backgroundColor:'#21252C', position:'relative' }}>
@@ -27,7 +32,7 @@ const BlogCard = () => {
         component="img"
         width="348"
         height="260"
-        image="/assets/images/recentblogone.png"
+        image={blog.img}
         alt="green iguana"
       />
       <Avatar sx={{  position:'absolute', top: 240, left:22}} aria-label="recipe">
@@ -35,12 +40,11 @@ const BlogCard = () => {
           </Avatar>
       <CardContent>
         <Typography gutterBottom component="div" sx={{color: 'white', fontFamily:'Lato', fontStyle: 'normal', fontWeight: '700', fontSize:'16px', lineHeight:'140%', marginTop:'18px'}}>
-        How to Pitch a Video Game: 7 Tips for <br/>
-Pitching Games
+        {blog.title}
         </Typography>
         <Typography sx={{color:'#8B8787',fontFamily:'Lato', fontStyle:'normal', fontWeight:'300', fontSize:'14px', lineHeight:'150%', marginTop:'7px', marginBottom:'15px'}}>August 10th, 2020</Typography>
         <Typography variant="body2" color="text.secondary" sx={{color: '#FBF4F4', fontFamily:'Lato', fontStyle: 'normal', fontWeight: '300', fontSize:'14px', lineHeight:'150%'}}>
-        Vitae bibendum egestas magna sit elit non. Netus volutpat dignissim pharetra felis dictumst.
+        {blog.subtitle}
         </Typography>
       </CardContent>
       <CardActions>

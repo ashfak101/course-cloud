@@ -3,7 +3,12 @@ import { Box } from "@mui/system";
 import BlogCard from "components/shared/blogcard/BlogCard";
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
+import { BlogsData } from "../../../types-blog";
 
+
+type Props = {
+  blogs: BlogsData[];
+ };
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -14,22 +19,19 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
   }));
 
-const RecentBlogs = () => {
+const RecentBlogs = ({blogs}: Props) => {
+    console.log('blogs alskdjflkasjflkasjflk', blogs);
     return (
         <>
         <Container maxWidth="xl">
         <Typography sx={{fontFamily:'Lato', fontStyle:'normal', fontWeight: '700', fontSize:'36px', lineHeight:'43px', textAlign:{xl:'left', xs:'center'}, color:'white', marginBottom:'35px', marginTop:'110px', marginLeft:{xl:'70px'}}}>Our Recent Blogs</Typography>
         <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2} >
-        <Grid item xs={12} xl={4} md={4} sx={{display: 'flex', justifyContent: 'center'}}>
-          <Item sx={{ backgroundColor: "transparent", boxShadow: "0", textAlign:'left' }}><BlogCard/></Item>
+      <Grid container spacing={2}>
+        {blogs.slice(0,3).map((blog) => (
+          <Grid item xs={12} xl={4} md={4} sx={{display: 'flex', justifyContent: 'center'}} key={blog.id}>
+          <Item sx={{ backgroundColor: "transparent", boxShadow: "0", textAlign:'left' }}><BlogCard blog={blog}/></Item>
         </Grid>
-        <Grid item xs={12} xl={4} md={4} sx={{display: 'flex', justifyContent: 'center'}}>
-          <Item sx={{ backgroundColor: "transparent", boxShadow: "0", textAlign:'left' }}><BlogCard/></Item>
-        </Grid>
-        <Grid item xs={12} xl={4} md={4} sx={{display: 'flex', justifyContent: 'center'}}>
-          <Item sx={{ backgroundColor: "transparent", boxShadow: "0", textAlign:'left' }}><BlogCard/></Item>
-        </Grid>
+        ))}
       </Grid>
     </Box>
         <Box sx={{textAlign:'center'}}>
