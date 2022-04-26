@@ -1,6 +1,6 @@
 {
-    "editor.cursorBlinking": "smooth",
-    "editor.fontSize": 15,
-    "diffEditor.codeLens": true,
-    "editor.tabSize": 4
+ "editor.cursorBlinking": "smooth",
+ "editor.fontSize": 20,
+ "diffEditor.codeLens": true,
+ "editor.tabSize": 4
 }

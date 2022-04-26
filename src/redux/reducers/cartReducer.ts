@@ -6,13 +6,15 @@ const initialState={
     subTotal:0,
     total:0,
     disCountPrice:0,
+    cuponUsed: false
 }
 
 interface CartState {
     cart:CoursesOnDeal[];
     subTotal:number;
     total:number;
-    disCountPrice:number
+    disCountPrice:number;
+    cuponUsed: boolean
 }
 type Actions ={
     type :string,
@@ -40,6 +42,13 @@ export const cartReducer=(state:CartState=initialState,action:Actions)=>{
                   ...state,
                   disCountPrice:action.payload
               }   
+
+            case'USE_CUPON':
+                return {
+                    ...state,
+                    cuponUsed: action.payload
+                }
+            
            default :
                return state     
       }

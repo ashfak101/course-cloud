@@ -13,6 +13,8 @@ import { CoursesOnDeal } from "../../../../types";
 import { useState } from "react";
 import { State } from "redux/reducers";
 import { useDispatch, useSelector } from "react-redux";
+import { addCupon, addToCart } from "redux/actions/cartAction";
+import { useRouter } from "next/router";
 
 type Props = {
     course: CoursesOnDeal;
@@ -22,10 +24,25 @@ type Props = {
 const CourseCard = ({ course, isDiscounted }: Props) => {
     let price: any = (parseFloat(course.mainPrice) - (parseFloat(course.mainPrice) * parseFloat(course.discountPercent))).toFixed();
 
-    const [isAdded, setIsAdded] = useState(false);
-
-    const { cart } = useSelector((state: State) => state);
+    const [isAdded, setIsAdded] = useState<boolean>(false);
+    const router = useRouter();
+    const { cart } = useSelector((state: State) => state.allCartItem);
     const dispatch = useDispatch();
+
+    const goToCart = () => {
+        router.push('/cart');
+    }
+
+    const handleAddToCart = (course: CoursesOnDeal) => {
+        course = {
+            ...course,
+            quantity: 1,
+        };
+        const newCart = [...cart, course];
+        dispatch(addToCart(newCart));
+        dispatch(addCupon(false));
+        setIsAdded(true);
+    };
 
     return (
         <Card
@@ -119,12 +136,26 @@ const CourseCard = ({ course, isDiscounted }: Props) => {
                         {course.instructorDetails?.name || "John Smith"}
                     </Typography>
                 </Box>
-                <SecondaryBtn
-                    textValue="ADD TO CART"
-                    bgcolor="#5193F6"
-                    borderColor="#fff"
-                    hoverBorderColor="#5193F6"
-                />
+
+                {!isAdded ?
+                    <SecondaryBtn
+                        textValue="ADD TO CART"
+                        bgcolor="#5193F6"
+                        borderColor="#fff"
+                        hoverBorderColor="#5193F6"
+                        onClick={() => handleAddToCart(course)}
+                    />
+                    :
+                    <SecondaryBtn
+                        textValue="VISIT CART"
+                        bgcolor="#5193F6"
+                        borderColor="#fff"
+                        hoverBorderColor="#5193F6"
+                        onClick={goToCart}
+                    />
+                }
+
+
             </CardActions>
         </Card>
     );
