@@ -36,17 +36,17 @@ import { EmailAuthCredential } from "firebase/auth";
 // }
 const Navbar = () => {
     const [navState, setNavState] = useState<boolean>(false);
-    const router= useRouter()
+    const router = useRouter()
     const { user, logOut, open, setOpen } = useAuth();
     const email: any = user.email;
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const navs=[
-        {name:"CATEGORIES",link:'/'},
-        {name:"FREE QUIZ",link:'/quiz'},
-        {name:"BLOGS", link:'/blogs'}
+    const navs = [
+        { name: "CATEGORIES", link: '/' },
+        { name: "FREE QUIZ", link: '/quiz' },
+        { name: "BLOGS", link: '/blogs' }
     ]
-    
+
     return (
         <>
             <AppBar sx={{ bgcolor: "#21252D" }} position="static">
@@ -106,15 +106,15 @@ const Navbar = () => {
                             </Paper>
                         </Typography>
                         <Box sx={{ display: { xs: "none", md: "block" } }}>
-                             {
-                                 navs.map((nav)=>
+                            {
+                                navs.map((nav) =>
                                     <Link key={nav.name} href={nav.link}>
-                                           <a style={{ margin: "0px 1em 0px 1em", fontWeight: "200",color: router.pathname == nav.link ? "#D19F28": "#fff" }}>
-                                         {nav.name}
-                                      </a>
-                                   </Link>   
-                                 )
-                             }
+                                        <a style={{ margin: "0px 1em 0px 1em", fontWeight: "200", color: router.pathname == nav.link ? "#D19F28" : "#fff" }}>
+                                            {nav.name}
+                                        </a>
+                                    </Link>
+                                )
+                            }
 
                             <Box
                                 component="span"
@@ -124,7 +124,7 @@ const Navbar = () => {
                                     my: { xs: 1 },
                                 }}
                             >
-                                <CommonButton fontSize=".9rem" textValue={!email ? 'Login' : "Logout"}onClick={!user.email ? handleOpen : logOut} />
+                                <CommonButton fontSize=".9rem" textValue={!email ? 'Login' : "Logout"} onClick={!user.email ? handleOpen : logOut} />
                             </Box>
                         </Box>
                         <Button
@@ -197,10 +197,10 @@ const Navbar = () => {
                         </Link>
                     </Box>
                     <Box
-         sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
-        >
-                 <CommonButton fontSize=".9rem" textValue={!email ? 'Login' : "Logout"}onClick={!email ? handleOpen : logOut} />
-            </Box>
+                        sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+                    >
+                        <CommonButton fontSize=".9rem" textValue={!email ? 'Login' : "Logout"} onClick={!email ? handleOpen : logOut} />
+                    </Box>
                 </Box>
             </Drawer>
         </>
