@@ -6,7 +6,6 @@ import ExploreCourses from "components/home/ExploreCourses";
 import Faq from "components/home/Faq";
 import FeaturedInstructors from "components/home/FeaturedInstructors";
 import Feedback from "components/home/Feedback";
-import Footer from "components/home/Footer";
 import RecentBlogs from "components/home/RecentBlogs";
 import Subscription from "components/home/Subscription";
 import type { GetStaticProps, NextPage } from "next";
@@ -29,7 +28,6 @@ const Home: NextPage<{ courses: CourseData; blogs: BlogsData }> = ({
    <EasyAccess />
    <Subscription />
    <Faq />
-   <Footer />
   </>
  );
 };
