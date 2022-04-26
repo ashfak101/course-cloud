@@ -9,7 +9,6 @@ import Footer from "components/home/Footer";
 import { CourseData, GetCoursesData } from "../../types";
 import DealoftheDay from "components/home/DealoftheDay";
 import FeaturedInstructors from "components/home/FeaturedInstructors";
-import RecentBlogs from "components/home/RecentBlogs";
 import Feedback from "components/home/Feedback";
 import { GetBlogsData } from "../../types-blog";
 
