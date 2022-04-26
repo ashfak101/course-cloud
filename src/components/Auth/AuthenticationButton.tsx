@@ -5,11 +5,12 @@ import React from 'react';
 type ButtonProps = {
     children: any ;
     backgroundColor: string;
-    icon: any;
+    icon: string;
     onClick: any;
 }
 
 const AuthenticationButton = (props:ButtonProps) => {
+    
     return (
         <Box>
             <Button variant="contained" sx={{
@@ -20,7 +21,9 @@ const AuthenticationButton = (props:ButtonProps) => {
                 color: '#FBF4F4',
                 borderRadius: '5px',
                 mt: 3,
-                py: '21px',
+                py: 3,
+
+                textAlign:'center',
                 backgroundColor: props.backgroundColor
             }}
                 onClick={props.onClick}
