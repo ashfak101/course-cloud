@@ -13,7 +13,7 @@ import type { GetStaticProps, NextPage } from "next";
 import { CourseData, GetCoursesData } from "../../types";
 import { GetBlogsData, BlogsData } from "../../types-blog";
 
-const Home: NextPage<{ courses: CourseData; blogs: BlogsData }> = ({
+const Home: NextPage<{ courses: CourseData; blogs: BlogsData[]}> = ({
  courses,
  blogs,
 }) => {
@@ -25,7 +25,7 @@ const Home: NextPage<{ courses: CourseData; blogs: BlogsData }> = ({
    <DealoftheDay courses={courses} />
    <FeaturedInstructors courses={courses} />
    <Feedback courses={courses} />
-   <RecentBlogs />
+   <RecentBlogs blogs={blogs}/>
    <EasyAccess />
    <Subscription />
    <Faq />
@@ -44,7 +44,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
  const blogResponse = await fetch("https://api.npoint.io/25e8205992894fabbd1d");
  const blogs: GetBlogsData = await blogResponse.json();
- console.log(blogs);
 
  return {
   props: {
