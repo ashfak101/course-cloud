@@ -24,7 +24,7 @@ const ResultsHome = () => {
     let intermediate: number = 0;
     let advanced: number = 0;
     let correctAnswerArray: string[] = [];
-    console.log(Array(answer));
+    // console.log(Array(answer));
 
     answer?.forEach((element) => {
         element.options.forEach((option) => {
@@ -61,8 +61,8 @@ const ResultsHome = () => {
 
     return (
         <Container>
-            <Accordion sx={{background:"#0f0f0f",color:"#fff"}}>
-                <AccordionSummary 
+            <Accordion sx={{ background: "#0f0f0f", color: "#fff" }}>
+                <AccordionSummary
                     aria-controls="panel1a-content"
                     id="panel1a-header">
                     <QuizResultHeader answer={answer} correctAnswerArray={correctAnswerArray} /></AccordionSummary>

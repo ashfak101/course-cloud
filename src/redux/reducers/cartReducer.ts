@@ -1,18 +1,26 @@
+import { type } from 'os';
+import { CoursesOnDeal } from "../../../types";
 
 const initialState={
     cart:[],
     subTotal:0,
     total:0,
     disCountPrice:0,
-}
-interface CartState {
-    cart:{}[];
-    subTotal:number;
-    total:number;
-    disCountPrice:number
+    cuponUsed: false
 }
 
-export const cartReducer=(state:CartState=initialState,action:any)=>{
+interface CartState {
+    cart:CoursesOnDeal[];
+    subTotal:number;
+    total:number;
+    disCountPrice:number;
+    cuponUsed: boolean
+}
+type Actions ={
+    type :string,
+    payload:number|{}|string
+}
+export const cartReducer=(state:CartState=initialState,action:Actions)=>{
       switch(action.type){
           case "ADD_TO_CART":
               return{
@@ -34,6 +42,13 @@ export const cartReducer=(state:CartState=initialState,action:any)=>{
                   ...state,
                   disCountPrice:action.payload
               }   
+
+            case'USE_CUPON':
+                return {
+                    ...state,
+                    cuponUsed: action.payload
+                }
+            
            default :
                return state     
       }
