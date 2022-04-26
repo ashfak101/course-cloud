@@ -2,12 +2,18 @@ import { Box, Tab, Tabs, Typography } from "@mui/material";
 import { useState } from "react";
 import BlogsHero from "components/blogs/BlogsHero";
 import BlogPageCard from "components/blogs/BlogPageCard";
+import { GetStaticProps } from "next";
+import { BlogsData, GetBlogsData } from "../../../types-blog";
 
 interface TabPanelProps {
  children?: React.ReactNode;
  index: number;
  value: number;
 }
+
+type Props = {
+ blogs: BlogsData[];
+};
 
 function TabPanel(props: TabPanelProps) {
  const { children, value, index, ...other } = props;
@@ -36,9 +42,8 @@ function a11yProps(index: number) {
  };
 }
 
-const Blogs = () => {
+const Blogs = ({ blogs }: Props) => {
  const [value, setValue] = useState(0);
-
  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
   setValue(newValue);
  };
@@ -94,8 +99,19 @@ const Blogs = () => {
     </Box>
    </Box>
 
-   <BlogPageCard />
+   <BlogPageCard blogs={blogs} />
   </>
  );
 };
 export default Blogs;
+
+export const getStaticProps: GetStaticProps = async (context) => {
+ const blogResponse = await fetch("https://api.npoint.io/25e8205992894fabbd1d");
+ const blogs: GetBlogsData = await blogResponse.json();
+
+ return {
+  props: {
+   blogs,
+  },
+ };
+};
