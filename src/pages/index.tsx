@@ -44,6 +44,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 const blogs: GetBlogsData = await blogResponse.json();
 
 
+
  const courses: GetCoursesData = await courseResponse.json();
 
  return {
