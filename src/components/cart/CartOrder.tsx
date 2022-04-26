@@ -35,7 +35,7 @@ const CartOrder = () => {
               Certificate in British Sign Language <br/>
 (BSL) Level 1 & 2
               </Typography>
-              <Typography sx={{fontFamily:"Lato",fontWeight:"500",fontSize:"20px", fontStyle:"normal", lineHeight:'115.4%', textAlign:'left', color:'#E2B627'}}>
+              <Typography sx={{fontFamily:"Lato",fontWeight:"500",fontSize:"20px", fontStyle:"normal", lineHeight:'115.4%', textAlign:'left', color:'#E2B627', marginTop:'10px'}}>
                 £15.00
               </Typography>
           </Item>
@@ -45,7 +45,45 @@ const CartOrder = () => {
           </Item>
         </Grid>
         <Grid item xs={4} xl={6}>
-          <Item>xs=4</Item>
+          <Item sx={{ backgroundColor: "transparent", boxShadow: "0" }}>
+            <Typography sx={{fontFamily:"Lato",fontWeight:"600",fontSize:"30px", fontStyle:"normal", lineHeight:'42px', textAlign:'left', color:'white'}}>
+              Your Order
+            </Typography>
+            <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={2}>
+        <Grid item xs={8} xl={6}>
+          <Item sx={{ backgroundColor: "transparent", boxShadow: "0" }}>
+            <Typography sx={{fontFamily:"Lato",fontWeight:"600",fontSize:"20px", fontStyle:"normal", lineHeight:'42px', textAlign:'left', color:'white'}}>
+              Product
+            </Typography>
+          </Item>
+        </Grid>
+        <Grid item xs={4} xl={6}>
+          <Item sx={{ backgroundColor: "transparent", boxShadow: "0" }}>
+          <Typography sx={{fontFamily:"Lato",fontWeight:"600",fontSize:"20px", fontStyle:"normal", lineHeight:'42px', textAlign:'right', color:'white'}}>
+              Subtotal
+            </Typography>
+          </Item>
+        </Grid>
+        <Grid item xs={4} xl={6}>
+          <Item sx={{ backgroundColor: "transparent", boxShadow: "0" }}>
+          <Typography sx={{fontFamily:"Lato",fontWeight:"600",fontSize:"20px", fontStyle:"normal", lineHeight:'42px', textAlign:'left', color:'white'}}>
+          Certificate in British Sign Language <br/>
+(BSL) Level 1 & 2
+          </Typography>
+          </Item>
+        </Grid>
+        <Grid item xs={8} xl={6}>
+          <Item sx={{ backgroundColor: "transparent", boxShadow: "0" }}>
+          <Typography sx={{fontFamily:"Lato",fontWeight:"600",fontSize:"20px", fontStyle:"normal", lineHeight:'42px', textAlign:'right', color:'white'}}>
+              £15.00
+          </Typography>
+          </Item>
+        </Grid>
+      </Grid>
+      <hr/>
+    </Box>
+          </Item>
         </Grid>
       </Grid>
     </Box>
