@@ -1,101 +1,88 @@
-import { styled } from '@mui/material/styles';
-import { Button, Grid, Paper, Typography } from '@mui/material';
-import { Box } from '@mui/system';
-import Image from 'next/image';
-import React from 'react';
+import { Button, Container, Grid, Paper, Typography } from "@mui/material";
+import { Box } from "@mui/system";
+import Image from "next/image";
+import React from "react";
+import { BlogsData } from "../../../types-blog";
+import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 
-const BlogPageCard = () => {
+type Props = {
+ blogs: BlogsData[];
+};
 
-    const Item = styled(Paper)(({ theme }) => ({
-        backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-        ...theme.typography.body2,
-        padding: theme.spacing(0.5),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-    }));
-    return (
-        <Box sx={{ display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
-            <Box sx={{ width: '1170px', height: '100%', backgroundColor: '#21252D', display: 'flex', alignItems: 'center', justifyContent: "center", borderRadius: '10px', marginTop: '52px', padding: '20px 20px' }}>
-                <Box sx={{ flexGrow: 1 }}>
-                    <Grid container spacing={2}>
-                        <Grid item xs={12} xl={4} md={4}>
-                            <Item sx={{ backgroundColor: 'transparent', boxShadow: '0' }}>
-                                <Box sx={{ flexGrow: 1 }}>
-                                    <Grid container spacing={2}>
-                                        <Grid item xs={12} xl={12} md={12}>
-                                            <Item sx={{ backgroundColor: 'transparent', boxShadow: '0' }}>
-                                                <Image src="/assets/images/blogone.png" width={366} height={278} alt="" />
-                                            </Item>
-                                        </Grid>
-                                    </Grid>
-                                </Box>
-                            </Item>
-                        </Grid>
-                        <Grid item xs={12} xl={8} md={8}>
-                            <Item sx={{ backgroundColor: 'transparent', boxShadow: '0' }}>
-                                <Box sx={{ flexGrow: 1 }}>
-                                    <Grid container spacing={2}>
-                                        <Grid item xs={10} xl={10} md={10}>
-                                            <Item sx={{ backgroundColor: 'transparent', boxShadow: '0' }}>
-                                                <Typography sx={{ textAlign: 'left', color: 'white' }}>
-                                                    How to Pitch a Video Game: 7 Tips for Pitching <br /> Games
-                                                </Typography>
-                                            </Item>
-                                        </Grid>
-                                        <Grid item xs={12} xl={2} md={2}>
-                                            <Item sx={{ backgroundColor: 'transparent', boxShadow: '0' }}>
-                                                <Typography sx={{ textAlign: 'center', color: '#FFCF5E', backgroundColor: '#4B472A', borderRadius: '5px' }}>
-                                                    Technology
-                                                </Typography>
-                                            </Item>
-                                        </Grid>
-                                        <Grid item xs={12} xl={3} md={3}>
-                                            <Item sx={{ backgroundColor: 'transparent', boxShadow: '0' }}>
-                                                <Typography sx={{ color: 'white', textAlign: 'left' }}>
-                                                    Augest 10th, 2020
-                                                </Typography>
-                                            </Item>
-                                        </Grid>
-                                        <Grid item xs={2} xl={1}>
-                                            <Item sx={{ backgroundColor: 'transparent', boxShadow: '0', textAlign: 'left' }}>
-                                                <Image src="/assets/images/blogauthor.png" width={27} height={27} alt="" />
-                                            </Item>
-                                        </Grid>
-                                        <Grid item xs={4} xl={2}>
-                                            <Item sx={{ backgroundColor: 'transparent', boxShadow: '0' }}>
-                                                <Typography sx={{ color: 'white', textAlign: 'left' }}>
-                                                    By Alan Bell
-                                                </Typography>
-                                            </Item>
-                                        </Grid>
-                                        <Grid item xs={12}>
-                                            <Item sx={{ backgroundColor: 'transparent', boxShadow: '0' }}>
-                                                <Typography sx={{ textAlign: 'left', color: 'white' }}>
-                                                    Certificate in British Sign Language Course Overview If you want to broad up your experiences and development in communication throug, If you want to broad up your experiences and development in communication through…
-                                                </Typography>
-                                            </Item>
-                                        </Grid>
-                                        <Grid item xs={10}>
-                                            <Item sx={{ textAlign: 'left', backgroundColor: 'transparent', boxShadow: '0' }}>
-                                                <Button sx={{ border: '1px solid #CE9D28', width: '154px', height: '40px', color: '#CE9D28' }}>
-                                                    READ MORE
-                                                </Button>
-                                            </Item>
-                                        </Grid>
-                                        <Grid item xs={2}>
-                                            <Item sx={{ backgroundColor: 'transparent', boxShadow: '0', marginTop: '3px' }}>
-                                                <Image src="/assets/images/saved.png" width={21} height={26} alt="" />
-                                            </Item>
-                                        </Grid>
-                                    </Grid>
-                                </Box>
-                            </Item>
-                        </Grid>
-                    </Grid>
-                </Box>
-            </Box>
-        </Box>
-    );
+const BlogPageCard = ({ blogs }: Props) => {
+ return (
+  <Container sx={{ my: 10, display: "flex", justifyContent: "center" }}>
+   <Box sx={{ bgcolor: "#191C23", p: 4, width: { xs: "440px", md: "100%" } }}>
+    <Grid container spacing={2} sx={{ alignItems: "center" }}>
+     <Grid item xs={12} md={4}>
+      <Image
+       src={blogs[0].img}
+       width="366px"
+       height="255px"
+       alt=""
+       objectFit="cover"
+      />
+     </Grid>
+     <Grid item xs={12} md={8} sx={{}}>
+      <Box
+       sx={{
+        display: { xs: "block", md: "flex" },
+        justifyContent: "space-between",
+        alignItems: "center",
+       }}
+      >
+       <Typography sx={{ mr: 1 }} variant="h5">
+        {blogs[0].title}
+       </Typography>
+       <Typography
+        sx={{
+         width: "fit-content",
+         textAlign: "center",
+         mx: "auto",
+         px: "10px",
+         py: "5px",
+         bgcolor: "rgba(251, 222, 68, 0.3)",
+         borderRadius: "5px",
+         color: "rgb(251, 222, 68)",
+        }}
+       >
+        {blogs[0].publishDate}
+       </Typography>
+      </Box>
+      <Box sx={{ my: 2, display: "flex", alignItems: "center" }}>
+       <Typography sx={{ color: "#8B8787" }}>{blogs[0].publishDate}</Typography>
+       <Box sx={{ display: "flex", alignItems: "center", ml: 5 }}>
+        <Image
+         src="/assets/images/instructor-img.png"
+         width="30px"
+         height="30px"
+         alt=""
+         objectFit="cover"
+        />
+        <Typography sx={{ mx: 1 }}>
+         <Typography sx={{ color: "#8B8787" }} component="span">
+          By
+         </Typography>
+         Alan Bell
+        </Typography>
+       </Box>
+      </Box>
+      <Box>
+       <Typography sx={{ my: 2, color: "#8B8787" }}>
+        {blogs[0].startingSection.slice(0, 300)} ...
+       </Typography>
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+       <Button>Read More</Button>
+       <Button>
+        <BookmarkAddIcon />
+       </Button>
+      </Box>
+     </Grid>
+    </Grid>
+   </Box>
+  </Container>
+ );
 };
 
 export default BlogPageCard;
