@@ -5,7 +5,7 @@ import CheckoutOrder from "./CheckoutOrder"
 
 const Checkout = () => {
   return (
-        <Box sx={{mt:10}}>
+        <Box>
             <Container  maxWidth='xl'>
                 <Box sx={{flexGrow:1,bgcolor:'#191C23',borderRadius:'10px',m:6}}>
                     <Grid container spacing={1}>

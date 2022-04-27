@@ -5,6 +5,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { Box } from "@mui/system";
 import { BlogsData } from "../../../types-blog";
+import BlogCard from "components/shared/blogcard/BlogCard";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -41,30 +42,23 @@ const BlogDetails = (props: Props) => {
 
 
                                 <Typography sx={{ fontFamily: 'Lato', fontStyle: 'normal', fontWeight: '400', fontSize: '20px', lineHeight: '180%', textAlign: 'left', marginLeft: '25px', color: '#8B8787', marginTop: '31px' }}>
-                                    Teaching is a noble profession. Think about the most respected persons in our society. Yes, they are the teachers. If you ask someone about some of his favourite persons, it is most likely to find a teacher of him in his answer. So, being a teacher is an amazing thing. Besides, the career prospect in teaching is also lucrative. In England and Wales, as a Newly Qualified Teacher (NQT) you’ll earn  £24,373 to £30,480 depending on location  Since you have decided to become a teacher, you may be known to all of these.
-
-                                    Getting into teaching requires many years of preparation. If you don’t know how to become a teacher, you may find the way challenging. So, in this article, I’ll walk you through the steps to becoming a teacher in the UK.
+                                    {blog.startingSection}
                                 </Typography>
-                                <Typography sx={{ fontFamily: 'Lato', fontStyle: 'normal', fontWeight: '700', fontSize: '22px', lineHeight: '140%', textAlign: 'left', marginLeft: '25px', marginTop: '40px', color: '#FBF4F4' }}>7 Steps to becoming a teacher</Typography>
+                                <Typography sx={{ fontFamily: 'Lato', fontStyle: 'normal', fontWeight: '700', fontSize: '22px', lineHeight: '140%', textAlign: 'left', marginLeft: '25px', marginTop: '40px', color: '#FBF4F4' }}>{blog.secondSection.title}</Typography>
                                 <Typography sx={{ fontFamily: 'Lato', fontStyle: 'normal', fontWeight: '400', fontSize: '20px', lineHeight: '180%', textAlign: 'left', marginLeft: '25px', color: '#8B8787', marginTop: '31px' }}>
-                                    Being a teacher is always exciting. It opens a new horizon for us to serve and build the nation in a noble way. In order to become a teacher, you have to undertake a number of steps. So let’s get started to explore:
+                                    {blog.secondSection.summary}
                                 </Typography>
-                                <Typography sx={{ fontFamily: 'Lato', fontStyle: 'normal', fontWeight: '700', fontSize: '22px', lineHeight: '140%', textAlign: 'left', marginLeft: '25px', marginTop: '40px', color: '#FBF4F4' }}>1. Decide what type of teacher you want to be</Typography>
+                                <Typography sx={{ fontFamily: 'Lato', fontStyle: 'normal', fontWeight: '700', fontSize: '22px', lineHeight: '140%', textAlign: 'left', marginLeft: '25px', marginTop: '40px', color: '#FBF4F4' }}>{blog.secondSection.point1}</Typography>
                                 <Typography sx={{ fontFamily: 'Lato', fontStyle: 'normal', fontWeight: '400', fontSize: '20px', lineHeight: '180%', textAlign: 'left', marginLeft: '25px', color: '#8B8787', marginTop: '31px' }}>
-                                    Teachers can be of several types such as nursery teachers, school teachers, special teachers, professors and so on. So, before stepping into the route to become a teacher, decide first what type of teacher you want to be. In the UK, the education system is broadly divided into two systems. These are:
-
-                                    Primary Schools- Age 5 to 11 years
-                                    Secondary Schools- Age 11 to 16 years
+                                    {blog.secondSection.point1Content}
                                 </Typography>
-                                <Typography sx={{ fontFamily: 'Lato', fontStyle: 'normal', fontWeight: '700', fontSize: '22px', lineHeight: '140%', textAlign: 'left', marginLeft: '25px', marginTop: '40px', color: '#FBF4F4' }}>2. Decide your preferred subject</Typography>
+                                <Typography sx={{ fontFamily: 'Lato', fontStyle: 'normal', fontWeight: '700', fontSize: '22px', lineHeight: '140%', textAlign: 'left', marginLeft: '25px', marginTop: '40px', color: '#FBF4F4' }}>{blog.secondSection.point2}</Typography>
                                 <Typography sx={{ fontFamily: 'Lato', fontStyle: 'normal', fontWeight: '400', fontSize: '20px', lineHeight: '180%', textAlign: 'left', marginLeft: '25px', color: '#8B8787', marginTop: '31px' }}>
-                                    In primary schools, you may be responsible for teaching multiple subjects. But in the secondary schools, it’s most likely that you’ll be teaching the subject in which you did your major. So, it’s your choice which subject do you want to teach. It’s necessary to decide this because it will keep you on the track to become a teacher and step forward to make your preparation.
+                                    {blog.secondSection.point2Content}
                                 </Typography>
-                                <Typography sx={{ fontFamily: 'Lato', fontStyle: 'normal', fontWeight: '700', fontSize: '22px', lineHeight: '140%', textAlign: 'left', marginLeft: '25px', marginTop: '40px', color: '#FBF4F4' }}>3. Earn your bachelor degree</Typography>
+                                <Typography sx={{ fontFamily: 'Lato', fontStyle: 'normal', fontWeight: '700', fontSize: '22px', lineHeight: '140%', textAlign: 'left', marginLeft: '25px', marginTop: '40px', color: '#FBF4F4' }}>{blog.secondSection.point3}</Typography>
                                 <Typography sx={{ fontFamily: 'Lato', fontStyle: 'normal', fontWeight: '400', fontSize: '20px', lineHeight: '180%', textAlign: 'left', marginLeft: '25px', color: '#8B8787', marginTop: '31px' }}>
-                                    Unlike many other professions, teaching is very strict in its requirements. It’s because we don’t want to give the responsibility of educating our children to someone who doesn’t have the proper education and credentials. So, getting into teaching requires a minimum degree in the first place. After that, the other things come. You need a bachelor degree to become a teacher. There are also other specialized and advanced degrees, but you need your bachelor degree before everything.
-
-                                    If you want to be a primary teacher, then you’ll need a degree of Bachelor of Education (BEd.) But, if you want to be a secondary teacher, you have to do your bachelor in your preferred subject. Your major in your degree will determine which subject you’ll be teaching. Earning a bachelor degree will require 3 to 4 years. However, if you want to be a nursery or pre-school teacher, you don’t need a bachelor degree rather a proper license and certification in teaching children.
+                                    {blog.secondSection.point3Content}
                                 </Typography>
                             </Item>
                         </Grid>
@@ -112,9 +106,18 @@ const BlogDetails = (props: Props) => {
                         </Grid>
                     </Grid>
                 </Box>
-
-
-
+            </Container>
+            <Container maxWidth="xl">
+                <Typography sx={{ fontFamily: 'Lato', fontStyle: 'normal', fontWeight: '700', fontSize: '36px', lineHeight: '43px', textAlign: { xl: 'left', xs: 'center' }, color: 'white', marginBottom: '35px', marginTop: '110px', marginLeft: { xl: '70px' } }}>Our Recent Blogs</Typography>
+                <Box sx={{ flexGrow: 1 }}>
+                    <Grid container spacing={2}>
+                        {allBlogsData.slice(0, 3).map((allblog) => (
+                            <Grid item xs={12} xl={4} md={4} sx={{ display: 'flex', justifyContent: 'center' }} key={allblog.id}>
+                                <Item sx={{ backgroundColor: "transparent", boxShadow: "0", textAlign: 'left' }}><BlogCard blog={allblog} /></Item>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Box>
             </Container>
         </>
     )
