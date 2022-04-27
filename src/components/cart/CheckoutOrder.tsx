@@ -12,8 +12,10 @@ const Item = styled(Paper)(({ theme }) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
 }));
-
-const CheckoutOrder = () => {
+type Props = {
+    handleNext: () => void
+  }
+const CheckoutOrder = (props:Props) => {
     return (
         <Box sx={{
             my: 10, width: {
@@ -77,7 +79,7 @@ const CheckoutOrder = () => {
                                             </Item>
                                         </Grid>
                                         <Grid item xs={12} xl={12}>
-                                            <CommonButton textValue="PAY NOW" fontSize="1rem" onClick={() => alert("hello")} />
+                                            <CommonButton textValue="PAY NOW" fontSize="1rem" onClick={() => props.handleNext()} />
                                         </Grid>
                                     </Grid>
                                 </Box>

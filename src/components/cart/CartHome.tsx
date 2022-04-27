@@ -53,8 +53,8 @@ const CartHome = () => {
               const labelProps = {};
 
               return (
-                <Step key={label} {...stepProps}>
-                  <StepLabel {...labelProps} sx={{ display: 'flex', flexDirection: 'column' }}>{label}</StepLabel>
+                <Step key={label} {...stepProps} sx={{}}>
+                  <StepLabel {...labelProps} sx={{ display: 'flex', flexDirection: 'column',color:'yellow' }}>{label}</StepLabel>
                 </Step>
               );
             })}
@@ -64,10 +64,11 @@ const CartHome = () => {
           </Button> */}
         </Box>
       </Container >
-      {/* {activeStep === steps.length - 3 && <CartOrder handleNext={handleNext}></CartOrder>}
-      {activeStep === steps.length - 2 && <Checkout />} */}
-      {/* <Checkout/> */}
-      <OrderSucces/>
+      {activeStep === steps.length - 3 && <CartOrder handleNext={handleNext}></CartOrder>}
+      {activeStep === steps.length - 2 && <Checkout handleNext={handleNext} />}
+      {activeStep === steps.length - 1 && <OrderSucces/>}
+    
+      {/*  */}
     </>
   )
 }
