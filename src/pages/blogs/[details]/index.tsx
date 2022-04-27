@@ -5,6 +5,7 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { Box } from "@mui/system";
 import BlogDetails from "components/blogdetails/BlogDetails";
+import { GetCoursesData } from "../../../../types";
 
 const Item = styled(Paper)(({ theme }) => ({
  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -14,10 +15,10 @@ const Item = styled(Paper)(({ theme }) => ({
  color: theme.palette.text.secondary,
 }));
 
-const BlogDetail = ({ blog, allBlogsData }: any) => {
+const BlogDetail = ({ blog, allBlogsData, courses }: any) => {
  return (
   <>
-   <BlogDetails blog={blog} allBlogsData={allBlogsData} />
+   <BlogDetails blog={blog} allBlogsData={allBlogsData} courses={courses} />
   </>
  );
 };
@@ -48,5 +49,10 @@ export async function getStaticProps(context: any) {
  );
  const allBlogsData = await allBlogsRes.json();
 
- return { props: { blog, allBlogsData } };
+ const courseResponse = await fetch(
+  "https://api.npoint.io/8b635b31d3c9d683fcec"
+ );
+ const courses: GetCoursesData = await courseResponse.json();
+
+ return { props: { blog, allBlogsData, courses } };
 }
