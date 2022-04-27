@@ -30,6 +30,9 @@ const ProductInfo = (props: Props) => {
                     </Grid>
                     <Grid item xs={12} xl={8}>
                         <Item sx={{ backgroundColor: "transparent", boxShadow: "0" }}>
+                            <Typography sx={{ fontFamily: "Lato", fontWeight: "400", fontSize: "15px", fontStyle: "normal", lineHeight: '145%', textAlign: 'left', color: 'white' }}>
+                                {product.courseType}
+                            </Typography>
                             <Typography sx={{ fontFamily: "Lato", fontWeight: "700", fontSize: "20px", fontStyle: "normal", lineHeight: '145%', textAlign: 'left', color: 'white' }}>
                                 {product.title}
                             </Typography>
