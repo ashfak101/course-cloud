@@ -37,55 +37,55 @@ const CheckoutForm = () => {
   return (
     <Box sx={{ p: 6 }}>
       <Typography sx={{ fontSize: '30px', color: '#E4E4E4', fontWeight: '600', my: 2 }}>Your Billing Details</Typography>
-      <FormControl variant="standard" sx={{ mt: 2 }}>
+      <FormControl variant="standard" sx={{ mt: 2,width:'100%' }}>
         <InputLabel sx={{ color: "#fff", }} shrink htmlFor="Name-input">
           First Name
         </InputLabel>
         <CustomInput defaultValue="John" id="Name-input" />
       </FormControl>
-      <FormControl variant="standard" sx={{ mt: 2 }}>
+      <FormControl variant="standard" sx={{ mt: 2,width:'100%' }}>
         <InputLabel sx={{ color: "#fff", }} shrink htmlFor="Last-input">
           Last Name
         </InputLabel>
         <CustomInput defaultValue="Mathew" id="Last-input" />
       </FormControl>
-      <FormControl variant="standard" sx={{ mt: 2 }}>
+      <FormControl variant="standard" sx={{ mt: 2,width:'100%' }}>
         <InputLabel sx={{ color: "#fff" }} shrink htmlFor="Email-input">
           Email
         </InputLabel>
         <CustomInput defaultValue="yourmail@anymail.com" id="Email-input" />
       </FormControl>
-      <FormControl variant="standard" sx={{ mt: 2 }}>
+      <FormControl variant="standard" sx={{ mt: 2,width:'100%' }}>
         <InputLabel sx={{ color: "#fff" }} shrink htmlFor="Country-input">
           Country
         </InputLabel>
         <CustomInput defaultValue="United Kingdom" id="Country-input" />
       </FormControl>
-      <FormControl variant="standard" sx={{ mt: 2 }}>
+      <FormControl variant="standard" sx={{ mt: 2,width:'100%' }}>
         <InputLabel sx={{ color: "#fff" }} shrink htmlFor="Street-input">
           Street Address
         </InputLabel>
         <CustomInput defaultValue="14 Cumberland Avenue" id="Street-input" />
       </FormControl>
-      <FormControl variant="standard" sx={{ mt: 2 }}>
+      <FormControl variant="standard" sx={{ mt: 2,width:'100%' }}>
         <InputLabel sx={{ color: "#fff" }} shrink htmlFor="Town-input">
           Town/City
         </InputLabel>
         <CustomInput defaultValue="London" id="Town-input" />
       </FormControl>
-      <FormControl variant="standard" sx={{ mt: 2 }}>
+      <FormControl variant="standard"  sx={{ mt: 2,width:'100%' }}>
         <InputLabel sx={{ color: "#fff" }} shrink htmlFor="Post-input">
           Post Code
         </InputLabel>
         <CustomInput defaultValue="NW10 7QL" id="Name-input" />
       </FormControl>
-      <FormControl variant="standard" sx={{ mt: 2 }}>
+      <FormControl variant="standard"  sx={{ mt: 2,width:'100%' }}>
         <InputLabel sx={{ color: "#fff" }} shrink htmlFor="Phone-input">
           Phone
         </InputLabel>
         <CustomInput defaultValue="+00 123 456 789" id="Phone-input" />
       </FormControl>
-      <FormControl variant="standard" sx={{ mt: 2 }}>
+      <FormControl variant="standard"  sx={{ mt: 2,width:'100%' }}>
         <InputLabel sx={{ color: "#fff" }} shrink htmlFor="Course-input">
           Company (optional)
         </InputLabel>
