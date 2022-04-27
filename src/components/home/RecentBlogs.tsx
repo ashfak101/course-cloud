@@ -4,6 +4,7 @@ import BlogCard from "components/shared/blogcard/BlogCard";
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import { BlogsData } from "../../../types-blog";
+import Link from "next/link";
 
 
 type Props = {
@@ -20,7 +21,6 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const RecentBlogs = ({ blogs }: Props) => {
-  // console.log('blogs alskdjflkasjflkasjflk', blogs);
   return (
     <>
       <Container maxWidth="xl">
@@ -39,7 +39,9 @@ const RecentBlogs = ({ blogs }: Props) => {
             width: '230px', height: '60px', borderRadius: '5px', border: '1px solid white', color: 'white', marginTop: '50px', fontFamily: 'Lato', fontStyle: 'normal', fontWeight: '500', fontSize: '18px', lineHeight: '71.5%', marginBottom: '110px', ":hover": {
               bgcolor: "#5193F6", border: "0px"
             },
-          }}>READ MORE</Button>
+          }}><Link href="/blogs" passHref>
+              <a>READ MORE</a>
+            </Link></Button>
         </Box>
       </Container>
     </>
