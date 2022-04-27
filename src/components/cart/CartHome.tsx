@@ -45,7 +45,7 @@ const CartHome = () => {
         </Container>
       </Box>
       <Container maxWidth='xl'>
-        <Box sx={{ width: '100%',p:5 }}>
+        <Box sx={{ width: '100%', p: 5 }}>
           <Stepper activeStep={activeStep}>
             {steps.map((label, index) => {
               const stepProps = {};
@@ -63,9 +63,9 @@ const CartHome = () => {
           </Button> */}
         </Box>
       </Container >
-      {/* {activeStep === steps.length - 3 && <CartOrder handleNext={handleNext}></CartOrder>}
-      {activeStep === steps.length - 2 && <Checkout />} */}
-      <Checkout/>
+      {activeStep === steps.length - 3 && <CartOrder handleNext={handleNext}></CartOrder>}
+      {activeStep === steps.length - 2 && <Checkout />}
+      {/* <Checkout/> */}
     </>
   )
 }

@@ -34,3 +34,9 @@ export const addCoupon = (payload:boolean) => {
         payload
     }
 }
+export const decreaseItemPrice = (payload:string) => {
+    return {
+        type: 'DECREASE_PRICE',
+        payload
+    }
+}
