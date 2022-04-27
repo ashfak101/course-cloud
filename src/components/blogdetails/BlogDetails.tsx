@@ -68,7 +68,7 @@ const BlogDetails = (props: Props) => {
                             </Item>
                             <Grid item xs={12}>
                                 {allBlogsData.slice(0, 10).map((allblog) => (
-                                    <Item sx={{ backgroundColor: 'transparent', boxShadow: '0' }}>
+                                    <Item key={allblog.id} sx={{ backgroundColor: 'transparent', boxShadow: '0' }}>
                                         <Box sx={{ flexGrow: 1, borderBottom: '1px solid #E2B62738' }}>
                                             <Grid container spacing={2}>
                                                 <Grid item xs={6} xl={4} md={5}>
@@ -108,15 +108,17 @@ const BlogDetails = (props: Props) => {
                 </Box>
             </Container>
             <Container maxWidth="xl">
-                <Typography sx={{ fontFamily: 'Lato', fontStyle: 'normal', fontWeight: '700', fontSize: '36px', lineHeight: '43px', textAlign: { xl: 'left', xs: 'center' }, color: 'white', marginBottom: '35px', marginTop: '110px', marginLeft: { xl: '70px' } }}>Our Recent Blogs</Typography>
-                <Box sx={{ flexGrow: 1 }}>
-                    <Grid container spacing={2}>
-                        {allBlogsData.slice(0, 3).map((allblog) => (
-                            <Grid item xs={12} xl={4} md={4} sx={{ display: 'flex', justifyContent: 'center' }} key={allblog.id}>
-                                <Item sx={{ backgroundColor: "transparent", boxShadow: "0", textAlign: 'left' }}><BlogCard blog={allblog} /></Item>
-                            </Grid>
-                        ))}
-                    </Grid>
+                <Box sx={{ backgroundColor: '#191C23' }}>
+                    <Typography sx={{ fontFamily: 'Lato', fontStyle: 'normal', fontWeight: '700', fontSize: '36px', lineHeight: '43px', textAlign: { xl: 'left', xs: 'center' }, color: 'white', marginBottom: '35px', marginTop: '110px', marginLeft: { xl: '70px' } }}>More Blogs From Alan</Typography>
+                    <Box sx={{ flexGrow: 1 }}>
+                        <Grid container spacing={2}>
+                            {allBlogsData.slice(0, 3).map((allblog) => (
+                                <Grid item xs={12} xl={4} md={4} sx={{ display: 'flex', justifyContent: 'center' }} key={allblog.id}>
+                                    <Item sx={{ backgroundColor: "transparent", boxShadow: "0", textAlign: 'left' }}><BlogCard blog={allblog} /></Item>
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </Box>
                 </Box>
             </Container>
         </>
