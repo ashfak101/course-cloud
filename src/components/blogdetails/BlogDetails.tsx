@@ -107,20 +107,22 @@ const BlogDetails = (props: Props) => {
                     </Grid>
                 </Box>
             </Container>
-            <Container maxWidth="xl">
-                <Box sx={{ backgroundColor: '#191C23' }}>
-                    <Typography sx={{ fontFamily: 'Lato', fontStyle: 'normal', fontWeight: '700', fontSize: '36px', lineHeight: '43px', textAlign: { xl: 'left', xs: 'center' }, color: 'white', marginBottom: '35px', marginTop: '110px', marginLeft: { xl: '70px' } }}>More Blogs From Alan</Typography>
+            <Box sx={{ backgroundColor: '#191C23' }}>
+                <Container maxWidth="xl">
+
+                    <Typography sx={{ fontFamily: 'Lato', fontStyle: 'normal', fontWeight: '700', fontSize: '36px', lineHeight: '43px', textAlign: { xl: 'left', xs: 'center' }, color: 'white', marginBottom: '35px', marginTop: '110px', marginLeft: { xl: '70px' }, paddingTop: '34px' }}>More Blogs From Alan</Typography>
                     <Box sx={{ flexGrow: 1 }}>
                         <Grid container spacing={2}>
                             {allBlogsData.slice(0, 3).map((allblog) => (
                                 <Grid item xs={12} xl={4} md={4} sx={{ display: 'flex', justifyContent: 'center' }} key={allblog.id}>
-                                    <Item sx={{ backgroundColor: "transparent", boxShadow: "0", textAlign: 'left' }}><BlogCard blog={allblog} /></Item>
+                                    <Item sx={{ backgroundColor: "transparent", boxShadow: "0", textAlign: 'left', marginBottom: '64px' }}><BlogCard blog={allblog} /></Item>
                                 </Grid>
                             ))}
                         </Grid>
                     </Box>
-                </Box>
-            </Container>
+
+                </Container>
+            </Box>
         </>
     )
 }
