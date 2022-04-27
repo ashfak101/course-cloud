@@ -18,10 +18,10 @@ const CartHome = () => {
   const [activeStep, setActiveStep] = useState<number>(0);
   const [skipped, setSkipped] = useState(new Set());
 
-  const isStepOptional = (step:number) => {
+  const isStepOptional = (step: number) => {
     return step === 1
   }
-  const isStepSkipped = (step:number) => {
+  const isStepSkipped = (step: number) => {
     return skipped.has(step);
   };
   const handleNext = () => {
@@ -50,21 +50,22 @@ const CartHome = () => {
             {steps.map((label, index) => {
               const stepProps = {};
               const labelProps = {};
-              
+
               return (
                 <Step key={label} {...stepProps}>
-                  <StepLabel {...labelProps}>{label}</StepLabel>
+                  <StepLabel {...labelProps} sx={{ display: 'flex', flexDirection: 'column' }}>{label}</StepLabel>
                 </Step>
               );
             })}
           </Stepper>
-          <Button onClick={handleNext}>
-              {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-            </Button>
+          {/* <Button onClick={handleNext}>
+            {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+          </Button> */}
         </Box>
       </Container >
-      {activeStep === steps.length-3 && <CartOrder></CartOrder>}
-     {activeStep === steps.length-2 &&  <Checkout />}
+      {/* {activeStep === steps.length - 3 && <CartOrder handleNext={handleNext}></CartOrder>}
+      {activeStep === steps.length - 2 && <Checkout />} */}
+      <Checkout/>
     </>
   )
 }
