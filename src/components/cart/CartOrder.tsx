@@ -9,7 +9,7 @@ import { State } from 'redux/reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductInfo from './ProductInfo';
 import { CartState } from 'redux/reducers/cartReducer';
-import { addCoupon, addTotal } from 'redux/actions/cartAction';
+import { addCoupon, addSubTotal, addTotal } from 'redux/actions/cartAction';
 import { ToastContainer, toast } from 'react-toastify';
 import ClearIcon from "@mui/icons-material/Clear";
 import 'react-toastify/dist/ReactToastify.css';
@@ -46,17 +46,22 @@ const Styles = {
     display: 'flex', justifyContent: 'space-between', my: 4, color: '#FBF4F4', borderBottom: '0.568px solid #C6C6C6', pb: 2
   }
 }
-type Props ={
-  handleNext:()=>void
+type Props = {
+  handleNext: () => void
 }
-const CartOrder = (props:Props) => {
+const CartOrder = (props: Props) => {
 
-  const [coupon, setCupon] = React.useState('');
+  const [coupon, setCoupon] = React.useState('');
   const [error, setError] = React.useState('')
 
-  const { cart, subTotal, total, disCountPrice, cuponUsed }: CartState = useSelector((state: State) => state.allCartItem);
+  const { cart,
+    subTotal,
+    total,
+    disCountPrice,
+    cuponUsed }: CartState = useSelector((state: State) => state.allCartItem);
   const dispatch = useDispatch();
 
+  // console.log(subTotal, total)
   const notify = () => {
     toast.success('Coupon added', {
       position: "bottom-right",
@@ -71,12 +76,32 @@ const CartOrder = (props:Props) => {
 
   const handleDiscount = (e: any) => {
     e.preventDefault();
-    if (coupon === "discount") {
+    if (coupon === "50discount") {
       dispatch(addTotal(subTotal / 2));
       dispatch(addCoupon(true));
       notify();
 
-    } else if (coupon === "") {
+    }
+    else if (coupon === "sports") {
+      // dispatch(decreaseItemPrice("sports"))
+      let newSubTotal = 0;
+      cart.forEach(item => {
+        newSubTotal += parseFloat(item.mainPrice);
+        dispatch(addSubTotal(newSubTotal));
+        dispatch(addTotal(newSubTotal));
+      })
+
+      dispatch(addCoupon(true));
+      notify();
+
+    }
+    else if (coupon === "offer") {
+      dispatch(addTotal(subTotal - 500));
+      dispatch(addCoupon(true));
+      notify();
+
+    }
+    else if (coupon === "") {
       setError("Enter a Coupon code");
     } else {
       setError("Wrong Code");
@@ -84,12 +109,25 @@ const CartOrder = (props:Props) => {
   };
 
   const cancelCoupon = () => {
-    dispatch(addCoupon(false));
+
+    if (coupon == 'sports') {
+      // dispatch(decreaseItemPrice('sports'));
+      let newSubTotal = 0;
+      cart.forEach(item => {
+        newSubTotal += parseFloat(item.mainPrice);
+        dispatch(addSubTotal(newSubTotal));
+        dispatch(addTotal(subTotal));
+      })
+      return;
+    }
     dispatch(addTotal(subTotal));
+    dispatch(addCoupon(false));
+
+
   }
 
-  const handleCuponChange = (e: any) => {
-    setCupon(e.target.value);
+  const handleCouponChange = (e: any) => {
+    setCoupon(e.target.value);
   };
 
   setTimeout(() => {
@@ -104,7 +142,7 @@ const CartOrder = (props:Props) => {
             <Grid item xs={12} xl={6}>
               {
                 cart.map((item) => (
-                  <ProductInfo key={item.id} product={item} />
+                  <ProductInfo key={item?.id} product={item} />
                 ))
               }
             </Grid>
@@ -136,7 +174,7 @@ const CartOrder = (props:Props) => {
                 </Box>
                 <Box>
                   <form onSubmit={handleDiscount}>
-                    <CssTextField sx={{ background: "#fff", borderRadius: '5px' }} id="outlined-basic" placeholder='Enter Cupon' variant="outlined" onBlur={handleCuponChange} />
+                    <CssTextField sx={{ background: "#fff", borderRadius: '5px' }} id="outlined-basic" placeholder='Enter Cupon' variant="outlined" onBlur={handleCouponChange} />
                     <Button type='submit' variant='contained' sx={{
                       fontSize: '15px'
                       , color: '#191C21',
@@ -171,12 +209,12 @@ const CartOrder = (props:Props) => {
                     draggable
                     pauseOnHover
                   />
-                   <Button sx={{
+                  <Button sx={{
                     fontSize: '15px'
                     , color: '#191C21',
                     bgcolor: '#D19F28',
                     p: "15px 65px",
-                    mt:2,
+                    mt: 2,
                     "&:hover": {
                       bgcolor: '#FBDE44'
                     }

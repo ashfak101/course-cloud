@@ -106,7 +106,9 @@ const Blogs = ({ blogs }: Props) => {
 export default Blogs;
 
 export const getStaticProps: GetStaticProps = async (context) => {
- const blogResponse = await fetch("https://api.npoint.io/25e8205992894fabbd1d");
+ const blogResponse = await fetch(
+  "https://tawsifhye.github.io/data/coursecloudblogs.json"
+ );
  const blogs: GetBlogsData = await blogResponse.json();
 
  return {

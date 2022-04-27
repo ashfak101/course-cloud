@@ -1,3 +1,4 @@
+import { addSubTotal } from 'redux/actions/cartAction';
 import { type } from 'os';
 import { CoursesOnDeal } from "../../../types";
 
@@ -50,6 +51,24 @@ export const cartReducer=(state:CartState=initialState,action:Actions)=>{
                     ...state,
                     cuponUsed: action.payload
                 }
+            /* case'DECREASE_PRICE':
+                return {
+                    ...state,
+                    cart: state.cart.map((item=>{
+                        if (item.courseType.toLowerCase() == action.payload && !state.cuponUsed) {
+                            const newPrice = parseFloat(item.mainPrice) - 200;
+                            item.mainPrice = newPrice.toString();
+                            state.subTotal = state.subTotal - 200;
+                          }
+                          if(item.courseType.toLowerCase() == action.payload && state.cuponUsed){
+                            const newPrice = parseFloat(item.mainPrice) + 200;
+                            item.mainPrice = newPrice.toString();
+                            state.subTotal = state.subTotal + 200;
+                          }
+                          return item;
+                    })),
+                } */
+                
             
            default :
                return state     
