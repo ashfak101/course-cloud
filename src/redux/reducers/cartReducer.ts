@@ -37,7 +37,7 @@ export const cartReducer=(state:CartState=initialState,action:Actions)=>{
           case  "ADD_SUBTOTAL":
               return{
                   ...state,
-                  subTotal:state.subTotal+ parseFloat(action.payload)
+                  subTotal:action.payload
               }    
           case "DISCOUNT_PRICE":
               return{
