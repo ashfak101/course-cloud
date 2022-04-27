@@ -9,8 +9,10 @@ import { State } from 'redux/reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductInfo from './ProductInfo';
 import { CartState } from 'redux/reducers/cartReducer';
-import { addCupon, addTotal } from 'redux/actions/cartAction';
-
+import { addCoupon, addTotal } from 'redux/actions/cartAction';
+import { ToastContainer, toast } from 'react-toastify';
+import ClearIcon from "@mui/icons-material/Clear";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -46,25 +48,42 @@ const Styles = {
 }
 const CartOrder = () => {
 
-  const [cupon, setCupon] = React.useState('');
+  const [coupon, setCupon] = React.useState('');
   const [error, setError] = React.useState('')
 
   const { cart, subTotal, total, disCountPrice, cuponUsed }: CartState = useSelector((state: State) => state.allCartItem);
   const dispatch = useDispatch();
 
+  const notify = () => {
+    toast.success('Coupon added', {
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
 
   const handleDiscount = (e: any) => {
     e.preventDefault();
-    if (cupon === "discount") {
+    if (coupon === "discount") {
       dispatch(addTotal(subTotal / 2));
-      dispatch(addCupon(true));
+      dispatch(addCoupon(true));
+      notify();
 
-    } else if (cupon === "") {
-      setError("Enter a cupon code");
+    } else if (coupon === "") {
+      setError("Enter a Coupon code");
     } else {
       setError("Wrong Code");
     }
   };
+
+  const cancelCoupon = () => {
+    dispatch(addCoupon(false));
+    dispatch(addTotal(subTotal));
+  }
 
   const handleCuponChange = (e: any) => {
     setCupon(e.target.value);
@@ -123,12 +142,32 @@ const CartOrder = () => {
                       "&:hover": {
                         bgcolor: '#FBDE44'
                       }
-                    }}>Apply</Button>
+                    }}
+                      disabled={cuponUsed}
+                    >Apply</Button>
                   </form>
 
                   {
                     error && <Container sx={{ margin: '5px 0' }}> <Alert severity="error">{error}</Alert> </Container>
                   }
+                  {cuponUsed && (
+                    <Typography
+                      sx={{ color: "white", display: "flex", alignItems: "center" }}
+                    >
+                      {coupon} <ClearIcon onClick={cancelCoupon} />
+                    </Typography>
+                  )}
+                  <ToastContainer
+                    position="bottom-right"
+                    autoClose={2000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                  />
                 </Box>
               </Item>
             </Grid>

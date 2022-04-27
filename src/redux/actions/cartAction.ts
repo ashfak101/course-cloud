@@ -28,7 +28,7 @@ export const addDiscount = (payload:number) => {
     }
 }
 
-export const addCupon = (payload:boolean) => {
+export const addCoupon = (payload:boolean) => {
     return {
         type: 'USE_CUPON',
         payload
