@@ -11,7 +11,7 @@ type Props = {
 };
 
 const BlogPageCard = ({ blogs }: Props) => {
-    console.log(blogs);
+    // console.log(blogs);
     const Styles = {
         container: {
             my: 8,
