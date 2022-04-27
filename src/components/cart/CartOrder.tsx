@@ -9,7 +9,7 @@ import { State } from 'redux/reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductInfo from './ProductInfo';
 import { CartState } from 'redux/reducers/cartReducer';
-import { addCoupon, addSubTotal, addTotal, decreaseItemPrice } from 'redux/actions/cartAction';
+import { addCoupon, addSubTotal, addTotal } from 'redux/actions/cartAction';
 import { ToastContainer, toast } from 'react-toastify';
 import ClearIcon from "@mui/icons-material/Clear";
 import 'react-toastify/dist/ReactToastify.css';
@@ -83,7 +83,7 @@ const CartOrder = (props: Props) => {
 
     }
     else if (coupon === "sports") {
-      dispatch(decreaseItemPrice("sports"))
+      // dispatch(decreaseItemPrice("sports"))
       let newSubTotal = 0;
       cart.forEach(item => {
         newSubTotal += parseFloat(item.mainPrice);
@@ -111,7 +111,7 @@ const CartOrder = (props: Props) => {
   const cancelCoupon = () => {
 
     if (coupon == 'sports') {
-      dispatch(decreaseItemPrice('sports'));
+      // dispatch(decreaseItemPrice('sports'));
       let newSubTotal = 0;
       cart.forEach(item => {
         newSubTotal += parseFloat(item.mainPrice);
