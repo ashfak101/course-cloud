@@ -45,7 +45,7 @@ const CartHome = () => {
         </Container>
       </Box>
       <Container maxWidth='xl'>
-        <Box sx={{ width: '100%' }}>
+        <Box sx={{ width: '100%',p:5 }}>
           <Stepper activeStep={activeStep}>
             {steps.map((label, index) => {
               const stepProps = {};

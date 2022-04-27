@@ -87,7 +87,7 @@ const CheckoutForm = () => {
       </FormControl>
       <FormControl variant="standard" sx={{ mt: 2 }}>
         <InputLabel sx={{ color: "#fff" }} shrink htmlFor="Course-input">
-        Company (optional)
+          Company (optional)
         </InputLabel>
         <CustomInput defaultValue="Course Cloud" id="Course-input" />
       </FormControl>
