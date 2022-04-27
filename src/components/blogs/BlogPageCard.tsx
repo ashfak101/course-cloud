@@ -10,77 +10,108 @@ type Props = {
 };
 
 const BlogPageCard = ({ blogs }: Props) => {
+ console.log(blogs);
+ const Styles = {
+  container: {
+   my: 8,
+  },
+  cardBox: {
+   bgcolor: "#191C23",
+   p: "10px 40px 20px 40px",
+   width: { xs: "440px", md: "100%" },
+   my: 5,
+   mx: "auto",
+  },
+  cardTitle: {
+   display: { xs: "block", md: "flex" },
+   justifyContent: "space-between",
+   alignItems: "center",
+  },
+  cardTitleCategory: {
+   width: "fit-content",
+   textAlign: "center",
+   mt: 2,
+   mx: "auto",
+   px: "10px",
+   py: "5px",
+   bgcolor: "rgba(251, 222, 68, 0.3)",
+   borderRadius: "5px",
+   color: "rgb(251, 222, 68)",
+  },
+  instructorContainer: {
+   display: "flex",
+   alignItems: "center",
+   ml: 5,
+  },
+  cardButton: {
+   border: "2px solid #D19F28",
+   color: "#D19F28",
+   px: 3,
+   ":hover": { color: "#191C22", bgcolor: "#D19F28" },
+  },
+  secondTitle: {
+   my: 2,
+   display: "flex",
+   alignItems: "center",
+  },
+ };
+
  return (
-  <Container sx={{ my: 10, display: "flex", justifyContent: "center" }}>
-   <Box sx={{ bgcolor: "#191C23", p: 4, width: { xs: "440px", md: "100%" } }}>
-    <Grid container spacing={2} sx={{ alignItems: "center" }}>
-     <Grid item xs={12} md={4}>
-      <Image
-       src={blogs[0].img}
-       width="366px"
-       height="255px"
-       alt=""
-       objectFit="cover"
-      />
-     </Grid>
-     <Grid item xs={12} md={8} sx={{}}>
-      <Box
-       sx={{
-        display: { xs: "block", md: "flex" },
-        justifyContent: "space-between",
-        alignItems: "center",
-       }}
-      >
-       <Typography sx={{ mr: 1 }} variant="h5">
-        {blogs[0].title}
-       </Typography>
-       <Typography
-        sx={{
-         width: "fit-content",
-         textAlign: "center",
-         mx: "auto",
-         px: "10px",
-         py: "5px",
-         bgcolor: "rgba(251, 222, 68, 0.3)",
-         borderRadius: "5px",
-         color: "rgb(251, 222, 68)",
-        }}
-       >
-        {blogs[0].publishDate}
-       </Typography>
-      </Box>
-      <Box sx={{ my: 2, display: "flex", alignItems: "center" }}>
-       <Typography sx={{ color: "#8B8787" }}>{blogs[0].publishDate}</Typography>
-       <Box sx={{ display: "flex", alignItems: "center", ml: 5 }}>
-        <Image
-         src="/assets/images/instructor-img.png"
-         width="30px"
-         height="30px"
-         alt=""
-         objectFit="cover"
-        />
-        <Typography sx={{ mx: 1 }}>
-         <Typography sx={{ color: "#8B8787" }} component="span">
-          By
-         </Typography>
-         Alan Bell
+  <Container sx={Styles.container}>
+   {blogs.map((blog) => (
+    <Box key={blog.id} sx={Styles.cardBox}>
+     <Grid container spacing={3} sx={{ alignItems: "center", my: 2 }}>
+      <Grid item xs={12} md={4}>
+       <Image
+        src={blog.img}
+        width="366px"
+        height="255px"
+        alt=""
+        objectFit="cover"
+       />
+      </Grid>
+      <Grid item xs={12} md={8} sx={{}}>
+       <Box sx={Styles.cardTitle}>
+        <Typography sx={{ mr: 1 }} variant="h5">
+         {blog.title}
+        </Typography>
+        <Typography sx={Styles.cardTitleCategory}>
+         {blog.publishDate}
         </Typography>
        </Box>
-      </Box>
-      <Box>
-       <Typography sx={{ my: 2, color: "#8B8787" }}>
-        {blogs[0].startingSection.slice(0, 300)} ...
-       </Typography>
-      </Box>
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-       <Button>Read More</Button>
-       <Button>
-        <BookmarkAddIcon />
-       </Button>
-      </Box>
+       <Box sx={Styles.secondTitle}>
+        <Typography sx={{ color: "#8B8787" }}>{blog.publishDate}</Typography>
+        <Box sx={Styles.instructorContainer}>
+         <Image
+          src="/assets/images/instructor-img.png"
+          width="30px"
+          height="30px"
+          alt=""
+          objectFit="cover"
+         />
+         <Typography sx={{ mx: 1 }}>
+          <Typography sx={{ color: "#8B8787" }} component="span">
+           By{" "}
+          </Typography>
+          Alan Bell
+         </Typography>
+        </Box>
+       </Box>
+       <Box>
+        <Typography sx={{ my: 2, color: "#8B8787" }}>
+         {blog.startingSection.slice(0, 300)} ...
+        </Typography>
+       </Box>
+       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Button sx={Styles.cardButton}>Read More</Button>
+        <Button>
+         <BookmarkAddIcon sx={{ color: "#fff" }} />
+        </Button>
+       </Box>
+      </Grid>
      </Grid>
-    </Grid>
-   </Box>
+    </Box>
+   ))}
   </Container>
  );
 };
