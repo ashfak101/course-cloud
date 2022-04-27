@@ -13,7 +13,7 @@ import { CoursesOnDeal } from "../../../../types";
 import { useState } from "react";
 import { State } from "redux/reducers";
 import { useDispatch, useSelector } from "react-redux";
-import { addCupon, addSubTotal, addToCart } from "redux/actions/cartAction";
+import { addCupon, addSubTotal, addToCart, addTotal } from "redux/actions/cartAction";
 import { useRouter } from "next/router";
 
 type Props = {
@@ -43,6 +43,7 @@ const CourseCard = ({ course, isDiscounted }: Props) => {
         dispatch(addToCart(newCart));
         const estimateSubTotal = subTotal + parseFloat(course.mainPrice)
         dispatch(addSubTotal(estimateSubTotal));
+        dispatch(addTotal(estimateSubTotal));
         dispatch(addCupon(false));
         setIsAdded(true);
     };

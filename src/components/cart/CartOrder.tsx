@@ -3,13 +3,14 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import { Button, Container, TextField, Typography } from '@mui/material';
+import { Alert, Button, Container, TextField, Typography } from '@mui/material';
 
 import { State } from 'redux/reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductInfo from './ProductInfo';
 import { CartState } from 'redux/reducers/cartReducer';
-import { addSubTotal } from 'redux/actions/cartAction';
+import { addCupon, addTotal } from 'redux/actions/cartAction';
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -44,23 +45,37 @@ const Styles = {
   }
 }
 const CartOrder = () => {
+
+  const [cupon, setCupon] = React.useState('');
+  const [error, setError] = React.useState('')
+
   const { cart, subTotal, total, disCountPrice, cuponUsed }: CartState = useSelector((state: State) => state.allCartItem);
   const dispatch = useDispatch();
-  let primaryTotal: number = 0;
 
-  let finalTotal: number = 0;
-  /* React.useEffect(() => {
-    cart?.forEach((item) => {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      primaryTotal = primaryTotal + parseFloat(item.mainPrice)
-      dispatch(addSubTotal(primaryTotal));
-      console.log(primaryTotal, item.mainPrice)
-    });
 
-  }, [cart]); */
+  const handleDiscount = (e: any) => {
+    e.preventDefault();
+    if (cupon === "discount") {
+      dispatch(addTotal(subTotal / 2));
+      dispatch(addCupon(true));
+
+    } else if (cupon === "") {
+      setError("Enter a cupon code");
+    } else {
+      setError("Wrong Code");
+    }
+  };
+
+  const handleCuponChange = (e: any) => {
+    setCupon(e.target.value);
+  };
+
+  setTimeout(() => {
+    setError("");
+  }, 3000)
 
   return (
-    <Box sx={{ mt: 10 }}>
+    <Box sx={{ mt: 10, mb: 10 }}>
       <Container maxWidth='xl' >
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>
@@ -95,11 +110,11 @@ const CartOrder = () => {
                 </Box>
                 <Box sx={Styles.cart}>
                   <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>Total</Typography>
-                  <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>	£35.00</Typography>
+                  <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>	£{total}</Typography>
                 </Box>
                 <Box>
-                  <form>
-                    <CssTextField sx={{ background: "#fff", borderRadius: '5px' }} id="outlined-basic" placeholder='Enter Cupon' variant="outlined" />
+                  <form onSubmit={handleDiscount}>
+                    <CssTextField sx={{ background: "#fff", borderRadius: '5px' }} id="outlined-basic" placeholder='Enter Cupon' variant="outlined" onBlur={handleCuponChange} />
                     <Button type='submit' variant='contained' sx={{
                       fontSize: '15px'
                       , color: '#191C21',
@@ -110,6 +125,10 @@ const CartOrder = () => {
                       }
                     }}>Apply</Button>
                   </form>
+
+                  {
+                    error && <Container sx={{ margin: '5px 0' }}> <Alert severity="error">{error}</Alert> </Container>
+                  }
                 </Box>
               </Item>
             </Grid>
