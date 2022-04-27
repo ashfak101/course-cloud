@@ -46,7 +46,10 @@ const Styles = {
     display: 'flex', justifyContent: 'space-between', my: 4, color: '#FBF4F4', borderBottom: '0.568px solid #C6C6C6', pb: 2
   }
 }
-const CartOrder = () => {
+type Props ={
+  handleNext:()=>void
+}
+const CartOrder = (props:Props) => {
 
   const [coupon, setCoupon] = React.useState('');
   const [error, setError] = React.useState('')
@@ -194,6 +197,16 @@ const CartOrder = () => {
                     draggable
                     pauseOnHover
                   />
+                   <Button sx={{
+                    fontSize: '15px'
+                    , color: '#191C21',
+                    bgcolor: '#D19F28',
+                    p: "15px 65px",
+                    mt:2,
+                    "&:hover": {
+                      bgcolor: '#FBDE44'
+                    }
+                  }} onClick={props.handleNext}>Proceed To Checkout</Button>
                 </Box>
               </Item>
             </Grid>
