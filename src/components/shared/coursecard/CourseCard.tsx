@@ -13,7 +13,7 @@ import { CoursesOnDeal } from "../../../../types";
 import { useState } from "react";
 import { State } from "redux/reducers";
 import { useDispatch, useSelector } from "react-redux";
-import { addCupon, addToCart } from "redux/actions/cartAction";
+import { addCoupon, addSubTotal, addToCart, addTotal } from "redux/actions/cartAction";
 import { useRouter } from "next/router";
 
 type Props = {
@@ -26,7 +26,7 @@ const CourseCard = ({ course, isDiscounted }: Props) => {
 
     const [isAdded, setIsAdded] = useState<boolean>(false);
     const router = useRouter();
-    const { cart } = useSelector((state: State) => state.allCartItem);
+    const { cart, subTotal } = useSelector((state: State) => state.allCartItem);
     const dispatch = useDispatch();
 
     const goToCart = () => {
@@ -34,13 +34,17 @@ const CourseCard = ({ course, isDiscounted }: Props) => {
     }
 
     const handleAddToCart = (course: CoursesOnDeal) => {
+
         course = {
             ...course,
             quantity: 1,
         };
         const newCart = [...cart, course];
         dispatch(addToCart(newCart));
-        dispatch(addCupon(false));
+        const estimateSubTotal = subTotal + parseFloat(course.mainPrice)
+        dispatch(addSubTotal(estimateSubTotal));
+        dispatch(addTotal(estimateSubTotal));
+        dispatch(addCoupon(false));
         setIsAdded(true);
     };
 
