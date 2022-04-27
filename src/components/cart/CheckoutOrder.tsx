@@ -37,30 +37,30 @@ const CheckoutOrder = () => {
                             <Item sx={{ backgroundColor: '#333845', borderRadius: '10px' }}>
                                 <Box sx={{ flexGrow: 1 }}>
                                     <Grid container spacing={2}>
-                                        <Grid item xs={12} xl={12}>
+                                        <Grid item xs={12} xl={12} md={12}>
                                             <Item sx={{ backgroundColor: 'transparent', boxShadow: '0' }}>
                                                 <Typography sx={{ textAlign: 'left', color: 'white' }}>Paypal</Typography>
                                             </Item>
                                         </Grid>
-                                        <Grid item xs={4} xl={6}>
+                                        <Grid item xs={4} xl={6} md={6}>
                                             <Item sx={{ display: "flex", alignItems: "center", backgroundColor: 'transparent', boxShadow: '0' }}>
                                                 <Checkbox defaultChecked />
                                                 <Image src="/assets/images/paypalcard.png" width="48px" height="32px" />
                                             </Item>
                                         </Grid>
-                                        <Grid item xs={4} xl={6}>
+                                        <Grid item xs={4} xl={6} md={6}>
                                             <Item sx={{ backgroundColor: 'transparent', boxShadow: '0' }}>
                                                 <Typography sx={{ textAlign: 'right', color: 'white' }}>
                                                     What Is Paypal?
                                                 </Typography>
                                             </Item>
                                         </Grid>
-                                        <Grid item xs={8}>
+                                        <Grid item xs={12}>
                                             <Item sx={{ backgroundColor: 'transparent', boxShadow: '0' }}>
                                                 <Typography sx={{ textAlign: 'left', color: 'white' }}>Debit or Credit Card</Typography>
                                             </Item>
                                         </Grid>
-                                        <Grid item xs={4} xl={12}>
+                                        <Grid item xs={12} xl={12}>
                                             <Item sx={{ display: "flex", alignItems: "center", backgroundColor: 'transparent', boxShadow: '0' }}>
                                                 <Checkbox defaultChecked />
                                                 <span style={{ marginRight: '10px' }}><Image src="/assets/images/visacard.png" width="48px" height="32px" /></span>
@@ -69,7 +69,7 @@ const CheckoutOrder = () => {
                                                 <span style={{ marginRight: '10px' }}><Image src="/assets/images/americanexpress.png" width="48px" height="32px" /></span>
                                             </Item>
                                         </Grid>
-                                        <Grid item xs={4} xl={12}>
+                                        <Grid item xs={12} xl={12}>
                                             <Item sx={{ display: "flex", alignItems: "center", backgroundColor: 'transparent', boxShadow: '0' }}>
                                                 <Checkbox defaultChecked />
                                                 <Typography sx={{ textAlign: 'left', color: 'white' }}>I have read and agree to the website <br />
