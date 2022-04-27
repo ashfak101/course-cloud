@@ -3,6 +3,7 @@ import { Box } from "@mui/system";
 import Image from "next/image";
 import React from "react";
 import { BlogsData } from "../../../types-blog";
+import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 import Link from "next/link";
 
 type Props = {
