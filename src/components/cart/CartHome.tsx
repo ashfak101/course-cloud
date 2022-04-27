@@ -2,6 +2,7 @@ import { Container, Box, Typography, Button, Step, StepLabel, Stepper } from "@m
 import React, { useState } from "react";
 import CartOrder from "./CartOrder"
 import Checkout from "./Checkout";
+import OrderSucces from "./OrderSucces";
 const Styles = {
   cartBackground: {
     backgroundImage: `url('/assets/images/cartheader.png')`,
@@ -65,7 +66,8 @@ const CartHome = () => {
       </Container >
       {/* {activeStep === steps.length - 3 && <CartOrder handleNext={handleNext}></CartOrder>}
       {activeStep === steps.length - 2 && <Checkout />} */}
-      <Checkout/>
+      {/* <Checkout/> */}
+      <OrderSucces/>
     </>
   )
 }
