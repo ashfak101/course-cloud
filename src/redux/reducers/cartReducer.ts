@@ -7,7 +7,8 @@ const initialState={
     subTotal:0,
     total:0,
     disCountPrice:0,
-    cuponUsed: false
+    cuponUsed: false,
+    certificatePrice: 5.66,
 }
 
 export interface CartState {
@@ -15,7 +16,8 @@ export interface CartState {
     subTotal:number;
     total:number;
     disCountPrice:number;
-    cuponUsed: boolean
+    cuponUsed: boolean;
+    certificatePrice: number;
 }
 type Actions ={
     type :string,

@@ -26,7 +26,7 @@ const CourseCard = ({ course, isDiscounted }: Props) => {
 
     const [isAdded, setIsAdded] = useState<boolean>(false);
     const router = useRouter();
-    const { cart, subTotal } = useSelector((state: State) => state.allCartItem);
+    const { cart, subTotal, certificatePrice } = useSelector((state: State) => state.allCartItem);
     const dispatch = useDispatch();
 
     const goToCart = () => {
@@ -41,7 +41,7 @@ const CourseCard = ({ course, isDiscounted }: Props) => {
         };
         const newCart = [...cart, course];
         dispatch(addToCart(newCart));
-        const estimateSubTotal = subTotal + parseFloat(course.mainPrice)
+        const estimateSubTotal = subTotal + parseFloat(course.mainPrice) + certificatePrice;
         dispatch(addSubTotal(estimateSubTotal));
         dispatch(addTotal(estimateSubTotal));
         dispatch(addCoupon(false));
