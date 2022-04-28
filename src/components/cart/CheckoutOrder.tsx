@@ -14,8 +14,8 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 type Props = {
     handleNext: () => void
-  }
-const CheckoutOrder = (props:Props) => {
+}
+const CheckoutOrder = (props: Props) => {
     return (
         <Box sx={{
             my: 10, width: {
@@ -46,7 +46,7 @@ const CheckoutOrder = (props:Props) => {
                                         </Grid>
                                         <Grid item xs={4} xl={6} md={6}>
                                             <Item sx={{ display: "flex", alignItems: "center", backgroundColor: 'transparent', boxShadow: '0' }}>
-                                                <Checkbox defaultChecked />
+                                                <Checkbox sx={{ color: 'white' }} />
                                                 <Image src="/assets/images/paypalcard.png" width="48px" height="32px" />
                                             </Item>
                                         </Grid>
@@ -64,7 +64,7 @@ const CheckoutOrder = (props:Props) => {
                                         </Grid>
                                         <Grid item xs={12} xl={12}>
                                             <Item sx={{ display: "flex", alignItems: "center", backgroundColor: 'transparent', boxShadow: '0' }}>
-                                                <Checkbox defaultChecked />
+                                                <Checkbox sx={{ color: 'white' }} />
                                                 <span style={{ marginRight: '10px' }}><Image src="/assets/images/visacard.png" width="48px" height="32px" /></span>
                                                 <span style={{ marginRight: '10px' }}><Image src="/assets/images/mastercard.png" width="48px" height="32px" /></span>
                                                 <span style={{ marginRight: '10px' }}><Image src="/assets/images/masterocard.png" width="48px" height="32px" /></span>
@@ -73,7 +73,7 @@ const CheckoutOrder = (props:Props) => {
                                         </Grid>
                                         <Grid item xs={12} xl={12}>
                                             <Item sx={{ display: "flex", alignItems: "center", backgroundColor: 'transparent', boxShadow: '0' }}>
-                                                <Checkbox defaultChecked />
+                                                <Checkbox sx={{ color: 'white' }} />
                                                 <Typography sx={{ textAlign: 'left', color: 'white' }}>I have read and agree to the website <br />
                                                     terms and conditions *</Typography>
                                             </Item>
