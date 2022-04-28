@@ -22,28 +22,15 @@ const Styles = {
   },
 };
 
+
 const steps = ["Cart", "Billing Details", "Completed"];
 const CartHome = () => {
   const [activeStep, setActiveStep] = useState<number>(0);
-  const [skipped, setSkipped] = useState(new Set());
-
-  const isStepOptional = (step: number) => {
-    return step === 1;
-  };
-  const isStepSkipped = (step: number) => {
-    return skipped.has(step);
-  };
+  
   const handleNext = () => {
-    let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(activeStep);
-    }
-
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
+    
   };
-
   return (
     <>
       <Box sx={{ ...Styles.cartBackground }}>
@@ -66,17 +53,25 @@ const CartHome = () => {
           <Stepper
             activeStep={activeStep}
             sx={{
-              "& .MuiStepIcon-active": { color: "red" },
-              "& .MuiStepIcon-completed": { color: "green" },
+             
               "&  .MuiStepLabel-label": { color: "#fff" },
               "&  .MuiStepIcon-root": {
-                color: "#333",
+                color: "#FFFFFF",
                 border: "2px solid #fff",
                 borderRadius: "50% ",
+              },"& .MuiStepLabel-root .Mui-active": {
+                color: "#E2B627", // circle color (ACTIVE)
+              },
+              "& .MuiStepLabel-root .Mui-completed": {
+                color: "#E2B627", // circle color (COMPLETED)
+              },
+               
+              "& .MuiStepLabel-root .MuiSvgIcon-root .MuiStepIcon-text": {
+                fill: "#333", // circle color (COMPLETED)
               },
             }}
           >
-            {steps.map((label, index) => {
+            {steps.map((label) => {
               const stepProps = {};
               const labelProps = {};
 
@@ -84,32 +79,16 @@ const CartHome = () => {
                 <Step
                   key={label}
                   {...stepProps}
-                  sx={{
-                    "& .MuiStepLabel-root .Mui-completed": {
-                      color: "#E2B627", // circle color (COMPLETED)
-                    },
-                    "& .MuiStepLabel-label.Mui-completed.MuiStepLabel-alternativeLabel":
-                      {
-                        color: "#E2B627", // Just text label (COMPLETED)
-                      },
-                    "& .MuiStepLabel-root .Mui-active": {
-                      color: "#E2B627", // circle color (ACTIVE)
-                    },
-                    "& .MuiStepLabel-label.Mui-active.MuiStepLabel-alternativeLabel":
-                      {
-                        color: "#fff", // Just text label (ACTIVE)
-                      },
-                    "& .MuiStepLabel-root .Mui-active .MuiStepIcon-text": {
-                      fill: "#fff", // circle's number (ACTIVE)
-                    },
-                  }}
+                  
                 >
                   <StepLabel
                     {...labelProps}
                     sx={{
                       display: "flex",
                       flexDirection: "column",
-                      color: "#333",
+                      color: "#333","& .MuiStepLabel-root .MuiSvgIcon-root .MuiStepIcon-text": {
+                        color: "#E2B627", // circle color (COMPLETED)
+                      },
                     }}
                   >
                     {label}
@@ -118,17 +97,15 @@ const CartHome = () => {
               );
             })}
           </Stepper>
-          {/* <Button onClick={handleNext}>
-            {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-          </Button> */}
+          
         </Box>
       </Container>
       {activeStep === steps.length - 3 && (
         <CartOrder handleNext={handleNext}></CartOrder>
       )}
       {activeStep === steps.length - 2 && <Checkout handleNext={handleNext} />}
-      {activeStep === steps.length - 1 && <OrderSucces />}
-
+      {activeStep === steps.length - 1 && <OrderSucces/>}
+    
       {/*  */}
     </>
   );
