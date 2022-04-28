@@ -93,11 +93,17 @@ const QuizHome = (props: QuizProps) => {
     setIsSubmitted(true);
     router.push("/quiz/results");
   };
+  const submitQuizTimer = () => {
+    setIsSubmitted(true);
+  };
 
   // Timer Function Start ------------------------------------------------------
   // ---------------------------------------------------------------------------
-  const [time, setTime] = useState<number>(300);
+  const [time, setTime] = useState<number>(50);
   const [timeString, setTimeString] = useState<any>();
+
+  const [eachQuizTime, setEachQuizTime] = useState<number>(0);
+  const [eachQuizTimeString, setEachQuizTimeString] = useState<any>();
 
   let hours = Math.floor(time / 3600); // get hours
   let minutes = Math.floor((time - hours * 3600) / 60); // get minutes
@@ -118,167 +124,180 @@ const QuizHome = (props: QuizProps) => {
 
   useEffect(() => {
     let interval: any;
+    let eachQuizInterval: any;
 
     if (time > 0) {
       interval = setInterval(() => {
         setTime((prevTime) => prevTime - 1);
       }, 1000);
     } else {
-      submitQuiz();
+      submitQuizTimer();
     }
+
+    // one minute timer for each quizs then go to next quiz after finished all quizs and submit quiz
+    if (eachQuizTime > 0) {
+      eachQuizInterval = setInterval(() => {
+        setEachQuizTime((prevTime) => prevTime - 1);
+      }, 1000);
+    } else {
+      goNext();
+    }
+  }
+
 
     setTimeString(convTime(hours, minutes, seconds));
 
-    return () => clearInterval(interval);
-  }, [time, hours, seconds, minutes]);
+  return () => clearInterval(interval);
+}, [time, hours, seconds, minutes]);
 
-  // ---------------------------------------------------------------------------
-  // Timer Function End --------------------------------------------------------
-
-
+// ---------------------------------------------------------------------------
+// Timer Function End --------------------------------------------------------
 
 
-  return (
-    <Box>
-      <Box sx={{ fontSize: "50px" }}>{timeString}</Box>
-      <Container
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          mt: 10,
-        }}
-      >
-        {showQuestion && (
-          <Card
+
+
+return (
+  <Box>
+    <Box sx={{ fontSize: "50px" }}>{timeString}</Box>
+    <Container
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        mt: 10,
+      }}
+    >
+      {showQuestion && (
+        <Card
+          sx={{
+            width: {
+              xs: "100%",
+              sm: "50%",
+              md: "900px",
+            },
+            p: {
+              xs: "2 2",
+              sm: "2  2",
+              md: "60px 80px",
+            },
+            boxShadow: "-8px 4px 19px 0 rgb(0 0 0 /12%)",
+            borderRadius: "20px",
+            mb: 5,
+            background: "#21252D",
+          }}
+        >
+          <Box
             sx={{
-              width: {
-                xs: "100%",
-                sm: "50%",
-                md: "900px",
-              },
-              p: {
-                xs: "2 2",
-                sm: "2  2",
-                md: "60px 80px",
-              },
-              boxShadow: "-8px 4px 19px 0 rgb(0 0 0 /12%)",
-              borderRadius: "20px",
-              mb: 5,
-              background: "#21252D",
+              textAlign: "left",
+              color: "#fff",
+              display: "flex",
+              alignItems: "center",
             }}
           >
             <Box
               sx={{
-                textAlign: "left",
+                display: "inline",
+                background: "#D19F28",
+                px: "6px",
+                py: "2px",
+                borderRadius: "4px",
                 color: "#fff",
-                display: "flex",
-                alignItems: "center",
+                mr: 1,
               }}
             >
-              <Box
-                sx={{
-                  display: "inline",
-                  background: "#D19F28",
-                  px: "6px",
-                  py: "2px",
-                  borderRadius: "4px",
-                  color: "#fff",
-                  mr: 1,
-                }}
-              >
-                {index + 1}
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  width: "100%",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Typography variant="h6">{quizs[index]?.question}</Typography>
-                <Typography variant="h5">{timeString}</Typography>
-              </Box>
+              {index + 1}
             </Box>
-            <Question
-              index={index}
-              quizs={quizs}
-              handleOnChange={handleOnChange}
-            />
             <Box
-              sx={{ display: "flex", justifyContent: "space-around", py: 2 }}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                width: "100%",
+                justifyContent: "space-between",
+              }}
             >
-              <Typography
-                sx={{ fontWeight: 600, fontSize: "26px", color: "#fff" }}
-              >
-                Question {index + 1}/{quizs.length}
-              </Typography>
-              {index > 0 && (
-                <>
-                  <Button
-                    sx={{
-                      background: "#D19F28",
-                      px: { xs: 2, sm: 4, md: 6 },
-                      fontSize: { xs: "16px", sm: "16px", md: "16px" },
-                      fontWeight: "800",
-                      color: "#fff",
-                      "&:hover": { background: "#FBDE44" },
-                    }}
-                    variant="contained"
-                    onClick={goBack}
-                  >
-                    Prev
-                  </Button>
-                </>
-              )}
-              {index === quizs.length - 1 ? (
-                <Button
-                  sx={{
-                    background: "#D19F28",
-                    px: { xs: 2, sm: 4, md: 6 },
-                    fontSize: {
-                      xs: "16px",
-                      sm: "16px",
-                      md: "16px",
-                      fontWeight: "800",
-                      color: "#fff",
-                      "&:hover": { background: "#FBDE44" },
-                    },
-                  }}
-                  onClick={submitQuiz}
-                  disabled={!isSelected}
-                  variant="contained"
-                >
-                  Submit
-                </Button>
-              ) : (
-                <Button
-                  sx={{
-                    background: "#D19F28",
-                    px: { xs: 2, sm: 4, md: 6 },
-                    fontSize: {
-                      xs: "16px",
-                      sm: "16px",
-                      md: "16px",
-                      fontWeight: "800",
-                      color: "#fff",
-                      "&:hover": { background: "#FBDE44" },
-                    },
-                  }}
-                  onClick={goNext}
-                  disabled={index === quizs.length - 1 || !isSelected}
-                >
-                  Next
-                </Button>
-              )}
+              <Typography variant="h6">{quizs[index]?.question}</Typography>
+              <Typography variant="h5">{eachQuizTimeString}</Typography>
             </Box>
-          </Card>
-        )}
-      </Container>
-    </Box>
-  );
+          </Box>
+          <Question
+            index={index}
+            quizs={quizs}
+            handleOnChange={handleOnChange}
+            time={time}
+          />
+          <Box
+            sx={{ display: "flex", justifyContent: "space-around", py: 2 }}
+          >
+            <Typography
+              sx={{ fontWeight: 600, fontSize: "26px", color: "#fff" }}
+            >
+              Question {index + 1}/{quizs.length}
+            </Typography>
+            {index > 0 && (
+              <>
+                <Button
+                  sx={{
+                    background: "#D19F28",
+                    px: { xs: 2, sm: 4, md: 6 },
+                    fontSize: { xs: "16px", sm: "16px", md: "16px" },
+                    fontWeight: "800",
+                    color: "#fff",
+                    "&:hover": { background: "#FBDE44" },
+                  }}
+                  variant="contained"
+                  onClick={goBack}
+                >
+                  Prev
+                </Button>
+              </>
+            )}
+            {index === quizs.length - 1 ? (
+              <Button
+                sx={{
+                  background: "#D19F28",
+                  px: { xs: 2, sm: 4, md: 6 },
+                  fontSize: {
+                    xs: "16px",
+                    sm: "16px",
+                    md: "16px",
+                    fontWeight: "800",
+                    color: "#fff",
+                    "&:hover": { background: "#FBDE44" },
+                  },
+                }}
+                onClick={submitQuiz}
+                // disabled={!isSelected}
+                variant="contained"
+              >
+                Submit
+              </Button>
+            ) : (
+              <Button
+                sx={{
+                  background: "#D19F28",
+                  px: { xs: 2, sm: 4, md: 6 },
+                  fontSize: {
+                    xs: "16px",
+                    sm: "16px",
+                    md: "16px",
+                    fontWeight: "800",
+                    color: "#fff",
+                    "&:hover": { background: "#FBDE44" },
+                  },
+                }}
+                onClick={goNext}
+              // disabled={index === quizs.length - 1 || !isSelected}
+              >
+                Next
+              </Button>
+            )}
+          </Box>
+        </Card>
+      )}
+    </Container>
+  </Box>
+);
 };
 
 export default QuizHome;
