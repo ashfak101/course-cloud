@@ -1,38 +1,38 @@
+type Option = {
+  id: string;
+  option: string;
+  isCorrect: boolean;
+};
 
-
-type Option ={
-    id:string;
-    option:string;
-    isCorrect:boolean;
-}
-
-type Quiz ={
-    questionId:string;
-    question:string;
-    options:Option[];
-    selectedAnswer:Option;
-    level:string
-}
+type Quiz = {
+  questionId: string;
+  question: string;
+  options: Option[];
+  selectedAnswer: Option;
+  level: string;
+};
 
 interface QuizState {
-    finalAnswer:Quiz[]
+  finalAnswer: Quiz[];
 }
-const initialState ={
-  
-    finalAnswer:[]
-}
-type Action ={
-    type:string;
-    payload:Quiz[]
-}
-export const quizReducer=(state:QuizState=initialState,action:Action):QuizState=>{
-        switch(action.type){
-            case  "SUBMIT_QUIZ":
-                return{
-                    ...state,
-                    finalAnswer:action.payload
-                }     
-            default :
-                return state    
-        }
-}
+const initialState = {
+  finalAnswer: [],
+};
+type Action = {
+  type: string;
+  payload: Quiz[];
+};
+export const quizReducer = (
+  state: QuizState = initialState,
+  action: Action
+): QuizState => {
+  switch (action.type) {
+    case "SUBMIT_QUIZ":
+      return {
+        ...state,
+        finalAnswer: action.payload,
+      };
+    default:
+      return state;
+  }
+};
