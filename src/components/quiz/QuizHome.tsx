@@ -93,10 +93,13 @@ const QuizHome = (props: QuizProps) => {
     setIsSubmitted(true);
     router.push("/quiz/results");
   };
+  const submitQuizTimer = () => {
+    setIsSubmitted(true);
+  };
 
   // Timer Function Start ------------------------------------------------------
   // ---------------------------------------------------------------------------
-  const [time, setTime] = useState<number>(6);
+  const [time, setTime] = useState<number>(50);
   const [timeString, setTimeString] = useState<any>();
 
   let hours = Math.floor(time / 3600); // get hours
@@ -124,7 +127,7 @@ const QuizHome = (props: QuizProps) => {
         setTime((prevTime) => prevTime - 1);
       }, 1000);
     } else {
-      submitQuiz();
+      submitQuizTimer();
     }
 
     setTimeString(convTime(hours, minutes, seconds));
@@ -137,7 +140,6 @@ const QuizHome = (props: QuizProps) => {
 
   return (
     <Box>
-      <Box sx={{ fontSize: "50px" }}>{timeString}</Box>
       <Container
         sx={{
           display: "flex",
@@ -147,6 +149,14 @@ const QuizHome = (props: QuizProps) => {
           mt: 10,
         }}
       >
+        <Box sx={{ mb: 1, display: "flex", alignItems: "center" }}>
+          <Typography component="span" sx={{ fontSize: "1.2rem", mr: 1 }}>
+            Total Time Remaining:
+          </Typography>
+          <Typography component="span" sx={{ fontSize: "2.5rem" }}>
+            {timeString}
+          </Typography>
+        </Box>
         {showQuestion && (
           <Card
             sx={{
@@ -203,6 +213,7 @@ const QuizHome = (props: QuizProps) => {
               index={index}
               quizs={quizs}
               handleOnChange={handleOnChange}
+              time={time}
             />
             <Box
               sx={{ display: "flex", justifyContent: "space-around", py: 2 }}
@@ -245,7 +256,7 @@ const QuizHome = (props: QuizProps) => {
                     },
                   }}
                   onClick={submitQuiz}
-                  disabled={!isSelected}
+                  // disabled={!isSelected}
                   variant="contained"
                 >
                   Submit
@@ -265,7 +276,7 @@ const QuizHome = (props: QuizProps) => {
                     },
                   }}
                   onClick={goNext}
-                  disabled={index === quizs.length - 1 || !isSelected}
+                  // disabled={index === quizs.length - 1 || !isSelected}
                 >
                   Next
                 </Button>
