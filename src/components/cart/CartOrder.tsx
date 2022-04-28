@@ -13,6 +13,7 @@ import { addCoupon, addSubTotal, addTotal } from 'redux/actions/cartAction';
 import { ToastContainer, toast } from 'react-toastify';
 import ClearIcon from "@mui/icons-material/Clear";
 import 'react-toastify/dist/ReactToastify.css';
+import Image from 'next/image';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -58,10 +59,10 @@ const CartOrder = (props: Props) => {
     subTotal,
     total,
     disCountPrice,
-    cuponUsed }: CartState = useSelector((state: State) => state.allCartItem);
+    cuponUsed, certificatePrice }: CartState = useSelector((state: State) => state.allCartItem);
   const dispatch = useDispatch();
 
-  // console.log(subTotal, total)
+  console.log(certificatePrice)
   const notify = () => {
     toast.success('Coupon added', {
       position: "bottom-right",
@@ -82,7 +83,7 @@ const CartOrder = (props: Props) => {
       notify();
 
     }
-    else if (coupon === "sports") {
+    /* else if (coupon === "sports") {
       // dispatch(decreaseItemPrice("sports"))
       let newSubTotal = 0;
       cart.forEach(item => {
@@ -94,7 +95,7 @@ const CartOrder = (props: Props) => {
       dispatch(addCoupon(true));
       notify();
 
-    }
+    } */
     else if (coupon === "offer") {
       dispatch(addTotal(subTotal - 500));
       dispatch(addCoupon(true));
@@ -145,6 +146,36 @@ const CartOrder = (props: Props) => {
                   <ProductInfo key={item?.id} product={item} />
                 ))
               }
+              <>
+                <Box sx={{ flexGrow: 1, }}>
+                  <Grid container spacing={2} sx={{ display: 'flex', alignItems: 'center', }}>
+                    <Grid item xs={12} xl={4}>
+                      <Item sx={{ backgroundColor: "transparent", boxShadow: "0" }}>
+                        <Image src='/assets/images/digital-certificate.png' width='158.23' height='118' alt='certificate' />
+                      </Item>
+                    </Grid>
+                    <Grid item xs={12} xl={8}>
+                      <Item sx={{ backgroundColor: "transparent", boxShadow: "0" }}>
+                        <Typography sx={{ fontFamily: "Lato", fontWeight: "400", fontSize: "15px", fontStyle: "normal", lineHeight: '145%', textAlign: 'left', color: 'white' }}>
+
+                        </Typography>
+                        <Typography sx={{ fontFamily: "Lato", fontWeight: "700", fontSize: "20px", fontStyle: "normal", lineHeight: '145%', textAlign: 'left', color: 'white' }}>
+                          Digital Certificate
+                        </Typography>
+                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                          <Typography sx={{ fontFamily: "Lato", fontWeight: "500", fontSize: "20px", fontStyle: "normal", lineHeight: '115.4%', textAlign: 'left', color: '#E2B627', marginTop: '10px' }}>
+                            £{5.66 * cart.length}
+                          </Typography>
+
+                          <Typography sx={{ fontFamily: "Lato", fontWeight: "500", fontSize: "20px", fontStyle: "normal", lineHeight: '115.4%', textAlign: 'left', color: 'white', marginTop: '10px', ml: 5 }}>
+                            x{cart.length}
+                          </Typography>
+                        </Box>
+                      </Item>
+                    </Grid>
+                  </Grid>
+                </Box>
+              </>
             </Grid>
 
             <Grid item xs={12} xl={6}>
@@ -164,6 +195,10 @@ const CartOrder = (props: Props) => {
                     </Box>
                   ))
                 }
+                <Box sx={Styles.cart}>
+                  <Typography sx={{ fontWeight: '600', fontSize: '20px', width: '350px', textAlign: 'left' }}>Digital Certificate</Typography>
+                  <Typography sx={{ fontWeight: '600', fontSize: '20px', }}>	£{certificatePrice * cart.length}</Typography>
+                </Box>
                 <Box sx={Styles.cart}>
                   <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>Subtotal</Typography>
                   <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>	£{subTotal}</Typography>
