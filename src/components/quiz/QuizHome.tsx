@@ -140,7 +140,6 @@ const QuizHome = (props: QuizProps) => {
 
   return (
     <Box>
-      <Box sx={{ fontSize: "50px" }}>{timeString}</Box>
       <Container
         sx={{
           display: "flex",
@@ -150,6 +149,14 @@ const QuizHome = (props: QuizProps) => {
           mt: 10,
         }}
       >
+        <Box sx={{ mb: 1, display: "flex", alignItems: "center" }}>
+          <Typography component="span" sx={{ fontSize: "1.2rem", mr: 1 }}>
+            Total Time Remaining:
+          </Typography>
+          <Typography component="span" sx={{ fontSize: "2.5rem" }}>
+            {timeString}
+          </Typography>
+        </Box>
         {showQuestion && (
           <Card
             sx={{
