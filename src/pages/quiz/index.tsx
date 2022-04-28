@@ -16,14 +16,14 @@ const Quiz = (props: QuizProps) => {
     function shuffle(quizs: any) {
         let currentIndex = quizs.length, randomIndex;
 
-        // While there remain elements to shuffle.
+        
         while (currentIndex != 0) {
 
-            // Pick a remaining element.
+            
             randomIndex = Math.floor(Math.random() * currentIndex);
             currentIndex--;
 
-            // And swap it with the current element.
+            
             [quizs[currentIndex], quizs[randomIndex]] = [
                 quizs[randomIndex], quizs[currentIndex]];
         }
@@ -31,7 +31,7 @@ const Quiz = (props: QuizProps) => {
         return quizs;
     }
 
-    // Used like so
+    
     shuffle(quizs);
     console.log(quizs);
 

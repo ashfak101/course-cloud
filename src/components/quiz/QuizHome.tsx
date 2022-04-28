@@ -151,7 +151,7 @@ const QuizHome = (props: QuizProps) => {
         setTime((prevTime) => prevTime - 1);
       }, 1000);
     } else {
-      // 30 second for each quiz then go to next quiz after all quiz is done and submit
+      
       if (index === quizs.length - 1) {
         submitQuiz();
       } else {
