@@ -12,6 +12,7 @@ type QuestionProps = {
   index: number;
   quizs: Quiz[];
   handleOnChange: (option: {}) => void;
+  time: number | boolean;
 };
 
 const Question = (props: QuestionProps) => {
@@ -26,7 +27,7 @@ const Question = (props: QuestionProps) => {
           {quizs[index]?.options.map((element) => (
             <FormControlLabel
               sx={{
-                background: " #2A2A2A",
+                background: `${props.time == 0 ? "#abab9a" : "#2A2A2A"}`,
                 color: "#fff",
                 mt: 4,
                 display: "flex",
@@ -41,6 +42,7 @@ const Question = (props: QuestionProps) => {
               value={element.id}
               control={
                 <Radio
+                  disabled={props.time == 0 ? true : false}
                   sx={{
                     color: "#fff",
                     "&.Mui-checked": {
