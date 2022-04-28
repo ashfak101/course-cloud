@@ -25,7 +25,7 @@ const ProductInfo = (props: Props) => {
                 <Grid container spacing={2} sx={{ display: 'flex', alignItems: 'center', }}>
                     <Grid item xs={12} xl={4}>
                         <Item sx={{ backgroundColor: "transparent", boxShadow: "0" }}>
-                            <Image src='/assets/images/cartone.png' width='158.23' height='118' alt='cartimage' />
+                            <Image src={product.courseCover} width='158.23' height='118' alt='cartimage' />
                         </Item>
                     </Grid>
                     <Grid item xs={12} xl={8}>
