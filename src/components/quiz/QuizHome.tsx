@@ -93,7 +93,7 @@ const QuizHome = (props: QuizProps) => {
   return (
     <Box>
       <Container
-        sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", mt:10}}>
+        sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", mt: 10 }}>
         {
           showQuestion && <Card
             sx={{
@@ -121,9 +121,9 @@ const QuizHome = (props: QuizProps) => {
                   color: "#fff",
                 }}
               >
-                {quizs[index]?.id}
+                {index + 1}
               </Box>
-              . {quizs[index]?.question}
+              <></> {quizs[index]?.question}
             </Typography>
             <Question index={index} quizs={quizs} handleOnChange={handleOnChange} />
             <Box sx={{ display: "flex", justifyContent: "space-around", py: 2 }}>
