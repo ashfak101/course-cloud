@@ -60,7 +60,7 @@ const BlogCard = ({ blog }: Props) => {
               </Grid>
               <Grid item xs={4} xl={4} md={4}>
                 <Item sx={{ textAlign: 'right', backgroundColor: 'transparent', boxShadow: '0', marginRight: '10px' }}>
-                  <Image src="/assets/images/saved.png" width="21px" height="26px" alt="" />
+                  <Button><Image src="/assets/images/saved.png" width="21px" height="26px" alt="" /></Button>
                 </Item>
               </Grid>
             </Grid>
