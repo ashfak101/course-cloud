@@ -1,5 +1,4 @@
 import { Container, Box, Typography, Button, Step, StepLabel, Stepper } from "@mui/material"
-import { makeStyles } from "@mui/styles"
 import React, { useState } from "react";
 import CartOrder from "./CartOrder"
 import Checkout from "./Checkout";
@@ -17,7 +16,7 @@ const Styles = {
 
 const steps = ['Cart', 'Billing Details', 'Completed'];
 const CartHome = () => {
- 
+
   const [activeStep, setActiveStep] = useState<number>(0);
   const [skipped, setSkipped] = useState(new Set());
 
@@ -37,7 +36,7 @@ const CartHome = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setSkipped(newSkipped);
   };
- 
+
   return (
     <>
       <Box sx={{ ...Styles.cartBackground }}>
@@ -51,13 +50,13 @@ const CartHome = () => {
       <Container maxWidth='xl'>
         <Box sx={{ width: '100%', p: 5 }}>
           <Stepper activeStep={activeStep} sx={{
-      "& .MuiStepIcon-active": { color: "red" },
-      "& .MuiStepIcon-completed": { color: "green" },
-      "&  .MuiStepLabel-label": { color: "#fff" },
-      "&  .MuiStepIcon-root": { color: "#333",border:'2px solid #fff',borderRadius:'50% ' },
-      
-     
-    }}>
+            "& .MuiStepIcon-active": { color: "red" },
+            "& .MuiStepIcon-completed": { color: "green" },
+            "&  .MuiStepLabel-label": { color: "#fff" },
+            "&  .MuiStepIcon-root": { color: "#333", border: '2px solid #fff', borderRadius: '50% ' },
+
+
+          }}>
             {steps.map((label, index) => {
               const stepProps = {};
               const labelProps = {};
@@ -66,7 +65,7 @@ const CartHome = () => {
                 <Step key={label} {...stepProps} sx={{
                   '& .MuiStepLabel-root .Mui-completed': {
                     color: '#E2B627', // circle color (COMPLETED)
-                   
+
                   },
                   '& .MuiStepLabel-label.Mui-completed.MuiStepLabel-alternativeLabel':
                   {
@@ -81,9 +80,9 @@ const CartHome = () => {
                   },
                   '& .MuiStepLabel-root .Mui-active .MuiStepIcon-text': {
                     fill: '#fff', // circle's number (ACTIVE)
-                  }, 
+                  },
                 }}>
-                  <StepLabel {...labelProps} sx={{ display: 'flex', flexDirection: 'column', color:'#333' }}>{label}</StepLabel>
+                  <StepLabel {...labelProps} sx={{ display: 'flex', flexDirection: 'column', color: '#333' }}>{label}</StepLabel>
                 </Step>
               );
             })}
