@@ -18,7 +18,7 @@ import { useRouter } from "next/router";
 
 type Props = {
     course: CoursesOnDeal;
-    isDiscounted: boolean;
+    isDiscounted?: boolean;
 };
 
 const CourseCard = ({ course, isDiscounted }: Props) => {
