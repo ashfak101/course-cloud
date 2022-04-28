@@ -62,7 +62,6 @@ const CartOrder = (props: Props) => {
     cuponUsed, certificatePrice }: CartState = useSelector((state: State) => state.allCartItem);
   const dispatch = useDispatch();
 
-  console.log(certificatePrice)
   const notify = () => {
     toast.success('Coupon added', {
       position: "bottom-right",
@@ -166,10 +165,12 @@ const CartOrder = (props: Props) => {
                           <Typography sx={{ fontFamily: "Lato", fontWeight: "500", fontSize: "20px", fontStyle: "normal", lineHeight: '115.4%', textAlign: 'left', color: '#E2B627', marginTop: '10px' }}>
                             £{5.66 * cart.length}
                           </Typography>
+                          <Box>
+                            <Typography sx={{ fontFamily: "Lato", fontWeight: "500", fontSize: "20px", fontStyle: "normal", lineHeight: '115.4%', textAlign: 'left', color: 'white', marginTop: '10px', ml: 5 }}>
+                              x{cart.length}
+                            </Typography>
+                          </Box>
 
-                          <Typography sx={{ fontFamily: "Lato", fontWeight: "500", fontSize: "20px", fontStyle: "normal", lineHeight: '115.4%', textAlign: 'left', color: 'white', marginTop: '10px', ml: 5 }}>
-                            x{cart.length}
-                          </Typography>
                         </Box>
                       </Item>
                     </Grid>

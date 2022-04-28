@@ -6,7 +6,8 @@ type Option ={
     isCorrect:boolean;
 }
 
-type Quiz ={
+export type Quiz ={
+    id?: string;
     questionId:string;
     question:string;
     options:Option[];
@@ -14,7 +15,7 @@ type Quiz ={
     level:string
 }
 
-interface QuizState {
+export interface QuizState {
     finalAnswer:Quiz[]
 }
 const initialState ={
@@ -25,6 +26,11 @@ type Action ={
     type:string;
     payload:Quiz[]
 }
+
+// const unChecked = arr.find(a => a.id === e.target.value)
+//             arr.splice(arr.indexOf(unChecked), 1)
+// arr1.map(obj => arr2.find(o => o.id === obj.id) || obj);
+// state.finalAnswer.map(obj=> action.payload.find(o=>o.questionId === obj.questionId)|| obj)
 export const quizReducer=(state:QuizState=initialState,action:Action):QuizState=>{
         switch(action.type){
             case  "SUBMIT_QUIZ":
