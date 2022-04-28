@@ -82,7 +82,7 @@ const CartOrder = (props: Props) => {
       notify();
 
     }
-    else if (coupon === "sports") {
+    /* else if (coupon === "sports") {
       // dispatch(decreaseItemPrice("sports"))
       let newSubTotal = 0;
       cart.forEach(item => {
@@ -94,7 +94,7 @@ const CartOrder = (props: Props) => {
       dispatch(addCoupon(true));
       notify();
 
-    }
+    } */
     else if (coupon === "offer") {
       dispatch(addTotal(subTotal - 500));
       dispatch(addCoupon(true));
