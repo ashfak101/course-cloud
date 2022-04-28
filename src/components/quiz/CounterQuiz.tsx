@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const CounterQuiz = () => {
   const [time, setTime] = useState<number>(100);
-  const [convertedTime, setConvertedTime] = useState<any>();
+  const [timeString, setTimeString] = useState<any>();
 
   let hours = Math.floor(time / 3600); // get hours
   let minutes = Math.floor((time - hours * 3600) / 60); // get minutes
@@ -30,17 +30,16 @@ const CounterQuiz = () => {
       }, 1000);
     }
 
-    setConvertedTime(convTime(hours, minutes, seconds));
+    setTimeString(convTime(hours, minutes, seconds));
 
     return () => clearInterval(interval);
   }, [time, hours, seconds, minutes]);
-  //...
 
   return (
     <h1>
       {/* {time} */}
 
-      {convertedTime}
+      {timeString}
     </h1>
   );
 };

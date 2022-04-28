@@ -20,7 +20,7 @@ const Quiz = (props: QuizProps) => {
       <Box>
         <QuizHome quizs={quizs} />
       </Box>
-      <CounterQuiz />
+      {/* <CounterQuiz /> */}
     </>
   );
 };

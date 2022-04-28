@@ -93,8 +93,51 @@ const QuizHome = (props: QuizProps) => {
     setIsSubmitted(true);
     router.push("/quiz/results");
   };
+
+  // Timer Function Start ------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  const [time, setTime] = useState<number>(6);
+  const [timeString, setTimeString] = useState<any>();
+
+  let hours = Math.floor(time / 3600); // get hours
+  let minutes = Math.floor((time - hours * 3600) / 60); // get minutes
+  let seconds = time - hours * 3600 - minutes * 60; //  get seconds
+
+  function convTime(hours: any, minutes: any, seconds: any) {
+    if (hours < 10) {
+      hours = "0" + hours;
+    }
+    if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+    return minutes + ":" + seconds; // Return is HH : MM : SS
+  }
+
+  useEffect(() => {
+    let interval: any;
+
+    if (time > 0) {
+      interval = setInterval(() => {
+        setTime((prevTime) => prevTime - 1);
+      }, 1000);
+    } else {
+      submitQuiz();
+    }
+
+    setTimeString(convTime(hours, minutes, seconds));
+
+    return () => clearInterval(interval);
+  }, [time, hours, seconds, minutes]);
+
+  // ---------------------------------------------------------------------------
+  // Timer Function End --------------------------------------------------------
+
   return (
     <Box>
+      <Box sx={{ fontSize: "50px" }}>{timeString}</Box>
       <Container
         sx={{
           display: "flex",
@@ -123,7 +166,14 @@ const QuizHome = (props: QuizProps) => {
               background: "#21252D",
             }}
           >
-            <Typography variant="h6" sx={{ textAlign: "left", color: "#fff" }}>
+            <Box
+              sx={{
+                textAlign: "left",
+                color: "#fff",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
               <Box
                 sx={{
                   display: "inline",
@@ -132,12 +182,23 @@ const QuizHome = (props: QuizProps) => {
                   py: "2px",
                   borderRadius: "4px",
                   color: "#fff",
+                  mr: 1,
                 }}
               >
                 {quizs[index]?.id}
               </Box>
-              . {quizs[index]?.question}
-            </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  width: "100%",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Typography variant="h6">{quizs[index]?.question}</Typography>
+                <Typography variant="h5">{timeString}</Typography>
+              </Box>
+            </Box>
             <Question
               index={index}
               quizs={quizs}
