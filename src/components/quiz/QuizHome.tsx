@@ -99,7 +99,7 @@ const QuizHome = (props: QuizProps) => {
 
   // Timer Function Start ------------------------------------------------------
   // ---------------------------------------------------------------------------
-  const [time, setTime] = useState<number>(50);
+  const [time, setTime] = useState<number>(5);
   const [timeString, setTimeString] = useState<any>();
 
   let hours = Math.floor(time / 3600); // get hours
@@ -195,7 +195,7 @@ const QuizHome = (props: QuizProps) => {
                   mr: 1,
                 }}
               >
-                {quizs[index]?.id}
+                {index + 1}
               </Box>
               <Box
                 sx={{
