@@ -99,12 +99,20 @@ const QuizHome = (props: QuizProps) => {
 
   // Timer Function Start ------------------------------------------------------
   // ---------------------------------------------------------------------------
-  const [time, setTime] = useState<number>(5);
+  const [time, setTime] = useState<number>(300);
   const [timeString, setTimeString] = useState<any>();
+
+  const [eachQuizTimer, setEachQuizTimer] = useState<number>(30);
+  const [eachQuizTimerString, setEachQuizTimerString] = useState<any>();
 
   let hours = Math.floor(time / 3600); // get hours
   let minutes = Math.floor((time - hours * 3600) / 60); // get minutes
   let seconds = time - hours * 3600 - minutes * 60; //  get seconds
+
+
+  let hoursEachQuiz = Math.floor(eachQuizTimer / 3600); // get hours
+  let minutesEachQuiz = Math.floor((eachQuizTimer - hoursEachQuiz * 3600) / 60); // get minutes
+  let secondsEachQuiz = eachQuizTimer - hoursEachQuiz * 3600 - minutesEachQuiz * 60; //  get seconds
 
   function convTime(hours: any, minutes: any, seconds: any) {
     if (hours < 10) {
@@ -119,21 +127,60 @@ const QuizHome = (props: QuizProps) => {
     return minutes + ":" + seconds; // Return is HH : MM : SS
   }
 
-  useEffect(() => {
-    let interval: any;
 
-    if (time > 0) {
-      interval = setInterval(() => {
+
+
+  // Function for each quiz timer
+  function convTimeEachQuiz(hours: any, minutes: any, seconds: any) {
+    if (hours < 10) {
+      hours = "0" + hours;
+    }
+    if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+    return minutes + ":" + seconds; // Return is HH : MM : SS
+  }
+
+  useEffect(() => {
+    let eachQuizTimeInterval: any;
+    if (eachQuizTimer > 0) {
+      eachQuizTimeInterval = setInterval(() => {
         setTime((prevTime) => prevTime - 1);
       }, 1000);
     } else {
-      submitQuizTimer();
+      // 30 second for each quiz then go to next quiz after all quiz is done and submit
+      if (index === quizs.length - 1) {
+        submitQuiz();
+      } else {
+        goNext();
+        setEachQuizTimer(30);
+      }
     }
 
-    setTimeString(convTime(hours, minutes, seconds));
+    setEachQuizTimerString(convTimeEachQuiz(hoursEachQuiz, minutesEachQuiz, secondsEachQuiz));
 
-    return () => clearInterval(interval);
-  }, [time, hours, seconds, minutes]);
+    return () => clearInterval(eachQuizTimeInterval);
+  }, [eachQuizTimer, hoursEachQuiz, minutesEachQuiz, secondsEachQuiz]),
+
+
+    useEffect(() => {
+      let interval: any;
+
+      if (time > 0) {
+        interval = setInterval(() => {
+          setEachQuizTimer((prevTime) => prevTime - 1);
+        }, 1000);
+      } else {
+        submitQuizTimer();
+      }
+
+      setTimeString(convTime(hours, minutes, seconds));
+
+      return () => clearInterval(interval);
+    }, [time, hours, seconds, minutes]);
 
   // ---------------------------------------------------------------------------
   // Timer Function End --------------------------------------------------------
@@ -206,7 +253,7 @@ const QuizHome = (props: QuizProps) => {
                 }}
               >
                 <Typography variant="h6">{quizs[index]?.question}</Typography>
-                <Typography variant="h5">{timeString}</Typography>
+                <Typography variant="h5">{eachQuizTimerString}</Typography>
               </Box>
             </Box>
             <Question
