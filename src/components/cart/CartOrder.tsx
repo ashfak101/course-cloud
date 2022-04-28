@@ -14,7 +14,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import ClearIcon from "@mui/icons-material/Clear";
 import 'react-toastify/dist/ReactToastify.css';
 import Image from 'next/image';
-
+// BsPlus BiMinus
+import { BsPlus } from "react-icons/bs";
+import { BiMinus } from "react-icons/bi";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -62,7 +64,6 @@ const CartOrder = (props: Props) => {
     cuponUsed, certificatePrice }: CartState = useSelector((state: State) => state.allCartItem);
   const dispatch = useDispatch();
 
-  console.log(certificatePrice)
   const notify = () => {
     toast.success('Coupon added', {
       position: "bottom-right",
@@ -166,10 +167,23 @@ const CartOrder = (props: Props) => {
                           <Typography sx={{ fontFamily: "Lato", fontWeight: "500", fontSize: "20px", fontStyle: "normal", lineHeight: '115.4%', textAlign: 'left', color: '#E2B627', marginTop: '10px' }}>
                             £{5.66 * cart.length}
                           </Typography>
+                          <Box sx={{ ml: 5, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                            <BsPlus style={{ color: 'white', fontSize: '20px', display: 'block', marginTop: 5 }} />
+                            <Typography sx={{
+                              fontFamily: "Lato",
+                              fontWeight: "500",
+                              fontSize: "20px",
+                              fontStyle: "normal",
+                              lineHeight: '115.4%',
+                              textAlign: 'left',
+                              color: 'white',
+                              marginTop: '10px'
+                            }}>
+                              {cart.length}
+                            </Typography>
+                            <BiMinus style={{ color: 'white', fontSize: '20px', display: 'block', marginTop: 5 }} />
+                          </Box>
 
-                          <Typography sx={{ fontFamily: "Lato", fontWeight: "500", fontSize: "20px", fontStyle: "normal", lineHeight: '115.4%', textAlign: 'left', color: 'white', marginTop: '10px', ml: 5 }}>
-                            x{cart.length}
-                          </Typography>
                         </Box>
                       </Item>
                     </Grid>
