@@ -14,7 +14,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import ClearIcon from "@mui/icons-material/Clear";
 import 'react-toastify/dist/ReactToastify.css';
 import Image from 'next/image';
-
+// BsPlus BiMinus
+import { BsPlus } from "react-icons/bs";
+import { BiMinus } from "react-icons/bi";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -165,10 +167,21 @@ const CartOrder = (props: Props) => {
                           <Typography sx={{ fontFamily: "Lato", fontWeight: "500", fontSize: "20px", fontStyle: "normal", lineHeight: '115.4%', textAlign: 'left', color: '#E2B627', marginTop: '10px' }}>
                             £{5.66 * cart.length}
                           </Typography>
-                          <Box>
-                            <Typography sx={{ fontFamily: "Lato", fontWeight: "500", fontSize: "20px", fontStyle: "normal", lineHeight: '115.4%', textAlign: 'left', color: 'white', marginTop: '10px', ml: 5 }}>
-                              x{cart.length}
+                          <Box sx={{ ml: 5, display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
+                            <BsPlus style={{ color: 'white', fontSize: '20px', display: 'block' }} />
+                            <Typography sx={{
+                              fontFamily: "Lato",
+                              fontWeight: "500",
+                              fontSize: "20px",
+                              fontStyle: "normal",
+                              lineHeight: '115.4%',
+                              textAlign: 'left',
+                              color: 'white',
+                              marginTop: '10px'
+                            }}>
+                              {cart.length}
                             </Typography>
+                            <BiMinus style={{ color: 'white', fontSize: '20px', display: 'block' }} />
                           </Box>
 
                         </Box>
