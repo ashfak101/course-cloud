@@ -1,29 +1,18 @@
 import { Box, Container, Grid, Button, Typography } from "@mui/material";
+import CourseCard from "components/shared/coursecard/CourseCard";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import QuizCard from "./QuizCard";
+import { CoursesOnDeal } from "../../../types";
+
 
 type Props = {
     level: string
 }
-type AllCourses = {
-    id: string;
-    title: string;
 
-    videoURL: string;
-    mainPrice: string;
-    level: string;
-    courseType: string;
-    courseCover: string;
-    courseDetails: string;
-    discountPercent: string;
-    instructorDetails: {}
-
-}
 const QuizCourse = (props: Props) => {
     const { level } = props;
-    const [allCourses, setAllCourses] = useState<Array<AllCourses>>([])
-    const [courses, setCourses] = useState<Array<AllCourses>>([])
+    const [allCourses, setAllCourses] = useState<Array<CoursesOnDeal>>([])
+    const [courses, setCourses] = useState<Array<CoursesOnDeal>>([])
     useEffect(() => {
         fetch('/courses.json')
             .then(res => res.json())
@@ -54,7 +43,7 @@ const QuizCourse = (props: Props) => {
                                 justifyContent: "center",
                             }}
                         >
-                            <QuizCard course={course} />
+                            <CourseCard course={course} />
                         </Grid>)
                     }
                 </Grid>

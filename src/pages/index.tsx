@@ -13,42 +13,42 @@ import { CourseData, GetCoursesData } from "../../types";
 import { GetBlogsData, BlogsData } from "../../types-blog";
 
 const Home: NextPage<{ courses: CourseData; blogs: BlogsData[] }> = ({
- courses,
- blogs,
+    courses,
+    blogs,
 }) => {
- return (
-  <>
-   <Banner />
-   <BecomeInstructor />
-   <ExploreCourses courses={courses} />
-   <DealoftheDay courses={courses} />
-   <FeaturedInstructors courses={courses} />
-   <Feedback courses={courses} />
-   <RecentBlogs blogs={blogs} />
-   <EasyAccess />
-   <Subscription />
-   <Faq />
-  </>
- );
+    return (
+        <>
+            <Banner />
+            <BecomeInstructor />
+            <ExploreCourses courses={courses} />
+            <DealoftheDay courses={courses} />
+            <FeaturedInstructors courses={courses} />
+            <Feedback courses={courses} />
+            <RecentBlogs blogs={blogs} />
+            <EasyAccess />
+            <Subscription />
+            <Faq />
+        </>
+    );
 };
 
 export default Home;
 
 export const getStaticProps: GetStaticProps = async (context) => {
- const courseResponse = await fetch(
-  "https://api.npoint.io/8b635b31d3c9d683fcec"
- );
- const courses: GetCoursesData = await courseResponse.json();
+    const courseResponse = await fetch(
+        "https://tawsifhye.github.io/data/coursecloudcourses.json"
+    );
+    const courses: GetCoursesData = await courseResponse.json();
 
- const blogResponse = await fetch(
-  "https://tawsifhye.github.io/data/coursecloudblogs.json"
- );
- const blogs: GetBlogsData = await blogResponse.json();
+    const blogResponse = await fetch(
+        "https://tawsifhye.github.io/data/coursecloudblogs.json"
+    );
+    const blogs: GetBlogsData = await blogResponse.json();
 
- return {
-  props: {
-   courses,
-   blogs,
-  },
- };
+    return {
+        props: {
+            courses,
+            blogs,
+        },
+    };
 };

@@ -4,6 +4,9 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Image from "next/image";
 import CommonButton from "components/shared/buttons/CommonButton";
+import { useSelector } from "react-redux";
+import { CartState } from "redux/reducers/cartReducer";
+import { State } from "redux/reducers";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -14,8 +17,10 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 type Props = {
     handleNext: () => void
-  }
-const CheckoutOrder = (props:Props) => {
+}
+const CheckoutOrder = (props: Props) => {
+    const { total }: CartState = useSelector((state: State) => state.allCartItem);
+
     return (
         <Box sx={{
             my: 10, width: {
@@ -31,7 +36,7 @@ const CheckoutOrder = (props:Props) => {
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: '27px', borderBottom: ' 1px solid #C6C6C6', pb: 3 }}>
                     <Typography>Total</Typography>
-                    <Typography>	£35.00</Typography>
+                    <Typography>£{total}</Typography>
                 </Box>
                 <Box sx={{ flexGrow: 1, marginTop: '30px' }}>
                     <Grid container spacing={2}>
@@ -46,8 +51,8 @@ const CheckoutOrder = (props:Props) => {
                                         </Grid>
                                         <Grid item xs={4} xl={6} md={6}>
                                             <Item sx={{ display: "flex", alignItems: "center", backgroundColor: 'transparent', boxShadow: '0' }}>
-                                                <Checkbox defaultChecked />
-                                                <Image src="/assets/images/paypalcard.png" width="48px" height="32px" />
+                                                <Checkbox sx={{ color: 'white' }} />
+                                                <Image src="/assets/images/paypalcard.png" width="48px" height="32px" alt='' />
                                             </Item>
                                         </Grid>
                                         <Grid item xs={4} xl={6} md={6}>
@@ -64,16 +69,16 @@ const CheckoutOrder = (props:Props) => {
                                         </Grid>
                                         <Grid item xs={12} xl={12}>
                                             <Item sx={{ display: "flex", alignItems: "center", backgroundColor: 'transparent', boxShadow: '0' }}>
-                                                <Checkbox defaultChecked />
-                                                <span style={{ marginRight: '10px' }}><Image src="/assets/images/visacard.png" width="48px" height="32px" /></span>
-                                                <span style={{ marginRight: '10px' }}><Image src="/assets/images/mastercard.png" width="48px" height="32px" /></span>
-                                                <span style={{ marginRight: '10px' }}><Image src="/assets/images/masterocard.png" width="48px" height="32px" /></span>
-                                                <span style={{ marginRight: '10px' }}><Image src="/assets/images/americanexpress.png" width="48px" height="32px" /></span>
+                                                <Checkbox sx={{ color: 'white' }} />
+                                                <span style={{ marginRight: '10px' }}><Image src="/assets/images/visacard.png" width="48px" height="32px" alt='' /></span>
+                                                <span style={{ marginRight: '10px' }}><Image src="/assets/images/mastercard.png" width="48px" height="32px" alt='' /></span>
+                                                <span style={{ marginRight: '10px' }}><Image src="/assets/images/masterocard.png" width="48px" height="32px" alt='' /></span>
+                                                <span style={{ marginRight: '10px' }}><Image src="/assets/images/americanexpress.png" width="48px" height="32px" alt='' /></span>
                                             </Item>
                                         </Grid>
                                         <Grid item xs={12} xl={12}>
                                             <Item sx={{ display: "flex", alignItems: "center", backgroundColor: 'transparent', boxShadow: '0' }}>
-                                                <Checkbox defaultChecked />
+                                                <Checkbox sx={{ color: 'white' }} />
                                                 <Typography sx={{ textAlign: 'left', color: 'white' }}>I have read and agree to the website <br />
                                                     terms and conditions *</Typography>
                                             </Item>
@@ -93,4 +98,4 @@ const CheckoutOrder = (props:Props) => {
     )
 }
 
-export default CheckoutOrder
+export default CheckoutOrder;

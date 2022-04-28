@@ -3,7 +3,7 @@ import fakeData from "../../../public/fakeData.json";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
  try {
-  fetch(`https://api.npoint.io/8b635b31d3c9d683fcec`)
+  fetch(`https://tawsifhye.github.io/data/coursecloudcourses.json`)
    .then((res) => res.json())
    .then((data) => res.send(data));
  } catch (error) {
