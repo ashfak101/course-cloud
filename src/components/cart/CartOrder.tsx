@@ -167,8 +167,8 @@ const CartOrder = (props: Props) => {
                           <Typography sx={{ fontFamily: "Lato", fontWeight: "500", fontSize: "20px", fontStyle: "normal", lineHeight: '115.4%', textAlign: 'left', color: '#E2B627', marginTop: '10px' }}>
                             £{5.66 * cart.length}
                           </Typography>
-                          <Box sx={{ ml: 5, display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
-                            <BsPlus style={{ color: 'white', fontSize: '20px', display: 'block' }} />
+                          <Box sx={{ ml: 5, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                            <BsPlus style={{ color: 'white', fontSize: '20px', display: 'block', marginTop: 5 }} />
                             <Typography sx={{
                               fontFamily: "Lato",
                               fontWeight: "500",
@@ -181,7 +181,7 @@ const CartOrder = (props: Props) => {
                             }}>
                               {cart.length}
                             </Typography>
-                            <BiMinus style={{ color: 'white', fontSize: '20px', display: 'block' }} />
+                            <BiMinus style={{ color: 'white', fontSize: '20px', display: 'block', marginTop: 5 }} />
                           </Box>
 
                         </Box>
