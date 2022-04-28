@@ -23,7 +23,7 @@ type Ans = {
 };
 
 const QuizHome = (props: QuizProps) => {
-  const quizs = props.quizs;
+  const quizs = props.quizs.slice(0, 10);
   const [index, setIndex] = useState<number>(0);
   const [showQuestion, setShowQuestion] = useState<boolean>(true);
   const [selectedAnswer, setSelectedAnswer] = useState<Array<Ans>>([]);
@@ -102,7 +102,7 @@ const QuizHome = (props: QuizProps) => {
   const [time, setTime] = useState<number>(300);
   const [timeString, setTimeString] = useState<any>();
 
-  const [eachQuizTimer, setEachQuizTimer] = useState<number>(30);
+  const [eachQuizTimer, setEachQuizTimer] = useState<number>(3);
   const [eachQuizTimerString, setEachQuizTimerString] = useState<any>();
 
   let hours = Math.floor(time / 3600); // get hours
@@ -156,7 +156,7 @@ const QuizHome = (props: QuizProps) => {
         submitQuiz();
       } else {
         goNext();
-        setEachQuizTimer(30);
+        setEachQuizTimer(3);
       }
     }
 
