@@ -1,4 +1,5 @@
 import { Container, Box, Typography, Button, Step, StepLabel, Stepper } from "@mui/material"
+import { makeStyles } from "@mui/styles"
 import React, { useState } from "react";
 import CartOrder from "./CartOrder"
 import Checkout from "./Checkout";
@@ -16,6 +17,7 @@ const Styles = {
 
 const steps = ['Cart', 'Billing Details', 'Completed'];
 const CartHome = () => {
+ 
   const [activeStep, setActiveStep] = useState<number>(0);
   const [skipped, setSkipped] = useState(new Set());
 
@@ -35,6 +37,7 @@ const CartHome = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setSkipped(newSkipped);
   };
+ 
   return (
     <>
       <Box sx={{ ...Styles.cartBackground }}>
@@ -47,14 +50,40 @@ const CartHome = () => {
       </Box>
       <Container maxWidth='xl'>
         <Box sx={{ width: '100%', p: 5 }}>
-          <Stepper activeStep={activeStep}>
+          <Stepper activeStep={activeStep} sx={{
+      "& .MuiStepIcon-active": { color: "red" },
+      "& .MuiStepIcon-completed": { color: "green" },
+      "&  .MuiStepLabel-label": { color: "#fff" },
+      "&  .MuiStepIcon-root": { color: "#333",border:'2px solid #fff',borderRadius:'50% ' },
+      
+     
+    }}>
             {steps.map((label, index) => {
               const stepProps = {};
               const labelProps = {};
 
               return (
-                <Step key={label} {...stepProps} sx={{}}>
-                  <StepLabel {...labelProps} sx={{ display: 'flex', flexDirection: 'column',color:'yellow' }}>{label}</StepLabel>
+                <Step key={label} {...stepProps} sx={{
+                  '& .MuiStepLabel-root .Mui-completed': {
+                    color: '#E2B627', // circle color (COMPLETED)
+                   
+                  },
+                  '& .MuiStepLabel-label.Mui-completed.MuiStepLabel-alternativeLabel':
+                  {
+                    color: '#E2B627', // Just text label (COMPLETED)
+                  },
+                  '& .MuiStepLabel-root .Mui-active': {
+                    color: '#E2B627', // circle color (ACTIVE)
+                  },
+                  '& .MuiStepLabel-label.Mui-active.MuiStepLabel-alternativeLabel':
+                  {
+                    color: '#fff', // Just text label (ACTIVE)
+                  },
+                  '& .MuiStepLabel-root .Mui-active .MuiStepIcon-text': {
+                    fill: '#fff', // circle's number (ACTIVE)
+                  }, 
+                }}>
+                  <StepLabel {...labelProps} sx={{ display: 'flex', flexDirection: 'column', color:'#333' }}>{label}</StepLabel>
                 </Step>
               );
             })}
@@ -66,8 +95,8 @@ const CartHome = () => {
       </Container >
       {activeStep === steps.length - 3 && <CartOrder handleNext={handleNext}></CartOrder>}
       {activeStep === steps.length - 2 && <Checkout handleNext={handleNext} />}
-      {activeStep === steps.length - 1 && <OrderSucces/>}
-    
+      {activeStep === steps.length - 1 && <OrderSucces />}
+
       {/*  */}
     </>
   )
