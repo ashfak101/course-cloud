@@ -2,6 +2,7 @@
 import { Box, FormControl, FormControlLabel, RadioGroup, Radio } from "@mui/material"
 import Quiz from "models/quizModels"
 import { type } from "os"
+import { useState } from "react"
 
 
 
@@ -16,7 +17,10 @@ type QuestionProps = {
 
 
 const Question = (props: QuestionProps) => {
-  const { index, quizs, handleOnChange } = props
+
+  const [isLoading,setIsLoading]=useState<boolean>(true);
+  const { index, quizs, handleOnChange } = props;
+
   return (
     <Box sx={{ width: { xs: "100%", sm: "100%", md: "700px" } }}>
       <FormControl sx={{ m: { xs: 0, sm: 0, md: 3 }, width: "100%", }} variant="standard">
