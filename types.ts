@@ -21,6 +21,7 @@ export interface CoursesOnDeal {
  instructorDetails?: InstructorDetailsDetails;
  instructorDetailsDetails?: InstructorDetailsDetails;
  quantity?: number;
+ level?: string;
 }
 
 export interface InstructorDetailsDetails {
