@@ -74,6 +74,7 @@ const QuizHome = (props: QuizProps) => {
     let currentIndex = index;
     currentIndex -= 1;
     setIndex(currentIndex);
+    setEachQuizTimer(30);
   };
   const handleOnChange = (option: {}) => {
     setIsSelected(true);
