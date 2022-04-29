@@ -10,7 +10,7 @@ import { State } from 'redux/reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductInfo from './ProductInfo';
 import { CartState } from 'redux/reducers/cartReducer';
-import { addCertificate, addCoupon, addSubTotal, addTotal } from 'redux/actions/cartAction';
+import { addCertificate, addCoupon, addDiscount, addSubTotal, addTotal } from 'redux/actions/cartAction';
 import { ToastContainer, toast } from 'react-toastify';
 import ClearIcon from "@mui/icons-material/Clear";
 import 'react-toastify/dist/ReactToastify.css';
@@ -103,7 +103,12 @@ const CartOrder = (props: Props) => {
   const handleDiscount = (e: any) => {
     e.preventDefault();
     if (coupon === "50discount") {
-      dispatch(addTotal(subTotal / 2));
+      if (total! < 500) {
+        setError("Minimum amount 500");
+        return;
+      }
+      const discount = total - total / 2
+      dispatch(addDiscount(discount));
       dispatch(addCoupon(true));
       notify();
 
@@ -122,7 +127,12 @@ const CartOrder = (props: Props) => {
 
     } */
     else if (coupon === "offer") {
-      dispatch(addTotal(subTotal - 500));
+      if (total! < 1000) {
+        setError("Minimum amount 1000");
+        return;
+      }
+      const discount = total - 500;
+      dispatch(addDiscount(discount));
       dispatch(addCoupon(true));
       notify();
 
@@ -243,7 +253,7 @@ const CartOrder = (props: Props) => {
                 </Box>
                 <Box sx={Styles.cart}>
                   <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>Total</Typography>
-                  <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>	£{total.toFixed(2)}</Typography>
+                  <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>	£{cuponUsed ? disCountPrice.toFixed(2) : total.toFixed(2)}</Typography>
                 </Box>
                 <Box>
                   <form onSubmit={handleDiscount}>

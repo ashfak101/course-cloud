@@ -22,7 +22,7 @@ export const addTotal = (payload: number) => {
 };
 export const addDiscount = (payload: number) => {
   return {
-    type: "DISCOUNT_PRICE",
+    type: "ADD_DISCOUNT",
     payload,
   };
 };

@@ -44,7 +44,7 @@ export const cartReducer=(state:CartState=initialState,action:Actions)=>{
                   ...state,
                   subTotal:action.payload
               }    
-          case "DISCOUNT_PRICE":
+          case "ADD_DISCOUNT":
               return{
                   ...state,
                   disCountPrice:action.payload
@@ -66,6 +66,7 @@ export const cartReducer=(state:CartState=initialState,action:Actions)=>{
                     ...state,
                     numberOfCertificate: action.payload
                 }
+                
             /* case'DECREASE_PRICE':
                 return {
                     ...state,
