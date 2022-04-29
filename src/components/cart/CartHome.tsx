@@ -26,10 +26,20 @@ const Styles = {
 const steps = ["Cart", "Billing Details", "Completed"];
 const CartHome = () => {
   const [activeStep, setActiveStep] = useState<number>(0);
+  const [show,setShow]=useState<boolean>(false);
   
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setActiveStep((prevActiveStep) => prevActiveStep + 1) 
+  };
+  const handleStep = (step: number) => {
     
+      
+      // setActiveStep(2);
+      if( step!==2)
+      setActiveStep(step);
+      
+   return   activeStep === 2 ? setActiveStep(step):setActiveStep(0)
+
   };
   return (
     <>
@@ -71,7 +81,7 @@ const CartHome = () => {
               },
             }}
           >
-            {steps.map((label) => {
+            {steps.map((label,index) => {
               const stepProps = {};
               const labelProps = {};
 
@@ -79,7 +89,7 @@ const CartHome = () => {
                 <Step
                   key={label}
                   {...stepProps}
-                  
+                 sx={{ cursor:'pointer'}}
                 >
                   <StepLabel
                     {...labelProps}
@@ -89,7 +99,8 @@ const CartHome = () => {
                       color: "#333","& .MuiStepLabel-root .MuiSvgIcon-root .MuiStepIcon-text": {
                         color: "#E2B627", // circle color (COMPLETED)
                       },
-                    }}
+                      cursor:'pointer'
+                    }} onClick={()=>handleStep(index)}
                   >
                     {label}
                   </StepLabel>
@@ -100,11 +111,12 @@ const CartHome = () => {
           
         </Box>
       </Container>
-      {activeStep === steps.length - 3 && (
+      {activeStep === 0 && (
         <CartOrder handleNext={handleNext}></CartOrder>
       )}
-      {activeStep === steps.length - 2 && <Checkout handleNext={handleNext} />}
-      {activeStep === steps.length - 1 && <OrderSucces/>}
+      {activeStep === 1 && <Checkout handleNext={handleNext} />}
+      {activeStep === 2 && <OrderSucces/>}
+        
     
       {/*  */}
     </>
