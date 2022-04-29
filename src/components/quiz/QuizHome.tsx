@@ -106,6 +106,7 @@ const QuizHome = (props: QuizProps) => {
   const [timeString, setTimeString] = useState<Time>();
 
   const [eachQuizTimer, setEachQuizTimer] = useState<number>(30);
+
   const [eachQuizTimerString, setEachQuizTimerString] = useState<Time>();
 
   let hours = Math.floor(time / 3600); // get hours
