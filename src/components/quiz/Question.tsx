@@ -24,13 +24,13 @@ const Question = (props: QuestionProps) => {
     setIsLoading(false)
   },1000)
   return (
-    <Box sx={{ width: { xs: "100%", sm: "100%", md: "700px" } }}>
+    <Box sx={{ width: { xs: "100%", sm: "100%", md: "700px" },height:'40vh' }}>
       <FormControl
         sx={{ m: { xs: 0, sm: 0, md: 3 }, width: "100%" }}
         variant="standard"
       >
         {
-          isLoading ? <><Box sx={{display:'flex',justifyContent:'center',alignItems:'center',height:'50%'}}> <CircularProgress color="inherit" /></Box></>:<RadioGroup>
+          isLoading ? <><Box sx={{display:'flex',justifyContent:'center',alignItems:'center',height:'40vh'}}> <CircularProgress color="inherit" /></Box></>:<RadioGroup>
           {quizs[index]?.options.map((element) => (
             <FormControlLabel
               sx={{
