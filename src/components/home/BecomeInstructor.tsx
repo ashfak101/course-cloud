@@ -87,6 +87,7 @@ const BecomeInstructor = () => {
            lineHeight: "21px",
            textAlign: "left",
            color: "white",
+           my:3
           }}
          >
           Watch thousands of lessons from the best as they share their <br />{" "}

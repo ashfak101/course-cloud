@@ -73,7 +73,7 @@ const Subscription = () => {
          <CommonButton
           fontSize="1rem"
           textValue="GET STARTED"
-          onClick={() => alert("hello")}
+          onClick={() => {}}
          />
         </Item>
        </Grid>

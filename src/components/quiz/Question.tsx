@@ -29,8 +29,8 @@ const Question = (props: QuestionProps) => {
         sx={{ m: { xs: 0, sm: 0, md: 3 }, width: "100%" }}
         variant="standard"
       >
-        {
-          isLoading ? <><Box sx={{display:'flex',justifyContent:'center',alignItems:'center',height:'40vh'}}> <CircularProgress color="inherit" /></Box></>:<RadioGroup>
+        
+        <RadioGroup>
           {quizs[index]?.options.map((element) => (
             <FormControlLabel
               sx={{
@@ -62,7 +62,7 @@ const Question = (props: QuestionProps) => {
             />
           ))}
         </RadioGroup>
-        }
+        
       </FormControl>
     </Box>
   );

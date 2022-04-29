@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 type ButtonProps = {
  textValue: string;
  fontSize: string;
- onClick: any;
+ onClick: ()=>void;
 };
 const CommonButton = (props: ButtonProps) => {
  return (
@@ -12,6 +12,7 @@ const CommonButton = (props: ButtonProps) => {
     p: ".8em 2.5em",
     textTransform: "none",
     color: "#191C21",
+    fontWeight:'600',
     fontSize: props.fontSize,
     ":hover": {
      bgcolor: "#FBF4F4",

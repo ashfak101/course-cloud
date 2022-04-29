@@ -142,8 +142,8 @@ const FeaturedInstructors = ({ courses }: Props) => {
            <CommonButton
             fontSize="0.9rem"
             textValue="VIEW DETAILS"
-            onClick={() => alert("hello")}
-           />
+            onClick={()=>{}} 
+            />
           </Box>
          </Box>
          <Box sx={{ bgcolor: "#21252D", py: 2 }}>

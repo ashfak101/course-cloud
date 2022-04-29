@@ -42,7 +42,7 @@ const Navbar = () => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const navs = [
-        { name: "CATEGORIES", link: '/' },
+        { name: "HOME", link: '/' },
         { name: "FREE QUIZ", link: '/quiz' },
         { name: "BLOGS", link: '/blogs' },
         { name: "CART", link: '/cart' }
@@ -110,7 +110,7 @@ const Navbar = () => {
                             {
                                 navs.map((nav) =>
                                     <Link key={nav.name} href={nav.link}>
-                                        <a style={{ margin: "0px 1em 0px 1em", fontWeight: "200", color: router.pathname == nav.link ? "#D19F28" : "#fff" }}>
+                                        <a style={{ margin: "0px 1em 0px 1em", fontWeight: "400", color: router.pathname == nav.link ? "#D19F28" : "#fff" }}>
                                             {nav.name}
                                         </a>
                                     </Link>
@@ -161,7 +161,7 @@ const Navbar = () => {
                                     my: 3,
                                 }}
                             >
-                                CATEGORIES
+                                HOME
                             </Button>
                         </Link>
                     </Box>
