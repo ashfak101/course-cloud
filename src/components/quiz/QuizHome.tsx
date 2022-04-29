@@ -67,6 +67,7 @@ const QuizHome = (props: QuizProps) => {
     let currentIndex = index;
     currentIndex += 1;
     setIndex(currentIndex);
+    setEachQuizTimer(30);
   };
   const goBack = () => {
     let currentIndex = index;
@@ -102,7 +103,7 @@ const QuizHome = (props: QuizProps) => {
   const [time, setTime] = useState<number>(300);
   const [timeString, setTimeString] = useState<any>();
 
-  const [eachQuizTimer, setEachQuizTimer] = useState<number>(3);
+  const [eachQuizTimer, setEachQuizTimer] = useState<number>(30);
   const [eachQuizTimerString, setEachQuizTimerString] = useState<any>();
 
   let hours = Math.floor(time / 3600); // get hours
@@ -151,12 +152,13 @@ const QuizHome = (props: QuizProps) => {
         setTime((prevTime) => prevTime - 1);
       }, 1000);
     } else {
-      
+
       if (index === quizs.length - 1) {
         submitQuiz();
       } else {
         goNext();
-        setEachQuizTimer(3);
+        setEachQuizTimer(30);
+
       }
     }
 
@@ -253,7 +255,7 @@ const QuizHome = (props: QuizProps) => {
                 }}
               >
                 <Typography variant="h6">{quizs[index]?.question}</Typography>
-                <Typography variant="h5">{eachQuizTimerString}</Typography>
+                <Typography variant="h5" sx={{ display: "flex", alignItems: 'center' }}><Typography sx={{ fontSize: '12px' }}>Each Quiz Time:</Typography> {eachQuizTimerString}</Typography>
               </Box>
             </Box>
             <Question
