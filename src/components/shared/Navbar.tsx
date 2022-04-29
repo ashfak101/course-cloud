@@ -110,7 +110,7 @@ const Navbar = () => {
                             {
                                 navs.map((nav) =>
                                     <Link key={nav.name} href={nav.link}>
-                                        <a style={{ margin: "0px 1em 0px 1em", fontWeight: "200", color: router.pathname == nav.link ? "#D19F28" : "#fff" }}>
+                                        <a style={{ margin: "0px 1em 0px 1em", fontWeight: "400", color: router.pathname == nav.link ? "#D19F28" : "#fff" }}>
                                             {nav.name}
                                         </a>
                                     </Link>
