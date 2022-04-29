@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -72,7 +73,7 @@ const CartOrder = (props: Props) => {
       estimateTotal =
         estimateTotal +
         element.mainPrice + numberOfCertificate * certificatePrice
-      dispatch(addSubTotal(estimateTotal.toFixed(2)));
+      dispatch(addSubTotal(estimateTotal));
       finalTotal = estimateTotal;
       dispatch(addTotal(finalTotal));
     });
@@ -139,7 +140,7 @@ const CartOrder = (props: Props) => {
       // dispatch(decreaseItemPrice('sports'));
       let newSubTotal = 0;
       cart.forEach(item => {
-        newSubTotal += parseFloat(item.mainPrice);
+        newSubTotal += item.mainPrice;
         dispatch(addSubTotal(newSubTotal));
         dispatch(addTotal(subTotal));
       })
@@ -238,11 +239,11 @@ const CartOrder = (props: Props) => {
                 </Box>
                 <Box sx={Styles.cart}>
                   <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>Subtotal</Typography>
-                  <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>	£{subTotal}</Typography>
+                  <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>	£{subTotal.toFixed(2)}</Typography>
                 </Box>
                 <Box sx={Styles.cart}>
                   <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>Total</Typography>
-                  <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>	£{total}</Typography>
+                  <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>	£{total.toFixed(2)}</Typography>
                 </Box>
                 <Box>
                   <form onSubmit={handleDiscount}>
