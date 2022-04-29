@@ -4,9 +4,11 @@ import {
   FormControlLabel,
   RadioGroup,
   Radio,
+  CircularProgress,
 } from "@mui/material";
 import Quiz from "models/quizModels";
 import { type } from "os";
+import { useState } from "react";
 
 type QuestionProps = {
   index: number;
@@ -17,13 +19,18 @@ type QuestionProps = {
 
 const Question = (props: QuestionProps) => {
   const { index, quizs, handleOnChange } = props;
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  setTimeout(()=>{
+    setIsLoading(false)
+  },1000)
   return (
-    <Box sx={{ width: { xs: "100%", sm: "100%", md: "700px" } }}>
+    <Box sx={{ width: { xs: "100%", sm: "100%", md: "700px" },height:'40vh' }}>
       <FormControl
         sx={{ m: { xs: 0, sm: 0, md: 3 }, width: "100%" }}
         variant="standard"
       >
-        <RadioGroup>
+        {
+          isLoading ? <><Box sx={{display:'flex',justifyContent:'center',alignItems:'center',height:'40vh'}}> <CircularProgress color="inherit" /></Box></>:<RadioGroup>
           {quizs[index]?.options.map((element) => (
             <FormControlLabel
               sx={{
@@ -55,6 +62,7 @@ const Question = (props: QuestionProps) => {
             />
           ))}
         </RadioGroup>
+        }
       </FormControl>
     </Box>
   );

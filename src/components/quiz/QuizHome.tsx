@@ -21,6 +21,7 @@ type Ans = {
   selectedAnswer: {};
   level: string;
 };
+type Time = number | string;
 
 const QuizHome = (props: QuizProps) => {
   const quizs = props.quizs.slice(0, 10);
@@ -67,11 +68,13 @@ const QuizHome = (props: QuizProps) => {
     let currentIndex = index;
     currentIndex += 1;
     setIndex(currentIndex);
+    setEachQuizTimer(30);
   };
   const goBack = () => {
     let currentIndex = index;
     currentIndex -= 1;
     setIndex(currentIndex);
+    setEachQuizTimer(30);
   };
   const handleOnChange = (option: {}) => {
     setIsSelected(true);
@@ -100,10 +103,11 @@ const QuizHome = (props: QuizProps) => {
   // Timer Function Start ------------------------------------------------------
   // ---------------------------------------------------------------------------
   const [time, setTime] = useState<number>(300);
-  const [timeString, setTimeString] = useState<any>();
+  const [timeString, setTimeString] = useState<Time>();
 
-  const [eachQuizTimer, setEachQuizTimer] = useState<number>(3);
-  const [eachQuizTimerString, setEachQuizTimerString] = useState<any>();
+  const [eachQuizTimer, setEachQuizTimer] = useState<number>(30);
+
+  const [eachQuizTimerString, setEachQuizTimerString] = useState<Time>();
 
   let hours = Math.floor(time / 3600); // get hours
   let minutes = Math.floor((time - hours * 3600) / 60); // get minutes
@@ -114,7 +118,8 @@ const QuizHome = (props: QuizProps) => {
   let minutesEachQuiz = Math.floor((eachQuizTimer - hoursEachQuiz * 3600) / 60); // get minutes
   let secondsEachQuiz = eachQuizTimer - hoursEachQuiz * 3600 - minutesEachQuiz * 60; //  get seconds
 
-  function convTime(hours: any, minutes: any, seconds: any) {
+
+  function convTime(hours: Time, minutes: Time, seconds: Time) {
     if (hours < 10) {
       hours = "0" + hours;
     }
@@ -131,7 +136,7 @@ const QuizHome = (props: QuizProps) => {
 
 
   // Function for each quiz timer
-  function convTimeEachQuiz(hours: any, minutes: any, seconds: any) {
+  function convTimeEachQuiz(hours: Time, minutes: Time, seconds: Time) {
     if (hours < 10) {
       hours = "0" + hours;
     }
@@ -148,15 +153,15 @@ const QuizHome = (props: QuizProps) => {
     let eachQuizTimeInterval: any;
     if (eachQuizTimer > 0) {
       eachQuizTimeInterval = setInterval(() => {
-        setTime((prevTime) => prevTime - 1);
+        setEachQuizTimer((prevTime) => prevTime - 1);
       }, 1000);
     } else {
-      
+
       if (index === quizs.length - 1) {
         submitQuiz();
       } else {
         goNext();
-        setEachQuizTimer(3);
+        setEachQuizTimer(30);
       }
     }
 
@@ -171,7 +176,7 @@ const QuizHome = (props: QuizProps) => {
 
       if (time > 0) {
         interval = setInterval(() => {
-          setEachQuizTimer((prevTime) => prevTime - 1);
+          setTime((prevTime) => prevTime - 1);
         }, 1000);
       } else {
         submitQuizTimer();
@@ -253,7 +258,7 @@ const QuizHome = (props: QuizProps) => {
                 }}
               >
                 <Typography variant="h6">{quizs[index]?.question}</Typography>
-                <Typography variant="h5">{eachQuizTimerString}</Typography>
+                <Typography variant="h5" sx={{ display: "flex", alignItems: 'center' }}><Typography sx={{ fontSize: '12px' }}>Each Quiz Time:</Typography> {eachQuizTimerString}</Typography>
               </Box>
             </Box>
             <Question
