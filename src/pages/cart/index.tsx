@@ -8,7 +8,6 @@ import { CartState } from "redux/reducers/cartReducer";
 const index = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { cart }: CartState = useSelector((state: State) => state.allCartItem);
-  console.log(cart.length)
   return (
 
     <>
