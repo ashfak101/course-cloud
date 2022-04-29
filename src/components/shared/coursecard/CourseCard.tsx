@@ -13,7 +13,7 @@ import { CoursesOnDeal } from "../../../../types";
 import { useState } from "react";
 import { State } from "redux/reducers";
 import { useDispatch, useSelector } from "react-redux";
-import { addCoupon, addSubTotal, addToCart, addTotal } from "redux/actions/cartAction";
+import { addCertificate, addCoupon, addSubTotal, addToCart, addTotal } from "redux/actions/cartAction";
 import { useRouter } from "next/router";
 
 type Props = {
@@ -22,11 +22,11 @@ type Props = {
 };
 
 const CourseCard = ({ course, isDiscounted }: Props) => {
-    let price: any = (parseFloat(course.mainPrice) - (parseFloat(course.mainPrice) * parseFloat(course.discountPercent))).toFixed();
+    let price: string = (parseFloat(course.mainPrice) - (parseFloat(course.mainPrice) * parseFloat(course.discountPercent))).toFixed();
 
     const [isAdded, setIsAdded] = useState<boolean>(false);
     const router = useRouter();
-    const { cart, subTotal, certificatePrice } = useSelector((state: State) => state.allCartItem);
+    const { cart, subTotal, certificatePrice, numberOfCertificate } = useSelector((state: State) => state.allCartItem);
     const dispatch = useDispatch();
 
     const goToCart = () => {
@@ -41,9 +41,10 @@ const CourseCard = ({ course, isDiscounted }: Props) => {
         };
         const newCart = [...cart, course];
         dispatch(addToCart(newCart));
-        const estimateSubTotal = subTotal + parseFloat(course.mainPrice) + certificatePrice;
-        dispatch(addSubTotal(estimateSubTotal));
-        dispatch(addTotal(estimateSubTotal));
+        // const estimateSubTotal = subTotal + parseFloat(course.mainPrice) + certificatePrice;
+        // dispatch(addSubTotal(estimateSubTotal));
+        // dispatch(addTotal(estimateSubTotal));
+        dispatch(addCertificate(numberOfCertificate + 1))
         dispatch(addCoupon(false));
         setIsAdded(true);
     };

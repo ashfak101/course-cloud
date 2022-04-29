@@ -39,3 +39,17 @@ export const decreaseItemPrice = (payload: string) => {
     payload,
   };
 };
+
+
+export const removeFromCart = (payload:string) => {
+  return {
+      type: 'REMOVE_CART_ITEM',
+      payload
+  }
+}
+export const addCertificate = (payload:number) => {
+  return {
+      type: 'ADD_CERTIFICATE',
+      payload
+  }
+}

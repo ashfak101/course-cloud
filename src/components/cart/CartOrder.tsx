@@ -9,7 +9,7 @@ import { State } from 'redux/reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductInfo from './ProductInfo';
 import { CartState } from 'redux/reducers/cartReducer';
-import { addCoupon, addSubTotal, addTotal } from 'redux/actions/cartAction';
+import { addCertificate, addCoupon, addSubTotal, addTotal } from 'redux/actions/cartAction';
 import { ToastContainer, toast } from 'react-toastify';
 import ClearIcon from "@mui/icons-material/Clear";
 import 'react-toastify/dist/ReactToastify.css';
@@ -61,8 +61,26 @@ const CartOrder = (props: Props) => {
     subTotal,
     total,
     disCountPrice,
-    cuponUsed, certificatePrice }: CartState = useSelector((state: State) => state.allCartItem);
+    cuponUsed, certificatePrice, numberOfCertificate }: CartState = useSelector((state: State) => state.allCartItem);
   const dispatch = useDispatch();
+
+  let estimateTotal: number = 0;
+
+  let finalTotal: number = 0;
+  React.useEffect(() => {
+    cart?.forEach((element) => {
+      estimateTotal =
+        estimateTotal +
+        element.mainPrice + numberOfCertificate * certificatePrice
+      dispatch(addSubTotal(estimateTotal.toFixed(2)));
+      finalTotal = estimateTotal;
+      dispatch(addTotal(finalTotal));
+    });
+    if (!cart?.length) {
+      dispatch(addSubTotal(0));
+      dispatch(addTotal(0));
+    }
+  }, [total, finalTotal, cart, subTotal]);
 
   const notify = () => {
     toast.success('Coupon added', {
@@ -75,7 +93,12 @@ const CartOrder = (props: Props) => {
       progress: undefined,
     });
   };
-
+  const handleCertQuantity = (type: string) => {
+    if (type === 'increase')
+      dispatch(addCertificate(numberOfCertificate + 1));
+    if (type === 'decrease' && numberOfCertificate > 0)
+      dispatch(addCertificate(numberOfCertificate + 1));
+  }
   const handleDiscount = (e: any) => {
     e.preventDefault();
     if (coupon === "50discount") {
@@ -165,10 +188,10 @@ const CartOrder = (props: Props) => {
                         </Typography>
                         <Box sx={{ display: 'flex', alignItems: 'center' }}>
                           <Typography sx={{ fontFamily: "Lato", fontWeight: "500", fontSize: "20px", fontStyle: "normal", lineHeight: '115.4%', textAlign: 'left', color: '#E2B627', marginTop: '10px' }}>
-                            £{5.66 * cart.length}
+                            £{(certificatePrice * numberOfCertificate).toFixed(2)}
                           </Typography>
                           <Box sx={{ ml: 5, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                            <BsPlus style={{ color: 'white', fontSize: '20px', display: 'block', marginTop: 5 }} />
+                            <BsPlus style={{ color: 'white', fontSize: '20px', display: 'block', marginTop: 5 }} onClick={() => handleCertQuantity('increase')} />
                             <Typography sx={{
                               fontFamily: "Lato",
                               fontWeight: "500",
@@ -179,7 +202,7 @@ const CartOrder = (props: Props) => {
                               color: 'white',
                               marginTop: '10px'
                             }}>
-                              {cart.length}
+                              {numberOfCertificate}
                             </Typography>
                             <BiMinus style={{ color: 'white', fontSize: '20px', display: 'block', marginTop: 5 }} />
                           </Box>
@@ -211,7 +234,7 @@ const CartOrder = (props: Props) => {
                 }
                 <Box sx={Styles.cart}>
                   <Typography sx={{ fontWeight: '600', fontSize: '20px', width: '350px', textAlign: 'left' }}>Digital Certificate</Typography>
-                  <Typography sx={{ fontWeight: '600', fontSize: '20px', }}>	£{certificatePrice * cart.length}</Typography>
+                  <Typography sx={{ fontWeight: '600', fontSize: '20px', }}>	£{(certificatePrice * numberOfCertificate).toFixed(2)}</Typography>
                 </Box>
                 <Box sx={Styles.cart}>
                   <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>Subtotal</Typography>
