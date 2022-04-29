@@ -149,7 +149,7 @@ const QuizHome = (props: QuizProps) => {
     let eachQuizTimeInterval: any;
     if (eachQuizTimer > 0) {
       eachQuizTimeInterval = setInterval(() => {
-        setTime((prevTime) => prevTime - 1);
+        setEachQuizTimer((prevTime) => prevTime - 1);
       }, 1000);
     } else {
 
@@ -173,7 +173,7 @@ const QuizHome = (props: QuizProps) => {
 
       if (time > 0) {
         interval = setInterval(() => {
-          setEachQuizTimer((prevTime) => prevTime - 1);
+          setTime((prevTime) => prevTime - 1);
         }, 1000);
       } else {
         submitQuizTimer();
