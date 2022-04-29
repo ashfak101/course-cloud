@@ -16,8 +16,8 @@ export interface CoursesOnDeal {
  courseDetails: string;
  courseCover: string;
  videoURL: string;
- mainPrice: string;
- discountPercent: string;
+ mainPrice: number;
+ discountPercent: number;
  instructorDetails?: InstructorDetailsDetails;
  instructorDetailsDetails?: InstructorDetailsDetails;
  quantity?: number;

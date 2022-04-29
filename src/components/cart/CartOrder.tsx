@@ -80,7 +80,7 @@ const CartOrder = (props: Props) => {
       dispatch(addSubTotal(0));
       dispatch(addTotal(0));
     }
-  }, [total, finalTotal, cart, subTotal]);
+  }, [total, finalTotal, cart, subTotal, numberOfCertificate]);
 
   const notify = () => {
     toast.success('Coupon added', {
@@ -97,7 +97,7 @@ const CartOrder = (props: Props) => {
     if (type === 'increase')
       dispatch(addCertificate(numberOfCertificate + 1));
     if (type === 'decrease' && numberOfCertificate > 0)
-      dispatch(addCertificate(numberOfCertificate + 1));
+      dispatch(addCertificate(numberOfCertificate - 1));
   }
   const handleDiscount = (e: any) => {
     e.preventDefault();
@@ -204,7 +204,7 @@ const CartOrder = (props: Props) => {
                             }}>
                               {numberOfCertificate}
                             </Typography>
-                            <BiMinus style={{ color: 'white', fontSize: '20px', display: 'block', marginTop: 5 }} />
+                            <BiMinus style={{ color: 'white', fontSize: '20px', display: 'block', marginTop: 5 }} onClick={() => handleCertQuantity('decrease')} />
                           </Box>
 
                         </Box>

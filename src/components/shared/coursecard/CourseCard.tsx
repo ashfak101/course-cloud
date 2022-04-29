@@ -22,7 +22,9 @@ type Props = {
 };
 
 const CourseCard = ({ course, isDiscounted }: Props) => {
-    let price: string = (parseFloat(course.mainPrice) - (parseFloat(course.mainPrice) * parseFloat(course.discountPercent))).toFixed();
+    // let price: number = (parseFloat(course.mainPrice) - (parseFloat(course.mainPrice) * parseFloat(course.discountPercent))).toFixed();
+
+    let price: number = course.mainPrice - course.mainPrice * course.discountPercent;
 
     const [isAdded, setIsAdded] = useState<boolean>(false);
     const router = useRouter();
@@ -41,9 +43,6 @@ const CourseCard = ({ course, isDiscounted }: Props) => {
         };
         const newCart = [...cart, course];
         dispatch(addToCart(newCart));
-        // const estimateSubTotal = subTotal + parseFloat(course.mainPrice) + certificatePrice;
-        // dispatch(addSubTotal(estimateSubTotal));
-        // dispatch(addTotal(estimateSubTotal));
         dispatch(addCertificate(numberOfCertificate + 1))
         dispatch(addCoupon(false));
         setIsAdded(true);
@@ -75,7 +74,7 @@ const CourseCard = ({ course, isDiscounted }: Props) => {
                             "&::before": {
                                 position: "absolute",
                                 zIndex: "100",
-                                content: `'${(isDiscounted && parseFloat(course.discountPercent) * 100 + "%" || '£' + price)}'`,
+                                content: `'${(isDiscounted && course.discountPercent * 100 + "%" || '£' + price)}'`,
                                 fontWeight: "bold",
                                 color: "#FA5862",
                                 display: "inline-block",

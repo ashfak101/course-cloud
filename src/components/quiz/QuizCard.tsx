@@ -14,7 +14,7 @@ type Course = {
     title: string;
 
     videoURL: string;
-    mainPrice: string;
+    mainPrice: number;
     level: string;
     courseType: string;
     courseCover: string;
