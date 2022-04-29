@@ -42,7 +42,7 @@ const Navbar = () => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const navs = [
-        { name: "CATEGORIES", link: '/' },
+        { name: "HOME", link: '/' },
         { name: "FREE QUIZ", link: '/quiz' },
         { name: "BLOGS", link: '/blogs' },
         { name: "CART", link: '/cart' }
@@ -161,7 +161,7 @@ const Navbar = () => {
                                     my: 3,
                                 }}
                             >
-                                CATEGORIES
+                                HOME
                             </Button>
                         </Link>
                     </Box>
