@@ -9,6 +9,7 @@ const initialState={
     disCountPrice:0,
     cuponUsed: false,
     certificatePrice: 5.66,
+    numberOfCertificate: 0
 }
 
 export interface CartState {
@@ -18,6 +19,7 @@ export interface CartState {
     disCountPrice:number;
     cuponUsed: boolean;
     certificatePrice: number;
+    numberOfCertificate: number;
 }
 type Actions ={
     type :string,
@@ -42,7 +44,7 @@ export const cartReducer=(state:CartState=initialState,action:Actions)=>{
                   ...state,
                   subTotal:action.payload
               }    
-          case "DISCOUNT_PRICE":
+          case "ADD_DISCOUNT":
               return{
                   ...state,
                   disCountPrice:action.payload
@@ -53,6 +55,18 @@ export const cartReducer=(state:CartState=initialState,action:Actions)=>{
                     ...state,
                     cuponUsed: action.payload
                 }
+
+                case'REMOVE_CART_ITEM':
+                return {
+                    ...state,
+                    cart: state.cart.filter(item => item.id !== action.payload)
+                }
+                case'ADD_CERTIFICATE':
+                return {
+                    ...state,
+                    numberOfCertificate: action.payload
+                }
+                
             /* case'DECREASE_PRICE':
                 return {
                     ...state,
