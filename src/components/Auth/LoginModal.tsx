@@ -34,7 +34,7 @@ const Styles = {
 }
 
 type ModalProps ={
-    handleClose: any;
+    handleClose: ()=>void;
     open: boolean;
 }
 

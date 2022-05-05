@@ -3,10 +3,10 @@ import Image from 'next/image';
 import React from 'react';
 
 type ButtonProps = {
-    children: any ;
+    children: string ;
     backgroundColor: string;
     icon: string;
-    onClick: any;
+    onClick:()=>void;
 }
 
 const AuthenticationButton = (props:ButtonProps) => {

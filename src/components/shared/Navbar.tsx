@@ -25,20 +25,12 @@ import useAuth from "hooks/useAuth";
 import LoginModal from '../Auth/LoginModal'
 import { EmailAuthCredential } from "firebase/auth";
 
-// type Email={
-//     email:string;
-// }
-// type Auth ={
-//     user:User;
-//     logOut: any;
-//     open:boolean;
-//     setOpen:any;
-// }
+
 const Navbar = () => {
     const [navState, setNavState] = useState<boolean>(false);
     const router = useRouter()
     const { user, logOut, open, setOpen } = useAuth();
-    const email: any = user.email;
+    const email: string = user.email;
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const navs = [
