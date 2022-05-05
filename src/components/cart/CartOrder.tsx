@@ -47,7 +47,12 @@ const CssTextField = styled(TextField)({
 
 const Styles = {
   cart: {
-    display: 'flex', justifyContent: 'space-between', my: 4, color: '#FBF4F4', borderBottom: '0.568px solid #C6C6C6', pb: 2
+    display: 'flex',
+    justifyContent: 'space-between',
+    my: 4,
+    color: '#FBF4F4',
+    borderBottom: '0.568px solid #C6C6C6',
+    pb: 2
   }
 }
 type Props = {
@@ -95,7 +100,7 @@ const CartOrder = (props: Props) => {
     });
   };
   const handleCertQuantity = (type: string) => {
-    if (type === 'increase')
+    if (type === 'increase' && numberOfCertificate < cart.length)
       dispatch(addCertificate(numberOfCertificate + 1));
     if (type === 'decrease' && numberOfCertificate > 0)
       dispatch(addCertificate(numberOfCertificate - 1));
@@ -182,27 +187,30 @@ const CartOrder = (props: Props) => {
                 ))
               }
               <>
-                <Box sx={{ flexGrow: 1, }}>
-                  <Grid container spacing={2} sx={{ display: 'flex', alignItems: 'center', }}>
-                    <Grid item xs={12} xl={4}>
-                      <Item sx={{ backgroundColor: "transparent", boxShadow: "0" }}>
-                        <Image src='/assets/images/digital-certificate.png' width='158.23' height='118' alt='certificate' />
-                      </Item>
-                    </Grid>
-                    <Grid item xs={12} xl={8}>
-                      <Item sx={{ backgroundColor: "transparent", boxShadow: "0" }}>
-                        <Typography sx={{ fontFamily: "Lato", fontWeight: "400", fontSize: "15px", fontStyle: "normal", lineHeight: '145%', textAlign: 'left', color: 'white' }}>
+                <Box sx={{ flexGrow: 1 }}>
+                  {
+                    numberOfCertificate > 0 &&
+                    <Grid container spacing={2} sx={{ display: 'flex', alignItems: 'center', }}>
+                      <Grid item xs={12} xl={4}>
+                        <Item sx={{ backgroundColor: "transparent", boxShadow: "0" }}>
+                          <Image src='/assets/images/digital-certificate.png' width='158.23' height='118' alt='certificate' />
+                        </Item>
+                      </Grid>
+                      <Grid item xs={12} xl={8}>
+                        <Item sx={{ backgroundColor: "transparent", boxShadow: "0" }}>
 
-                        </Typography>
-                        <Typography sx={{ fontFamily: "Lato", fontWeight: "700", fontSize: "20px", fontStyle: "normal", lineHeight: '145%', textAlign: 'left', color: 'white' }}>
-                          Digital Certificate
-                        </Typography>
-                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                          <Typography sx={{ fontFamily: "Lato", fontWeight: "500", fontSize: "20px", fontStyle: "normal", lineHeight: '115.4%', textAlign: 'left', color: '#E2B627', marginTop: '10px' }}>
-                            £{(certificatePrice * numberOfCertificate).toFixed(2)}
+                          <Typography sx={{
+                            fontFamily: "Lato",
+                            fontWeight: "700",
+                            fontSize: "20px",
+                            fontStyle: "normal",
+                            lineHeight: '145%',
+                            textAlign: 'left',
+                            color: 'white'
+                          }}>
+                            Digital Certificate
                           </Typography>
-                          <Box sx={{ ml: 5, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                            <BsPlus style={{ color: 'white', fontSize: '20px', display: 'block', marginTop: 5 }} onClick={() => handleCertQuantity('increase')} />
+                          <Box sx={{ display: 'flex', alignItems: 'center' }}>
                             <Typography sx={{
                               fontFamily: "Lato",
                               fontWeight: "500",
@@ -210,18 +218,47 @@ const CartOrder = (props: Props) => {
                               fontStyle: "normal",
                               lineHeight: '115.4%',
                               textAlign: 'left',
-                              color: 'white',
+                              color: '#E2B627',
                               marginTop: '10px'
                             }}>
-                              {numberOfCertificate}
+                              £{(certificatePrice * numberOfCertificate).toFixed(2)}
                             </Typography>
-                            <BiMinus style={{ color: 'white', fontSize: '20px', display: 'block', marginTop: 5 }} onClick={() => handleCertQuantity('decrease')} />
-                          </Box>
+                            <Box sx={{ ml: 5, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                              <BsPlus style={{
+                                color: 'white',
+                                fontSize: '20px',
+                                display: 'block',
+                                marginTop: 5
+                              }}
+                                onClick={() => handleCertQuantity('increase')}
+                              />
+                              <Typography sx={{
+                                fontFamily: "Lato",
+                                fontWeight: "500",
+                                fontSize: "20px",
+                                fontStyle: "normal",
+                                lineHeight: '115.4%',
+                                textAlign: 'left',
+                                color: 'white',
+                                marginTop: '10px'
+                              }}>
+                                {numberOfCertificate}
+                              </Typography>
+                              <BiMinus style={{
+                                color: 'white',
+                                fontSize: '20px',
+                                display: 'block',
+                                marginTop: 5
+                              }}
+                                onClick={() => handleCertQuantity('decrease')}
+                              />
+                            </Box>
 
-                        </Box>
-                      </Item>
+                          </Box>
+                        </Item>
+                      </Grid>
                     </Grid>
-                  </Grid>
+                  }
                 </Box>
               </>
             </Grid>
@@ -243,17 +280,32 @@ const CartOrder = (props: Props) => {
                     </Box>
                   ))
                 }
-                <Box sx={Styles.cart}>
-                  <Typography sx={{ fontWeight: '600', fontSize: '20px', width: '350px', textAlign: 'left' }}>Digital Certificate</Typography>
-                  <Typography sx={{ fontWeight: '600', fontSize: '20px', }}>	£{(certificatePrice * numberOfCertificate).toFixed(2)}</Typography>
+                {numberOfCertificate > 0 && <Box sx={Styles.cart}>
+                  <Typography sx={{
+                    fontWeight: '600',
+                    fontSize: '20px',
+                    width: '350px',
+                    textAlign: 'left'
+                  }}>
+                    Digital Certificate
+                  </Typography>
+                  <Typography sx={{
+                    fontWeight: '600',
+                    fontSize: '20px',
+                  }}>
+                    £{(certificatePrice * numberOfCertificate).toFixed(2)}
+                  </Typography>
                 </Box>
+                }
                 <Box sx={Styles.cart}>
                   <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>Subtotal</Typography>
                   <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>	£{subTotal.toFixed(2)}</Typography>
                 </Box>
                 <Box sx={Styles.cart}>
                   <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>Total</Typography>
-                  <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>	£{cuponUsed ? disCountPrice.toFixed(2) : total.toFixed(2)}</Typography>
+                  <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>
+                    £{cuponUsed ? disCountPrice.toFixed(2) : total.toFixed(2)}
+                  </Typography>
                 </Box>
                 <Box>
                   <form onSubmit={handleDiscount}>
