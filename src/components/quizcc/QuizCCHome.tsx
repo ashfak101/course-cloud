@@ -69,7 +69,7 @@ const QuizCCHome = ({ quizQuestions }: QuizProps) => {
     if (currentQuestion + 2 <= quizQuestions.length) {
       setCurrentQuestion((prevCurrentQues) => prevCurrentQues + 1);
     } else {
-      console.log("dispathing");
+      // console.log("dispathing");
       reduxDispatch({
         type: "SUBMIT_ANSWERS",
         payload: qna,
