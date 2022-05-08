@@ -9,10 +9,23 @@ type AnsProps = {
 const Answers = ({ options, handleChange }: AnsProps) => {
   // console.log(options);
   return (
-    <Box>
+    <Box
+      sx={{
+        p: 3,
+        my: 4,
+        borderRadius: "8px",
+        bgcolor: "black",
+      }}
+    >
       {options.map((option, index) => (
         <FormControlLabel
-          sx={{ display: "block" }}
+          sx={{
+            display: "block",
+            border: "1px solid gray",
+            m: 2,
+            borderRadius: "5px",
+            bgcolor: "#21252D",
+          }}
           key={index}
           control={
             <Checkbox

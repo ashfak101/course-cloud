@@ -1,4 +1,4 @@
-import { Button, Container, Typography } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 import React, { Fragment, useEffect, useReducer, useState } from "react";
 import { QuestionsCC } from "types/questionTypes";
 import Answers from "./Answers";
@@ -66,12 +66,8 @@ const QuizCCHome = ({ quizQuestions }: QuizProps) => {
 
   // handle next question button
   const nextQuestion = () => {
-    console.log("next clicked");
-
     if (currentQuestion + 2 <= quizQuestions.length) {
       setCurrentQuestion((prevCurrentQues) => prevCurrentQues + 1);
-      console.log(currentQuestion, "current ques");
-      console.log(quizQuestions.length, "quiz lenght");
     } else {
       console.log("dispathing");
       reduxDispatch({
@@ -93,25 +89,51 @@ const QuizCCHome = ({ quizQuestions }: QuizProps) => {
   };
 
   return (
-    <Container>
-      <h1>This is from quiz cc home</h1>
-
+    <Container sx={{ my: 10 }}>
       {qna ? (
-        <>
-          <Typography variant="h3">
-            {currentQuestion + 1}. {qna[currentQuestion].question}
+        <Box sx={{ bgcolor: "#21252D", p: 4, borderRadius: "5px" }}>
+          <Typography variant="h5">
+            <Typography
+              variant="h5"
+              component="span"
+              sx={{ bgcolor: "#D19F28", p: "2px 10px", borderRadius: "2px" }}
+            >
+              {currentQuestion + 1}
+            </Typography>{" "}
+            {qna[currentQuestion].question}
           </Typography>
           <Answers
             options={qna[currentQuestion]?.options}
             handleChange={handleAnswerChange}
           />
-          <Button onClick={prevQuestion} variant="contained">
-            PREV
-          </Button>
-          <Button onClick={nextQuestion} variant="contained">
-            NEXT
-          </Button>
-        </>
+          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+            <Button
+              sx={{
+                bgcolor: "#D19F28",
+                "&:hover": {
+                  bgcolor: "black",
+                },
+              }}
+              onClick={prevQuestion}
+              variant="contained"
+            >
+              PREV
+            </Button>
+            <Button
+              sx={{
+                ml: 4,
+                bgcolor: "#D19F28",
+                "&:hover": {
+                  bgcolor: "black",
+                },
+              }}
+              onClick={nextQuestion}
+              variant="contained"
+            >
+              NEXT
+            </Button>
+          </Box>
+        </Box>
       ) : (
         <Fragment>Loading....</Fragment>
       )}

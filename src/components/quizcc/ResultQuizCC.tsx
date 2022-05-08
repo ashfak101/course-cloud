@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { State } from "redux/reducers";
 import { QuestionsCC } from "types/questionTypes";
 import _ from "lodash";
+import QuizAnalysis from "./QuizAnalysis";
 
 type QuizProps = {
   quizAnswers: QuestionsCC[];
@@ -15,7 +16,7 @@ const ResultQuizCC = ({ quizAnswers }: QuizProps) => {
   );
 
   // console.log("from submittedAnswers ", submittedAnswers);
-  console.log("from Database: answers ", quizAnswers);
+  // console.log("from Database: answers ", quizAnswers);
 
   const quizCalculation = () => {
     let score = 0;
@@ -45,6 +46,7 @@ const ResultQuizCC = ({ quizAnswers }: QuizProps) => {
       <Typography variant="h3">
         Your Score is {userScore}/{quizAnswers.length}
       </Typography>
+      <QuizAnalysis result={quizAnswers} />
     </Container>
   );
 };
