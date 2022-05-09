@@ -23,7 +23,6 @@ type Action = {
   payload: Quiz[];
 };
 
-
 // const unChecked = arr.find(a => a.id === e.target.value)
 //             arr.splice(arr.indexOf(unChecked), 1)
 // arr1.map(obj => arr2.find(o => o.id === obj.id) || obj);
