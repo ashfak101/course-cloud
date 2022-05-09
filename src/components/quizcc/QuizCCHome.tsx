@@ -80,6 +80,7 @@ const QuizCCHome = ({ quizQuestions }: QuizProps) => {
       });
     }
   };
+
   // handle prev question button
   const prevQuestion = () => {
     console.log("prev clicked");
@@ -127,8 +128,8 @@ const QuizCCHome = ({ quizQuestions }: QuizProps) => {
                   bgcolor: "black",
                 },
               }}
-              onClick={nextQuestion}
               variant="contained"
+              onClick={nextQuestion}
             >
               {currentQuestion + 2 <= quizQuestions.length ? "Next" : "Submit"}
             </Button>
