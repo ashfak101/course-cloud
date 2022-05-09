@@ -1,5 +1,6 @@
 const initialState = {
   submittedAns: [],
+  shuffleArray: [],
 };
 
 export const quizCCReducer = (state: any = initialState, action: any): any => {
@@ -8,6 +9,11 @@ export const quizCCReducer = (state: any = initialState, action: any): any => {
       return {
         ...state,
         submittedAns: action.payload,
+      };
+    case "SHUFFLE_ARRAY":
+      return {
+        ...state,
+        shuffleArray: action.payload,
       };
     default:
       return state;

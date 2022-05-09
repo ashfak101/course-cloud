@@ -2,6 +2,7 @@ import QuizCCHome from "components/quizcc/QuizCCHome";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import React from "react";
+import { useDispatch } from "react-redux";
 import { QuestionsCC } from "types/questionTypes";
 
 type QuizProps = {
@@ -9,6 +10,30 @@ type QuizProps = {
 };
 
 const QuizCC = ({ quizQuestions }: QuizProps) => {
+  const dispatch = useDispatch();
+
+  const shuffle = () => {
+    let randomArray: number[] = [];
+
+    while (randomArray.length < 10) {
+      let r = Math.floor(Math.random() * 19) + 1;
+      if (randomArray.indexOf(r) === -1) randomArray.push(r);
+    }
+
+    randomArray.forEach((elem: any) => {
+      console.log(quizQuestions[elem]);
+    });
+
+    dispatch({
+      type: "SHUFFLE_ARRAY",
+      payload: randomArray,
+    });
+
+    console.log(randomArray);
+  };
+
+  shuffle();
+
   return (
     <>
       <Head>
