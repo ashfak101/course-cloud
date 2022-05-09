@@ -15,7 +15,7 @@ export default result;
 
 export const getStaticProps: GetStaticProps = async () => {
   // const res = await fetch("https://jsonkeeper.com/b/96BD");
-  const res = await fetch("https://jsonkeeper.com/b/FZP3");
+  const res = await fetch("https://jsonkeeper.com/b/PHO9");
 
   const quizAnswers = await res.json();
   return {
