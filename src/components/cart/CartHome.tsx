@@ -6,6 +6,7 @@ import {
   Step,
   StepLabel,
   Stepper,
+  StepButton,
 } from "@mui/material";
 import React, { useState } from "react";
 import CartOrder from "./CartOrder";
@@ -26,21 +27,41 @@ const Styles = {
 const steps = ["Cart", "Billing Details", "Completed"];
 const CartHome = () => {
   const [activeStep, setActiveStep] = useState<number>(0);
-  const [show,setShow]=useState<boolean>(false);
+  // const [show,setShow]=useState<boolean>(false);
+  const [completed, setCompleted] = React.useState<{
+    [k: number]: boolean;
+  }>({});
+  
+  const totalSteps =()=>{
+      return steps.length;
+  }
+
+  const completedSteps=()=>{
+    return Object.keys(completed).length
+  }
+  const isLastStep = () => {
+    return activeStep === totalSteps() - 1;
+  };
+  const allStepsCompleted = () => {
+    return completedSteps() === totalSteps();
+  };
   
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1) 
+    // setActiveStep((prevActiveStep) => prevActiveStep + 1) 
+    const newActiveStep = isLastStep() && allStepsCompleted() ? steps.findIndex((step , i)=>!(i in completed)):activeStep +1;
+    setActiveStep(newActiveStep)
   };
-  const handleStep = (step: number) => {
-    
-      
-      // setActiveStep(2);
-      if( step!==2)
-      setActiveStep(step);
-      
-   return   activeStep === 2 ? setActiveStep(step):setActiveStep(0)
-
+  const handleStep = (step: number) => () => {
+    setActiveStep(step);
   };
+  const handleComplete = () => {
+    const newCompleted = completed;
+    newCompleted[activeStep] = true;
+    setCompleted(newCompleted);
+    handleNext();
+  };
+  console.log(activeStep);
+  
   return (
     <>
       <Box sx={{ ...Styles.cartBackground }}>
@@ -61,6 +82,7 @@ const CartHome = () => {
       <Container maxWidth="xl">
         <Box sx={{ width: "100%", p: 5 }}>
           <Stepper
+            nonLinear 
             activeStep={activeStep}
             sx={{
              
@@ -81,40 +103,31 @@ const CartHome = () => {
               },
             }}
           >
-            {steps.map((label,index) => {
-              const stepProps = {};
-              const labelProps = {};
-
-              return (
+            {steps.map((label,index) => (
+             
+                
                 <Step
                   key={label}
-                  {...stepProps}
+                 
+                  completed={completed[index]}
                  sx={{ cursor:'pointer'}}
                 >
-                  <StepLabel
-                    {...labelProps}
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      color: "#333","& .MuiStepLabel-root .MuiSvgIcon-root .MuiStepIcon-text": {
-                        color: "#E2B627", // circle color (COMPLETED)
-                      },
-                      cursor:'pointer'
-                    }} onClick={()=>handleStep(index)}
-                  >
-                    {label}
-                  </StepLabel>
+                 
+                    <StepButton color="inherit" onClick={handleStep(index)}>
+                       {label}
+                     </StepButton>
+                 
                 </Step>
-              );
-            })}
+             
+             ))}
           </Stepper>
           
         </Box>
       </Container>
       {activeStep === 0 && (
-        <CartOrder handleNext={handleNext}></CartOrder>
+        <CartOrder handleComplete={handleComplete} activeStep ={activeStep } completed={completed} steps={steps}></CartOrder>
       )}
-      {activeStep === 1 && <Checkout handleNext={handleNext} />}
+      {activeStep === 1 && <Checkout handleComplete={handleComplete} activeStep ={activeStep } completed={completed} steps={steps}/>}
       {activeStep === 2 && <OrderSucces/>}
         
     

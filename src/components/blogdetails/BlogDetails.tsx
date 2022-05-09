@@ -31,17 +31,13 @@ const BlogDetails = (props: Props) => {
             <Container maxWidth="xl" sx={{ mt: 5, mb: 10 }}>
                 <Typography
                     sx={{
-                        textAlign: "center",
-                        color: "#FFCF5E",
-                        backgroundColor: "#4B472A",
-                        borderRadius: "5px",
+                        textAlign: "center",   color: "#FFCF5E", backgroundColor: "#4B472A", borderRadius: "5px",
                         width: "90px",
                         height: "22px",
                         marginLeft: "25px",
                         marginTop: "61px",
                         marginBottom: "10px",
-                    }}
-                >
+                    }} >
                     Technology
                 </Typography>
                 <Typography
