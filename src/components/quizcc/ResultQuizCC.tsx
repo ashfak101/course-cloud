@@ -14,13 +14,12 @@ import _ from "lodash";
 import QuizAnalysis from "./QuizAnalysis";
 import ResultAccordionHeader from "./ResultAccordionHeader";
 
-type QuizProps = {
-  quizAnswers: QuestionsCC[];
-};
-
-const ResultQuizCC = ({ quizAnswers }: QuizProps) => {
+const ResultQuizCC = () => {
   const submittedAnswers = useSelector(
     (state: State) => state.quizCCResult.submittedAns
+  );
+  const quizAnswers: QuestionsCC[] = useSelector(
+    (state: State) => state.quizCCResult.quizAnswers
   );
 
   // console.log("from submittedAnswers ", submittedAnswers);
