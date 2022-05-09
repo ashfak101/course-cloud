@@ -16,8 +16,10 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 type Props = {
-    handleNext: () => void
-}
+    handleComplete: () => void;
+    activeStep:number;
+  completed: any;
+  steps: string[]}
 const CheckoutOrder = (props: Props) => {
     const { total }: CartState = useSelector((state: State) => state.allCartItem);
 
@@ -84,7 +86,19 @@ const CheckoutOrder = (props: Props) => {
                                             </Item>
                                         </Grid>
                                         <Grid item xs={12} xl={12}>
-                                            <CommonButton textValue="PAY NOW" fontSize="1rem" onClick={() => props.handleNext()} />
+                                          
+                                            <>
+                    
+                                                {props.activeStep !== props.steps.length &&
+                                                    (props.completed[props.activeStep] ? (
+                                                    <Typography variant="caption" sx={{ display: 'inline-block', color: '#D19F28',}}>
+                                                        already completed
+                                                    </Typography>
+                                                    ) : (
+                                                        <CommonButton textValue="PAY NOW" fontSize="1rem" onClick={() => props.handleComplete()} />
+                                                    ))}
+                    
+                                </>
                                         </Grid>
                                     </Grid>
                                 </Box>
