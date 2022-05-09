@@ -1,10 +1,18 @@
-import { Container, Typography } from "@mui/material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  Container,
+  Typography,
+} from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import { State } from "redux/reducers";
 import { QuestionsCC } from "types/questionTypes";
 import _ from "lodash";
 import QuizAnalysis from "./QuizAnalysis";
+import ResultAccordionHeader from "./ResultAccordionHeader";
 
 type QuizProps = {
   quizAnswers: QuestionsCC[];
@@ -42,11 +50,20 @@ const ResultQuizCC = ({ quizAnswers }: QuizProps) => {
   const userScore = quizCalculation();
 
   return (
-    <Container sx={{ my: 20 }}>
-      <Typography variant="h3">
-        Your Score is {userScore}/{quizAnswers.length}
-      </Typography>
-      <QuizAnalysis result={quizAnswers} />
+    <Container sx={{ my: 5 }}>
+      {/*  */}
+
+      <Accordion sx={{ background: "#0f0f0f", color: "#fff" }}>
+        <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
+          <ResultAccordionHeader
+            userScore={userScore}
+            quizAnswers={quizAnswers}
+          />
+        </AccordionSummary>
+        <AccordionDetails>
+          <QuizAnalysis result={quizAnswers} />
+        </AccordionDetails>
+      </Accordion>
     </Container>
   );
 };

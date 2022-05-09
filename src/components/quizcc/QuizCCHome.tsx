@@ -130,7 +130,7 @@ const QuizCCHome = ({ quizQuestions }: QuizProps) => {
               onClick={nextQuestion}
               variant="contained"
             >
-              NEXT
+              {currentQuestion + 2 <= quizQuestions.length ? "Next" : "Submit"}
             </Button>
           </Box>
         </Box>
