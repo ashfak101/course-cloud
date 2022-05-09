@@ -22,7 +22,8 @@ const QuizCC = ({ quizQuestions }: QuizProps) => {
 export default QuizCC;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch("https://jsonkeeper.com/b/PE5P");
+  // const res = await fetch("https://jsonkeeper.com/b/PE5P");
+  const res = await fetch("https://jsonkeeper.com/b/KF28");
 
   const quizQuestions = await res.json();
   return {
