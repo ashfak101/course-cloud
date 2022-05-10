@@ -98,7 +98,14 @@ const Navbar = () => {
                 </IconButton>
               </Paper>
             </Typography>
-            <Box sx={{ display: { xs: "none", md: "block" } }}>
+            <Box
+              sx={{
+                display: {
+                  xs: "none",
+                  lg: "block",
+                },
+              }}
+            >
               {navs.map((nav) => (
                 <Link key={nav.name} href={nav.link}>
                   <a
@@ -129,7 +136,7 @@ const Navbar = () => {
               </Box>
             </Box>
             <Button
-              sx={{ display: { xs: "block", md: "none" } }}
+              sx={{ display: { xs: "block", lg: "none" } }}
               onClick={() => setNavState(true)}
             >
               <MenuIcon sx={{ color: "#fff" }} />
@@ -177,7 +184,7 @@ const Navbar = () => {
             }}
           >
             <ContactSupportOutlinedIcon sx={{ color: "#DC9202", mr: 1 }} />
-            <Link href="/quiz" passHref>
+            <Link href="/quiz-cc" passHref>
               <Button
                 sx={{
                   color: "#fff",

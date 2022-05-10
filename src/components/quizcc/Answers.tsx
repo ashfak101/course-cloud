@@ -11,7 +11,7 @@ const Answers = ({ options, handleChange }: AnsProps) => {
   return (
     <Box
       sx={{
-        p: 3,
+        p: { xs: 1, md: 3 },
         my: 4,
         borderRadius: "8px",
         bgcolor: "black",
@@ -22,7 +22,9 @@ const Answers = ({ options, handleChange }: AnsProps) => {
           sx={{
             display: "block",
             border: "1px solid gray",
-            m: 2,
+            my: 2,
+            mx: { xs: 1, md: 2 },
+            p: { xs: 1, md: 0 },
             borderRadius: "5px",
             bgcolor: "#21252D",
           }}
