@@ -7,14 +7,16 @@ import Footer from "components/shared/Footer";
 import { useEffect, useState } from "react";
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { darkScrollbar, Paper } from "@mui/material";
 
 
 function MyApp({ Component, pageProps }: AppProps) {
     const [showChild, setShowChild] = useState(false);
 
-    const darkTheme = createTheme({
+
+    const theme = createTheme({
         palette: {
-            mode: 'light',
+            // mode: 'light',
             // mode: 'dark',
         },
     });
@@ -27,11 +29,13 @@ function MyApp({ Component, pageProps }: AppProps) {
     return (
         <>
             <AuthProvider>
-                <ThemeProvider theme={darkTheme}>
+                <ThemeProvider theme={theme}>
+                    <Paper>
 
-                    <Navbar />
-                    <Component {...pageProps} />
-                    <Footer />
+                        <Navbar />
+                        <Component {...pageProps} />
+                        <Footer />
+                    </Paper>
                 </ThemeProvider>
             </AuthProvider>
 

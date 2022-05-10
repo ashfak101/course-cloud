@@ -1,3 +1,4 @@
+import { Paper } from "@mui/material";
 import Banner from "components/home/Banner";
 import BecomeInstructor from "components/home/BecomeInstructor";
 import DealoftheDay from "components/home/DealoftheDay";
@@ -18,16 +19,18 @@ const Home: NextPage<{ courses: CourseData; blogs: BlogsData[] }> = ({
 }) => {
     return (
         <>
-            <Banner />
-            <BecomeInstructor />
-            <ExploreCourses courses={courses} />
-            <DealoftheDay courses={courses} />
-            <FeaturedInstructors courses={courses} />
-            <Feedback courses={courses} />
-            <RecentBlogs blogs={blogs} />
-            <EasyAccess />
-            <Subscription />
-            <Faq />
+            <Paper>
+                <Banner />
+                <BecomeInstructor />
+                <ExploreCourses courses={courses} />
+                <DealoftheDay courses={courses} />
+                <FeaturedInstructors courses={courses} />
+                <Feedback courses={courses} />
+                <RecentBlogs blogs={blogs} />
+                <EasyAccess />
+                <Subscription />
+                <Faq />
+            </Paper>
         </>
     );
 };
