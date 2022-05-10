@@ -65,11 +65,11 @@ export default QuizCC;
 
 export const getStaticProps: GetStaticProps = async () => {
   // const res = await fetch("https://jsonkeeper.com/b/PE5P");
-  const quesRes = await fetch("https://jsonkeeper.com/b/4EYY");
+  const quesRes = await fetch("https://jsonkeeper.com/b/FV8G");
 
   const quizQuestions = await quesRes.json();
 
-  const ansRes = await fetch("https://jsonkeeper.com/b/PHO9");
+  const ansRes = await fetch("https://jsonkeeper.com/b/QMND");
   const quizAnswers = await ansRes.json();
 
   return {
