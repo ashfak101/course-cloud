@@ -23,6 +23,26 @@ const QuizAnalysis = ({ result, uiCorrectFalseIndex }: Props) => {
             sx={{ fontSize: { xs: "1.3rem", md: "1.6rem" } }}
           >
             Quiz {index + 1}. {ques.question}
+            <Typography
+              component="span"
+              sx={{
+                fontSize: { xs: ".8rem", md: "1rem" },
+                ml: 2,
+                color: "#adadac",
+              }}
+            >
+              mark:{ques.marks}
+            </Typography>
+            <Typography
+              component="span"
+              sx={{
+                fontSize: { xs: ".8rem", md: "1rem" },
+                ml: 2,
+                color: "#adadac",
+              }}
+            >
+              Level: {ques.level}
+            </Typography>
           </Typography>
           {ques.options.map((option, index) => (
             <Box key={index}>
