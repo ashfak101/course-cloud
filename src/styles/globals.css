@@ -5,21 +5,21 @@ sans-serif; */
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: 'Lato',
-  sans-serif;
-  background-color: #0f0f0f;
-  color: #fff;
+	padding: 0;
+	margin: 0;
+	font-family: 'Lato',
+		sans-serif;
+	/* background-color: #0f0f0f;
+	color: #fff; */
 }
 
 a {
-  color: #FBF4F4;
-  text-decoration: none;
+	color: #FBF4F4;
+	text-decoration: none;
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .counter {
@@ -47,9 +47,10 @@ a {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-  background-color: #5193F6;
-  border-radius: 5px;
+	background-color: #5193F6;
+	border-radius: 5px;
 }
+
 .hours {
 	font-size: 28px;
 	padding: 16px;
@@ -57,11 +58,12 @@ a {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-  background-color: #5193F6;
-  border-radius: 5px;
-  margin-left: 20px;
-  margin-right: 20px;
+	background-color: #5193F6;
+	border-radius: 5px;
+	margin-left: 20px;
+	margin-right: 20px;
 }
+
 .minutes {
 	font-size: 28px;
 	padding: 16px;
@@ -69,11 +71,12 @@ a {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-  background-color: #5193F6;
-  border-radius: 5px;
-  margin-left: 0px;
-  margin-right: 20px;
+	background-color: #5193F6;
+	border-radius: 5px;
+	margin-left: 0px;
+	margin-right: 20px;
 }
+
 .seconds {
 	font-size: 28px;
 	padding: 16px;
@@ -81,22 +84,25 @@ a {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-  background-color: #5193F6;
-  border-radius: 5px;
+	background-color: #5193F6;
+	border-radius: 5px;
 }
 
 .days span {
 	font-size: 16px;
 	color: #444;
 }
+
 .hours span {
 	font-size: 16px;
 	color: #444;
 }
+
 .minutes span {
 	font-size: 16px;
 	color: #444;
 }
+
 .seconds span {
 	font-size: 16px;
 	color: #444;
@@ -109,6 +115,7 @@ a {
 .instructoravatar {
 	border-radius: 50%;
 }
+
 .slick-dots.slick-thumb {
 	display: flex;
 	flex-direction: row;
@@ -125,6 +132,7 @@ a {
 	background-color: #D7D3D3;
 	padding: 4px;
 }
+
 /* .slick-dots.slick-thumb{
 	padding-left: 400px;
 } */
@@ -133,10 +141,10 @@ a {
 	width: 28px;
 }
 
-.dot{ 
+.dot {
 	border: 2px solid transparent;
 }
 
-.arrowleft{
+.arrowleft {
 	margin-top: 100px;
 }
