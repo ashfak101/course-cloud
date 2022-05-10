@@ -1,14 +1,22 @@
 import { Box, Checkbox, FormControlLabel, Typography } from "@mui/material";
-import { Option } from "types/questionTypes";
+import { Option } from "../../types/questionTypes";
 
 type AnsProps = {
   options: Option[];
   handleChange: (e: React.ChangeEvent<HTMLInputElement>, index: number) => void;
- 
+  optionDisable:boolean
 };
 
-const Answers = ({ options, handleChange }: AnsProps) => {
+const Answers = ({ options, handleChange,optionDisable }: AnsProps) => {
   // console.log(options);
+
+  // options.forEach(option=>{
+   
+  //   if(option.checked===true){
+  //     console.log(option.checked)
+  //     setQuestionCheck(false)
+  //   }
+  // })
   return (
     <Box
       sx={{
@@ -33,6 +41,7 @@ const Answers = ({ options, handleChange }: AnsProps) => {
               sx={{ color: "white" }}
               value={index}
               checked={option.checked}
+              disabled={optionDisable}
               onChange={(e) => handleChange(e, index)}
             />
           }

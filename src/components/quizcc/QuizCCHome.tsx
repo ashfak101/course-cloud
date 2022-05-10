@@ -1,4 +1,4 @@
-import { Box, Button, Container, Typography } from "@mui/material";
+import { Alert, Box, Button, Container, Menu, MenuItem, Typography } from "@mui/material";
 import React, { Fragment, useEffect, useReducer, useState } from "react";
 import Answers from "./Answers";
 import { QuestionsCC } from "../../types/questionTypes";
@@ -16,28 +16,30 @@ const reducer = (state: any, action: any) => {
   switch (action.type) {
     case "QUESTIONS":
       action.payload.forEach((question: any) => {
-        question.submitTime='';
+        question.submitTime = '';
         question.options.forEach((optionProps: any) => {
           optionProps.checked = false;
-          
+
         });
       });
-      
-      
-      return action.payload;
-      case "ANSWER":
-        {const questions = _.cloneDeep(state);
-        questions[action.questionID].options[action.optionIndex].checked =action.value
-        return questions;}
-  
 
-    case "TIMER" :{
-        const time = _.cloneDeep(state);
-        time[action.questionID].submitTime =
+
+      return action.payload;
+    case "ANSWER":
+      {
+        const questions = _.cloneDeep(state);
+        questions[action.questionID].options[action.optionIndex].checked = action.value
+        return questions;
+      }
+
+
+    case "TIMER": {
+      const time = _.cloneDeep(state);
+      time[action.questionID].submitTime =
         action.payload;
-        return time
-    } 
-  
+      return time
+    }
+
 
     default:
       return state;
@@ -46,16 +48,17 @@ const reducer = (state: any, action: any) => {
 
 const QuizCCHome = () => {
   const router = useRouter();
-  // console.log(quizQuestions);
+  const [alert, setAlert] = useState(false)
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [qna, dispatch] = useReducer(reducer, initialState);
-  const [isTrue,setTrue]=useState(true)
+  const [isTrue, setTrue] = useState(true)
   const reduxDispatch = useDispatch();
   const [time, setTime] = useState<number>(300)
   const [timeString, setTimeString] = useState<Time>()
   const [eachQuizTimer, setEachQuizTimer] = useState<number>(30);
-
+  const [btnDis,setBtnDis]=useState(false)
   const [eachQuizTimerString, setEachQuizTimerString] = useState<Time>();
+  const [optionDisable, setOptionDisable] = useState(false)
 
   let hours = Math.floor(time / 3600); // get hours
   let minutes = Math.floor((time - hours * 3600) / 60); // get minutes
@@ -108,10 +111,10 @@ const QuizCCHome = () => {
     setTimeString(convTime(hours, minutes, seconds))
     return () => clearInterval(interval);
 
-  }, [time, hours, minutes, seconds,router])
+  }, [time, hours, minutes, seconds, router])
 
   useEffect(() => {
-    let eachQuizTimeInterval:ReturnType<typeof setInterval>
+    let eachQuizTimeInterval: ReturnType<typeof setInterval>
     if (eachQuizTimer > 0) {
       eachQuizTimeInterval = setInterval(() => {
         setEachQuizTimer((prevTime) => prevTime - 1);
@@ -122,9 +125,11 @@ const QuizCCHome = () => {
           pathname: "quiz-cc/result",
         });
       } else {
-        
-        nextQuestion();
-        setEachQuizTimer(30);
+        setAlert(true)
+        setOptionDisable(true)
+        setTrue(false)
+        // nextQuestion();
+        // setEachQuizTimer(30);
       }
     }
 
@@ -133,35 +138,37 @@ const QuizCCHome = () => {
     );
 
     return () => clearInterval(eachQuizTimeInterval);
-  }, [eachQuizTimer, hoursEachQuiz, minutesEachQuiz, secondsEachQuiz,qna,currentQuestion,router]);
+  }, [eachQuizTimer, hoursEachQuiz, minutesEachQuiz, secondsEachQuiz, qna, currentQuestion, router]);
   // handle next question button
-const nextQuestion = () => {
-  
-  if (currentQuestion + 2 <= quizQuestions.length) {
-    setTrue(true)
-    setCurrentQuestion((prevCurrentQues) => prevCurrentQues + 1);
-    dispatch({
-      type:"TIMER",
-      questionID: currentQuestion,
-      payload:eachQuizTimerString,
-     
-    })
-   
-    setEachQuizTimer(30);
-  } else {
-    // console.log("dispathing");
-    reduxDispatch({
-      type: "SUBMIT_ANSWERS",
-      payload: qna,
-    });
+  const nextQuestion = () => {
+    setAlert(false)
+    setBtnDis(false)
+    setOptionDisable(false)
+    if (currentQuestion + 2 <= quizQuestions.length) {
+      setTrue(true)
+      setCurrentQuestion((prevCurrentQues) => prevCurrentQues + 1);
+      dispatch({
+        type: "TIMER",
+        questionID: currentQuestion,
+        payload: eachQuizTimerString,
 
-    
+      })
 
-    router.push({
-      pathname: "quiz-cc/result",
-    });
-  }
-};
+      setEachQuizTimer(30);
+    } else {
+      // console.log("dispathing");
+      reduxDispatch({
+        type: "SUBMIT_ANSWERS",
+        payload: qna,
+      });
+
+
+
+      router.push({
+        pathname: "quiz-cc/result",
+      });
+    }
+  };
   const quizQuestions = useSelector(
     (state: State) => state.quizCCResult.quizQuestions
   );
@@ -181,13 +188,13 @@ const nextQuestion = () => {
     index: number
   ) => {
     // console.log("dispating");
-    if(e.target.checked===true){
-      setTrue(false)
-    }
-    
-      
-    
-   
+
+    setTrue(!e.target.checked)
+
+
+
+
+
     dispatch({
       type: "ANSWER",
       questionID: currentQuestion,
@@ -196,30 +203,80 @@ const nextQuestion = () => {
     });
   };
 
-  
+
   // handle prev question button
   const prevQuestion = () => {
     console.log("prev clicked");
-   
+    // setTrue(false)
     if (currentQuestion >= 1 && currentQuestion <= quizQuestions.length) {
       setCurrentQuestion((prevCurrentQues) => prevCurrentQues - 1);
-    
+
     }
     // setEachQuizTimer(eachQuizTimerString)
   };
   // useEffect(()=>{
-    
+
   // },[currentQuestion,submitTime])
-  console.log(qna)
+
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handle10s = () => {
+    setEachQuizTimer(10);
+    setBtnDis(true)
+    setAnchorEl(null);
+    setOptionDisable(false)
+  };
+  const handle7s = () => {
+    setEachQuizTimer(7);
+    setBtnDis(true)
+    setAnchorEl(null);
+    setOptionDisable(false)
+  };
+  const handle5s = () => {
+    setEachQuizTimer(5);
+    setBtnDis(true)
+    setOptionDisable(false)
+    
+  };
   return (
     <Container sx={{ my: 10 }}>
+      <Box >{alert && <Box sx={{ display: 'flex', justifyContent: 'center' }}><Alert severity="error">Your Time is over — need time! </Alert> <Button
+        sx={{ color: '#333', background: "yellow", ml: 2 }}
+        variant='contained'
+        aria-controls={open ? 'basic-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+        disabled={btnDis}
+      >
+        Clicked
+      </Button> <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+          <MenuItem onClick={handle10s}>10s</MenuItem>
+          <MenuItem onClick={handle7s}>7s</MenuItem>
+          <MenuItem onClick={handle5s}>5s</MenuItem>
+        </Menu></Box>}</Box>
       <Box>
         <Typography variant="h5" sx={{ my: 2 }} >Remaining Time:    {timeString}</Typography>
       </Box>
       {qna ? (
         <Box sx={{ bgcolor: "#21252D", p: 4, borderRadius: "5px" }}>
-          <Typography sx={{my:1}}>Remaining time for this question {qna[currentQuestion].submitTime  ? <>{qna[currentQuestion].submitTime}</>:<> {eachQuizTimerString} 
-            </>}</Typography>
+          <Typography sx={{ my: 1 }}>Remaining time for this question {qna[currentQuestion].submitTime ? <>{qna[currentQuestion].submitTime}</> : <> {eachQuizTimerString}
+          </>}</Typography>
           <Typography variant="h5">
             <Typography
               variant="h5"
@@ -232,7 +289,9 @@ const nextQuestion = () => {
           <Answers
             options={qna[currentQuestion]?.options}
             handleChange={handleAnswerChange}
-           
+            optionDisable={optionDisable}
+
+
           />
           <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
             <Button
@@ -254,7 +313,7 @@ const nextQuestion = () => {
                 "&:hover": {
                   bgcolor: "black",
                 },
-             
+
               }}
               disabled={isTrue}
               variant="contained"
