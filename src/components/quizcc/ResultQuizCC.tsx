@@ -25,6 +25,8 @@ const ResultQuizCC = () => {
   // console.log("from submittedAnswers ", submittedAnswers);
   // console.log("from Database: answers ", quizAnswers);
 
+  let uiCorrectFalseIndex: boolean[] = [];
+
   const quizCalculation = () => {
     let score = 0;
 
@@ -41,10 +43,14 @@ const ResultQuizCC = () => {
       });
       if (_.isEqual(correctIndexes, checkedIndexes)) {
         score = score + 1;
+        uiCorrectFalseIndex.push(true);
+      } else {
+        uiCorrectFalseIndex.push(false);
       }
     });
     return score;
   };
+  console.log(uiCorrectFalseIndex, "helllo");
 
   const userScore = quizCalculation();
 
@@ -60,7 +66,10 @@ const ResultQuizCC = () => {
           />
         </AccordionSummary>
         <AccordionDetails>
-          <QuizAnalysis result={quizAnswers} />
+          <QuizAnalysis
+            result={quizAnswers}
+            uiCorrectFalseIndex={uiCorrectFalseIndex}
+          />
         </AccordionDetails>
       </Accordion>
     </Container>
