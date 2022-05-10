@@ -1,17 +1,17 @@
 import { Box, Button, Container, Typography } from "@mui/material";
 import React, { Fragment, useEffect, useReducer, useState } from "react";
-import { QuestionsCC } from "types/questionTypes";
 import Answers from "./Answers";
-import _, { values } from "lodash";
-import { useRouter, withRouter } from "next/router";
-import { useDispatch } from "react-redux";
+import { QuestionsCC } from "../../types/questionTypes";
+import _ from "lodash";
+import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import { State } from "../../redux/reducers";
 
+const initialState = null;
 type QuizProps = {
   quizQuestions: QuestionsCC[];
 };
 type Time = number | string;
-const initialState = null;
-
 const reducer = (state: any, action: any) => {
   switch (action.type) {
     case "QUESTIONS":
@@ -44,12 +44,12 @@ const reducer = (state: any, action: any) => {
   }
 };
 
-const QuizCCHome = ({ quizQuestions }: QuizProps) => {
+const QuizCCHome = () => {
   const router = useRouter();
   // console.log(quizQuestions);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [qna, dispatch] = useReducer(reducer, initialState);
-  const [isSubmitTime,setIsSubmitTime]=useState(false)
+  const [isTrue,setTrue]=useState(true)
   const reduxDispatch = useDispatch();
   const [time, setTime] = useState<number>(300)
   const [timeString, setTimeString] = useState<Time>()
@@ -138,15 +138,15 @@ const QuizCCHome = ({ quizQuestions }: QuizProps) => {
 const nextQuestion = () => {
   
   if (currentQuestion + 2 <= quizQuestions.length) {
+    setTrue(true)
     setCurrentQuestion((prevCurrentQues) => prevCurrentQues + 1);
-   
-    // setSubmitTime(eachQuizTimerString)
     dispatch({
       type:"TIMER",
       questionID: currentQuestion,
       payload:eachQuizTimerString,
      
     })
+   
     setEachQuizTimer(30);
   } else {
     // console.log("dispathing");
@@ -162,6 +162,10 @@ const nextQuestion = () => {
     });
   }
 };
+  const quizQuestions = useSelector(
+    (state: State) => state.quizCCResult.quizQuestions
+  );
+
   useEffect(() => {
     dispatch({
       type: "QUESTIONS",
@@ -177,6 +181,13 @@ const nextQuestion = () => {
     index: number
   ) => {
     // console.log("dispating");
+    if(e.target.checked===true){
+      setTrue(false)
+    }
+    
+      
+    
+   
     dispatch({
       type: "ANSWER",
       questionID: currentQuestion,
@@ -189,7 +200,7 @@ const nextQuestion = () => {
   // handle prev question button
   const prevQuestion = () => {
     console.log("prev clicked");
-    setIsSubmitTime(true)
+   
     if (currentQuestion >= 1 && currentQuestion <= quizQuestions.length) {
       setCurrentQuestion((prevCurrentQues) => prevCurrentQues - 1);
     
@@ -207,6 +218,8 @@ const nextQuestion = () => {
       </Box>
       {qna ? (
         <Box sx={{ bgcolor: "#21252D", p: 4, borderRadius: "5px" }}>
+          <Typography sx={{my:1}}>Remaining time for this question {qna[currentQuestion].submitTime  ? <>{qna[currentQuestion].submitTime}</>:<> {eachQuizTimerString} 
+            </>}</Typography>
           <Typography variant="h5">
             <Typography
               variant="h5"
@@ -215,8 +228,7 @@ const nextQuestion = () => {
             >
               {currentQuestion + 1}
             </Typography>{" "}
-            {qna[currentQuestion].question}  {qna[currentQuestion].submitTime  ? <>{qna[currentQuestion].submitTime}</>:<> {eachQuizTimerString} 
-            </>} </Typography>
+            {qna[currentQuestion].question}  </Typography>
           <Answers
             options={qna[currentQuestion]?.options}
             handleChange={handleAnswerChange}
@@ -242,7 +254,9 @@ const nextQuestion = () => {
                 "&:hover": {
                   bgcolor: "black",
                 },
+             
               }}
+              disabled={isTrue}
               variant="contained"
               onClick={nextQuestion}
             >
