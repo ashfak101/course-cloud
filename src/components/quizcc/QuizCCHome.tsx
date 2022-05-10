@@ -16,22 +16,28 @@ const reducer = (state: any, action: any) => {
   switch (action.type) {
     case "QUESTIONS":
       action.payload.forEach((question: any) => {
-        question.submitTime=0;
+        question.submitTime='';
         question.options.forEach((optionProps: any) => {
           optionProps.checked = false;
           
         });
       });
-      return action.payload;
-
-    case "ANSWER":
-      const questions = _.cloneDeep(state);
       
-      questions[action.questionID].options[action.optionIndex].checked =action.value;
-      questions[action.questionID].submitTime =
+      
+      return action.payload;
+      case "ANSWER":
+        {const questions = _.cloneDeep(state);
+        questions[action.questionID].options[action.optionIndex].checked =action.value
+        return questions;}
+  
+
+    case "TIMER" :{
+        const time = _.cloneDeep(state);
+        time[action.questionID].submitTime =
         action.payload;
-        
-      return questions;
+        return time
+    } 
+  
 
     default:
       return state;
@@ -43,7 +49,7 @@ const QuizCCHome = ({ quizQuestions }: QuizProps) => {
   // console.log(quizQuestions);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [qna, dispatch] = useReducer(reducer, initialState);
-
+  const [isSubmitTime,setIsSubmitTime]=useState(false)
   const reduxDispatch = useDispatch();
   const [time, setTime] = useState<number>(300)
   const [timeString, setTimeString] = useState<Time>()
@@ -130,21 +136,17 @@ const QuizCCHome = ({ quizQuestions }: QuizProps) => {
   }, [eachQuizTimer, hoursEachQuiz, minutesEachQuiz, secondsEachQuiz,qna,currentQuestion,router]);
   // handle next question button
 const nextQuestion = () => {
-  console.log(timeString)
+  
   if (currentQuestion + 2 <= quizQuestions.length) {
     setCurrentQuestion((prevCurrentQues) => prevCurrentQues + 1);
-    // // dispatch({
-    // //   type:"ANSWER",
-    // //   questionID: currentQuestion,
-    // //   payload:eachQuizTimerString,
+   
+    // setSubmitTime(eachQuizTimerString)
+    dispatch({
+      type:"TIMER",
+      questionID: currentQuestion,
+      payload:eachQuizTimerString,
      
-    // // })
-    // console.log(dispatch({
-    //   type:"ANSWER",
-    //   questionID: currentQuestion,
-    //   payload:eachQuizTimerString,
-     
-    // }))
+    })
     setEachQuizTimer(30);
   } else {
     // console.log("dispathing");
@@ -153,7 +155,7 @@ const nextQuestion = () => {
       payload: qna,
     });
 
-
+    
 
     router.push({
       pathname: "quiz-cc/result",
@@ -187,14 +189,16 @@ const nextQuestion = () => {
   // handle prev question button
   const prevQuestion = () => {
     console.log("prev clicked");
-    
+    setIsSubmitTime(true)
     if (currentQuestion >= 1 && currentQuestion <= quizQuestions.length) {
       setCurrentQuestion((prevCurrentQues) => prevCurrentQues - 1);
     
     }
     // setEachQuizTimer(eachQuizTimerString)
   };
-  
+  // useEffect(()=>{
+    
+  // },[currentQuestion,submitTime])
   console.log(qna)
   return (
     <Container sx={{ my: 10 }}>
@@ -211,8 +215,8 @@ const nextQuestion = () => {
             >
               {currentQuestion + 1}
             </Typography>{" "}
-            {qna[currentQuestion].question}  {eachQuizTimerString}
-          </Typography>
+            {qna[currentQuestion].question}  {qna[currentQuestion].submitTime  ? <>{qna[currentQuestion].submitTime}</>:<> {eachQuizTimerString} 
+            </>} </Typography>
           <Answers
             options={qna[currentQuestion]?.options}
             handleChange={handleAnswerChange}
