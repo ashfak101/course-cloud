@@ -8,7 +8,6 @@ type Props = {
 };
 
 const QuizAnalysis = ({ result, uiCorrectFalseIndex }: Props) => {
-  console.log(result);
   return (
     <Box
       sx={{

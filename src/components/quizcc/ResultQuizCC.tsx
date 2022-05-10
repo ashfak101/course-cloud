@@ -50,7 +50,6 @@ const ResultQuizCC = () => {
     });
     return score;
   };
-  console.log(uiCorrectFalseIndex, "helllo");
 
   const userScore = quizCalculation();
 
