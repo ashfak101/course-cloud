@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     const theme = createTheme({
         palette: {
-            // mode: 'light',
+            mode: 'light',
             // mode: 'dark',
         },
     });

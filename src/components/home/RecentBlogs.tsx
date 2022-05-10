@@ -12,13 +12,6 @@ type Props = {
 };
 
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
 
 const RecentBlogs = ({ blogs }: Props) => {
   return (
@@ -29,7 +22,7 @@ const RecentBlogs = ({ blogs }: Props) => {
           <Grid container spacing={2}>
             {blogs.slice(0, 3).map((blog) => (
               <Grid item xs={12} xl={4} md={4} sx={{ display: 'flex', justifyContent: 'center' }} key={blog.id}>
-                <Item sx={{ backgroundColor: "transparent", boxShadow: "0", textAlign: 'left' }}><BlogCard blog={blog} /></Item>
+                <BlogCard blog={blog} />
               </Grid>
             ))}
           </Grid>
