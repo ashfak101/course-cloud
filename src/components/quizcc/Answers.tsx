@@ -4,6 +4,7 @@ import { Option } from "types/questionTypes";
 type AnsProps = {
   options: Option[];
   handleChange: (e: React.ChangeEvent<HTMLInputElement>, index: number) => void;
+ 
 };
 
 const Answers = ({ options, handleChange }: AnsProps) => {
