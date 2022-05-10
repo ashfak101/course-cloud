@@ -206,8 +206,7 @@ const QuizCCHome = () => {
 
   // handle prev question button
   const prevQuestion = () => {
-    console.log("prev clicked");
-    // setTrue(false)
+    
     if (currentQuestion >= 1 && currentQuestion <= quizQuestions.length) {
       setCurrentQuestion((prevCurrentQues) => prevCurrentQues - 1);
 
