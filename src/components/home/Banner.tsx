@@ -23,11 +23,15 @@ const Banner = () => {
                             <Typography
                                 sx={{
                                     textAlign: "left",
-                                    fontSize: "3.5rem",
+                                    fontSize: {
+                                        xs: '25px',
+                                        md: "3.5rem"
+                                    },
                                     fontWeight: "200",
                                     color: "white",
                                     fontFamily: "Oswald, sans-serif",
                                 }}
+                                variant = 'h4'
                             >
                                 A Learning Curve
                             </Typography>
@@ -37,13 +41,15 @@ const Banner = () => {
                                 sx={{
                                     textAlign: "left",
                                     fontSize: {
-                                        xs:'30px',
-                                        md:"65px"
+                                        xs: '30px',
+                                        md: "65px"
                                     },
                                     fontWeight: "500",
                                     color: "white",
+                                    mt:1,
                                     fontFamily: "Oswald, sans-serif",
                                 }}
+                                variant = 'h3'
                             >
                                 IS ESSENTIAL TO GROWTH
                             </Typography>
@@ -80,7 +86,7 @@ const Banner = () => {
                                         <CommonButton
                                             fontSize="1rem"
                                             textValue="GET STARTED"
-                                            onClick={() => {}}
+                                            onClick={() => { }}
                                         />
                                     </Item>
                                 </Grid>

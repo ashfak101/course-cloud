@@ -4,21 +4,99 @@ import { QuestionsCC } from "types/questionTypes";
 
 type Props = {
   result: QuestionsCC[];
+  uiCorrectFalseIndex: boolean[];
 };
 
-const QuizAnalysis = ({ result }: Props) => {
+const QuizAnalysis = ({ result, uiCorrectFalseIndex }: Props) => {
   return (
-    <Box sx={{ p: 5, backgroundColor: "#494949", borderRadius: "5px" }}>
+    <Box
+      sx={{
+        p: { xs: 2, md: 5 },
+        backgroundColor: "#494949",
+        borderRadius: "5px",
+      }}
+    >
       {result.map((ques, index) => (
-        <Box key={index} sx={{ my: 8 }}>
-          <Typography variant="h5">
+        <Box key={index} sx={{ my: 6 }}>
+          <Typography
+            variant="h5"
+            sx={{ fontSize: { xs: "1.3rem", md: "1.6rem" } }}
+          >
             Quiz {index + 1}. {ques.question}
+            <Typography
+              component="span"
+              sx={{
+                fontSize: { xs: ".8rem", md: "1rem" },
+                ml: 2,
+                color: "#adadac",
+              }}
+            >
+              mark:{ques.marks}
+            </Typography>
+            <Typography
+              component="span"
+              sx={{
+                fontSize: { xs: ".8rem", md: "1rem" },
+                ml: 2,
+                color: "#adadac",
+              }}
+            >
+              Level: {ques.level}
+            </Typography>
           </Typography>
           {ques.options.map((option, index) => (
             <Box key={index}>
-              {option.checked && option.correct && (
+              {option.correct && (
+                <Typography
+                  sx={{
+                    my: 2,
+                    color: "#adadac",
+                    fontSize: { xs: "1.1rem", md: "1.3rem" },
+                  }}
+                >
+                  Answer: {option.option}
+                </Typography>
+              )}
+            </Box>
+          ))}
+          {uiCorrectFalseIndex[index] ? (
+            <Typography>
+              Your answer is{" "}
+              <Typography component="span" sx={{ color: "#0ced0c" }}>
+                Correct
+              </Typography>
+            </Typography>
+          ) : (
+            <Typography>
+              Your answer is{" "}
+              <Typography component="span" sx={{ color: "#fa2525" }}>
+                Wrong
+              </Typography>
+            </Typography>
+          )}
+
+          <hr />
+        </Box>
+      ))}
+    </Box>
+  );
+};
+
+export default QuizAnalysis;
+
+/** 
+ 
+
+ {option.checked && option.correct && (
                 <Box>
-                  <Typography sx={{ my: 2, color: "#adadac" }} variant="h6">
+                  <Typography
+                    sx={{
+                      my: 2,
+                      color: "#adadac",
+                      fontSize: { xs: "1.1rem", md: "1.3rem" },
+                    }}
+                    variant="h6"
+                  >
                     Answer: {option.option}
                   </Typography>
                   <Typography>
@@ -31,7 +109,14 @@ const QuizAnalysis = ({ result }: Props) => {
               )}
               {!option.checked && option.correct && (
                 <Box>
-                  <Typography sx={{ my: 2, color: "#adadac" }} variant="h6">
+                  <Typography
+                    sx={{
+                      my: 2,
+                      color: "#adadac",
+                      fontSize: { xs: "1.1rem", md: "1.3rem" },
+                    }}
+                    variant="h6"
+                  >
                     Answer: {option.option}
                   </Typography>
                   <Typography>
@@ -42,13 +127,7 @@ const QuizAnalysis = ({ result }: Props) => {
                   </Typography>
                 </Box>
               )}
-            </Box>
-          ))}
-          <hr />
-        </Box>
-      ))}
-    </Box>
-  );
-};
 
-export default QuizAnalysis;
+  
+  
+  **/

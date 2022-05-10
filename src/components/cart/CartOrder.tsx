@@ -56,7 +56,10 @@ const Styles = {
   }
 }
 type Props = {
-  handleNext: () => void
+  handleComplete: () => void;
+  activeStep:number;
+  completed: any;
+  steps: string[]
 }
 const CartOrder = (props: Props) => {
 
@@ -69,6 +72,13 @@ const CartOrder = (props: Props) => {
     disCountPrice,
     cuponUsed, certificatePrice, numberOfCertificate }: CartState = useSelector((state: State) => state.allCartItem);
   const dispatch = useDispatch();
+  /**
+   * @title - 
+   * @ref - 
+   * @description - 
+   * @param  
+   * 
+   */
 
   let estimateTotal: number = 0;
 
@@ -344,16 +354,40 @@ const CartOrder = (props: Props) => {
                     draggable
                     pauseOnHover
                   />
-                  <Button sx={{
-                    fontSize: '15px'
-                    , color: '#191C21',
-                    bgcolor: '#D19F28',
-                    p: "15px 65px",
-                    mt: 2,
-                    "&:hover": {
-                      bgcolor: '#FBDE44'
-                    }
-                  }} onClick={props.handleNext}>Proceed To Checkout</Button>
+                 {/* {props.activeStep !== props.steps.length &&
+                    (props.completed[props.activeStep] ?( <Box></Box>):
+                    (<Button sx={{
+                      fontSize: '15px'
+                      , color: '#191C21',
+                      bgcolor: '#D19F28',
+                      p: "15px 65px",
+                      mt: 2,
+                      "&:hover": {
+                        bgcolor: '#FBDE44'
+                      }
+                    }} onClick={props.handleComplete}>Proceed To Checkout</Button>)} */}
+                  
+                   <>
+                    
+                      {props.activeStep !== props.steps.length &&
+                        (props.completed[props.activeStep] ? (
+                          <Typography variant="caption" sx={{ display: 'inline-block', color: '#D19F28',}}>
+                             already completed
+                          </Typography>
+                        ) : (
+                          <Button sx={{
+                            fontSize: '15px'
+                            , color: '#191C21',
+                            bgcolor: '#D19F28',
+                            p: "15px 65px",
+                            mt: 2,
+                            "&:hover": {
+                              bgcolor: '#FBDE44'
+                            }
+                          }} onClick={props.handleComplete}>Proceed To Checkout</Button>
+                        ))}
+                    
+                   </>
                 </Box>
               </Item>
             </Grid>
