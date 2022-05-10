@@ -16,7 +16,7 @@ const Styles = {
         borderRadius: '2px',
         boxShadow: 24,
         p: 4,
-        width:{sm:'400px', xs:'100%'},
+        width: { sm: '400px', xs: '100%' },
     },
     form: {
         width: '100%',
@@ -33,13 +33,13 @@ const Styles = {
     }
 }
 
-type ModalProps ={
-    handleClose: ()=>void;
+type ModalProps = {
+    handleClose: () => void;
     open: boolean;
 }
 
 
-const LoginModal = (props:ModalProps) => {
+const LoginModal = (props: ModalProps) => {
     const { handleGoogleSignIn, handleFacebookSignIn, registered, setRegistered, open, handleEmailChange,
         handlePasswordChange,
         handleRegistration, } = useAuth();

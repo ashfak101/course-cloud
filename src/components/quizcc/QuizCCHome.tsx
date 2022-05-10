@@ -1,14 +1,10 @@
 import { Box, Button, Container, Typography } from "@mui/material";
 import React, { Fragment, useEffect, useReducer, useState } from "react";
-import { QuestionsCC } from "types/questionTypes";
 import Answers from "./Answers";
 import _ from "lodash";
-import { useRouter, withRouter } from "next/router";
-import { useDispatch } from "react-redux";
-
-type QuizProps = {
-  quizQuestions: QuestionsCC[];
-};
+import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import { State } from "redux/reducers";
 
 const initialState = null;
 
@@ -33,13 +29,17 @@ const reducer = (state: any, action: any) => {
   }
 };
 
-const QuizCCHome = ({ quizQuestions }: QuizProps) => {
+const QuizCCHome = () => {
   const router = useRouter();
   // console.log(quizQuestions);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [qna, dispatch] = useReducer(reducer, initialState);
 
   const reduxDispatch = useDispatch();
+
+  const quizQuestions = useSelector(
+    (state: State) => state.quizCCResult.quizQuestions
+  );
 
   useEffect(() => {
     dispatch({
@@ -80,6 +80,7 @@ const QuizCCHome = ({ quizQuestions }: QuizProps) => {
       });
     }
   };
+
   // handle prev question button
   const prevQuestion = () => {
     console.log("prev clicked");
@@ -127,10 +128,10 @@ const QuizCCHome = ({ quizQuestions }: QuizProps) => {
                   bgcolor: "black",
                 },
               }}
-              onClick={nextQuestion}
               variant="contained"
+              onClick={nextQuestion}
             >
-              NEXT
+              {currentQuestion + 2 <= quizQuestions.length ? "Next" : "Submit"}
             </Button>
           </Box>
         </Box>
