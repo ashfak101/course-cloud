@@ -4,6 +4,7 @@ export interface QuestionsCC {
   options: Option[];
   right_answer: number;
   level: Level;
+  marks: number;
 }
 
 export enum Level {

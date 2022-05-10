@@ -2,6 +2,7 @@
   {
     "id": 1,
     "question": "Choose why mental health is important.",
+    "marks": 5,
     "options": [
       {
         "id": 1,
@@ -27,6 +28,7 @@
   {
     "id": 2,
     "question": "Why is a mentally ill person suggested to have a routine?",
+    "marks": 5,
     "options": [
       {
         "id": 1,
@@ -52,6 +54,7 @@
   {
     "id": 3,
     "question": "What is meant by a panic attack in simple terms?",
+    "marks": 5,
     "options": [
       {
         "id": 1,
@@ -77,6 +80,7 @@
   {
     "id": 4,
     "question": "Which of the following groups of people most likely are sufferers of Mental retardation?",
+    "marks": 5,
     "options": [
       {
         "id": 1,
@@ -102,6 +106,7 @@
   {
     "id": 5,
     "question": "What is meant by a panic attack in simple terms?",
+    "marks": 5,
     "options": [
       {
         "id": 1,
@@ -127,6 +132,7 @@
   {
     "id": 6,
     "question": "Which of the following is a cause of PTSD?",
+    "marks": 10,
     "options": [
       {
         "id": 1,
@@ -152,6 +158,7 @@
   {
     "id": 7,
     "question": "What is the similarity between PTSD and schizophrenia?",
+    "marks": 10,
     "options": [
       {
         "id": 1,
@@ -177,6 +184,7 @@
   {
     "id": 8,
     "question": "Dissociative disorder makes a person do which of the following?",
+    "marks": 10,
     "options": [
       {
         "id": 1,
@@ -202,6 +210,7 @@
   {
     "id": 9,
     "question": "Which of the following terms is used to describe a situation where the patient is a threat to himself or others?",
+    "marks": 15,
     "options": [
       {
         "id": 1,
@@ -227,6 +236,7 @@
   {
     "id": 10,
     "question": "Overconfidence is a characteristic of which of the following disorders?",
+    "marks": 15,
     "options": [
       {
         "id": 1,
@@ -252,6 +262,7 @@
   {
     "id": 11,
     "question": "MS-Word is an example of_____",
+    "marks": 5,
     "options": [
       {
         "id": 1,
@@ -277,6 +288,7 @@
   {
     "id": 12,
     "question": "Ctrl, Shift and Alt are called .......... keys.",
+    "marks": 5,
     "options": [
       {
         "id": 1,
@@ -302,6 +314,7 @@
   {
     "id": 13,
     "question": "A computer cannot boot if it does not have the _____",
+    "marks": 5,
     "options": [
       {
         "id": 1,
@@ -327,6 +340,7 @@
   {
     "id": 14,
     "question": "________ is the process of dividing the disk into tracks and sectors",
+    "marks": 5,
     "options": [
       {
         "id": 1,
@@ -352,6 +366,7 @@
   {
     "id": 15,
     "question": "Junk e-mail is also called ______",
+    "marks": 10,
     "options": [
       {
         "id": 1,
@@ -377,6 +392,7 @@
   {
     "id": 16,
     "question": "Microsoft Office is an example of a",
+    "marks": 10,
     "options": [
       {
         "id": 1,
@@ -402,6 +418,7 @@
   {
     "id": 17,
     "question": "By default, your documents print in ________ mode",
+    "marks": 10,
     "options": [
       {
         "id": 1,
@@ -427,6 +444,7 @@
   {
     "id": 18,
     "question": "Several computers linked to a server to share programs and storage space________",
+    "marks": 10,
     "options": [
       {
         "id": 1,
@@ -452,6 +470,7 @@
   {
     "id": 19,
     "question": "Where is RAM located?",
+    "marks": 15,
     "options": [
       {
         "id": 1,
@@ -477,6 +496,7 @@
   {
     "id": 20,
     "question": "A _______ is a software program used to view Web pages.",
+    "marks": 15,
     "options": [
       {
         "id": 1,

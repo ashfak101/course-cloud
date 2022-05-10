@@ -6,9 +6,14 @@ import { QuestionsCC } from "types/questionTypes";
 type Props = {
   quizAnswers: QuestionsCC[];
   userScore: number;
+  totalMark: number;
 };
 
-const ResultAccordionHeader = ({ userScore, quizAnswers }: Props) => {
+const ResultAccordionHeader = ({
+  userScore,
+  quizAnswers,
+  totalMark,
+}: Props) => {
   const Styles = {
     headerContainer: {
       background: "#282D37",
@@ -50,7 +55,7 @@ const ResultAccordionHeader = ({ userScore, quizAnswers }: Props) => {
             component="span"
             sx={{ fontSize: { xs: "1rem", md: "1.4rem" }, color: "#FBDE44" }}
           >
-            {userScore}/{quizAnswers.length}
+            {userScore}/{totalMark}
           </Typography>
         </Typography>
         <Typography sx={{ ml: 3, fontSize: { xs: "1rem", md: "1.4rem" } }}>

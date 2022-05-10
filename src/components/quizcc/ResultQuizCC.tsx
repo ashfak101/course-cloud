@@ -26,6 +26,11 @@ const ResultQuizCC = () => {
   // console.log("from Database: answers ", quizAnswers);
 
   let uiCorrectFalseIndex: boolean[] = [];
+  let TotalMarksArray: number[] = [];
+  let userScoreArray: number[] = [];
+
+  const [userUpdatedScore, setUserUpdatedScore] = useState(0);
+  const [totalMark, setTotalMark] = useState(0);
 
   const quizCalculation = () => {
     let score = 0;
@@ -33,6 +38,7 @@ const ResultQuizCC = () => {
     quizAnswers.forEach((question, index1) => {
       let correctIndexes: number[] = [];
       let checkedIndexes: number[] = [];
+      TotalMarksArray.push(question.marks);
 
       question.options.forEach((option, index2) => {
         if (option.correct) correctIndexes.push(index2);
@@ -41,9 +47,12 @@ const ResultQuizCC = () => {
           option.checked = true;
         }
       });
+      // console.log(TotalMarksArray);
+
       if (_.isEqual(correctIndexes, checkedIndexes)) {
         score = score + 1;
         uiCorrectFalseIndex.push(true);
+        userScoreArray.push(question.marks);
       } else {
         uiCorrectFalseIndex.push(false);
       }
@@ -52,7 +61,16 @@ const ResultQuizCC = () => {
   };
 
   const userScore = quizCalculation();
-  console.log(submittedAnswers);
+
+  useEffect(() => {
+    setTotalMark(TotalMarksArray.reduce((acc, val) => acc + val, 0));
+    setUserUpdatedScore(userScoreArray.reduce((acc, val) => acc + val, 0));
+  }, [TotalMarksArray, userScoreArray]);
+
+  console.log(totalMark, "total mark");
+  console.log(userUpdatedScore, "userUpdatedScore");
+
+  // console.log(submittedAnswers, "submittedAns");
 
   // let arr: Option[] = []
   // let beginner = 0
@@ -107,7 +125,8 @@ const ResultQuizCC = () => {
       <Accordion sx={{ background: "#0f0f0f", color: "#fff" }}>
         <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
           <ResultAccordionHeader
-            userScore={userScore}
+            userScore={userUpdatedScore}
+            totalMark={totalMark}
             quizAnswers={quizAnswers}
           />
         </AccordionSummary>
